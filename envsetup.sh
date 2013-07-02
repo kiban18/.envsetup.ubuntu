@@ -20,12 +20,12 @@ alias vienvsetup='vim $envsetup_sh'
 alias videvsetup='vim $devsetup_sh'
 alias vipathsetup='vim $pathsetup_sh'
 
-vimrc=$envsetup/.vimrc
-gitconfig=$envsetup/.gitconfig
-alias ln.vimrc='ln -s $vimrc .vimrc'
-alias ln.gitconfig='ln -s $gitconfig .gitconfig'
-alias vivimrc='vim $vimrc'
+gitconfig=$envsetup/_gitconfig
+profile=$envsetup/_profile
+vimrc=$envsetup/_vimrc
 alias vigitconfig='vim $gitconfig'
+alias viprofile='vim $profile'
+alias vivimrc='vim $vimrc'
 
 alias e='exit'
 
