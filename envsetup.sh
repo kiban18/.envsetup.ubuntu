@@ -8,11 +8,11 @@ case $OSTYPE in
 esac
 
 envsetup=~/.envsetup.$OS
+alias cdenvsetup='cd $envsetup'
 
 envsetup_sh=$envsetup/envsetup.sh
 devsetup_sh=$envsetup/devsetup.sh
 pathsetup_sh=$envsetup/pathsetup.sh
-alias cdenvsetup='cd $envsetup'
 alias source.envsetup='source $envsetup_sh'
 alias source.devsetup='source $devsetup_sh'
 alias source.pathsetup='source $pathsetup_sh'
