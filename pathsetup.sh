@@ -3,6 +3,8 @@
 # remove google3 JDK /usr/local/buildtools/java/jdk/bin from PATH on gLucid
 PATH=${PATH/\/usr\/local\/buildtools\/java\/jdk\/bin:/}
 
+PATH=$PATH:$envsetup
+
 android_bin=~/tool/android/bin
 if [[ "$android_bin" != "" ]]; then
     PATH=$android_bin:$PATH
