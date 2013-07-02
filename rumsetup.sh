@@ -7,10 +7,10 @@ alias mnt='ssh -X kiban18@$RUM_SERVER'
 
 FROM=$1
 
-if [ ${FROM} == "mounted" ]; then
+if [ "${FROM}" == "mounted" ]; then
     SRCROOT=~rum/home/work/source
 else
     SRCROOT=~work/source
 fi
 
-echo "SRCROOT : $SRCROOT"
+echo "    ~/.envsetup.$OS/rumsetup.sh sourced!!! : $SRCROOT"

@@ -1,7 +1,10 @@
+echo "~/.profile started!!!"
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
+        echo "include ~/.bashrc"
         . "$HOME/.bashrc"
     fi
 fi
@@ -32,3 +35,5 @@ if [ $HOSTNAME == "rum" ]; then
         . $rumsetup
     fi
 fi
+
+echo "~/.profile finished!!!"

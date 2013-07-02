@@ -254,4 +254,4 @@ alias chrome='google-chrome'
 alias test.launchHome='amstart -a android.intent.action.MAIN -c android.intent.category.HOME -n com.google.tv.launcher/.HomeActivity'
 alias test.onBoot='amstart -a android.intent.action.BOOT_COMPLETED -f 0x00000010'
 
-echo ~/.envsetup.$OS/devsetup.sh sourced!!!
+echo "    ~/.envsetup.$OS/devsetup.sh sourced!!!"

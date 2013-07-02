@@ -25,4 +25,4 @@ if [[ `uname -a | grep rum` != "" ]]; then
     PS1="\[\e[0;31m\]\u@\h\[\e[m\] \[\e[1;31m\]\w\[\e[m\] \`ruby -e \"print (%x{git branch 2> /dev/null}.split(%r{\n}).grep(/^\*/).first || '').gsub(/^\* (.+)$/, '(\1) ')\"\`\[\e[0;31m\]\$ \[\e[m\]\[\e[0;31m\]"
 fi
 
-echo ~/.envsetup.$OS/pathsetup.sh sourced!!!
+echo "    ~/.envsetup.$OS/pathsetup.sh sourced!!!"
