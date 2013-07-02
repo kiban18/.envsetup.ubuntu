@@ -61,6 +61,7 @@ Bundle 'https://github.com/vim-scripts/The-NERD-tree.git'
 "Bundle 'https://github.com/vim-scripts/trinity.vim.git'
 Bundle 'https://github.com/wesleyche/SrcExpl.git'
 Bundle 'https://github.com/wesleyche/Trinity.git'
+Bundle 'https://github.com/vim-scripts/gtags.vim.git'
 
 filetype plugin indent on "required!
 "
@@ -160,6 +161,12 @@ nmap <C-H> <C-W>h
 nmap <C-J> <C-W>j 
 nmap <C-K> <C-W>k 
 nmap <C-L> <C-W>l 
+
+
+"========= gtags setting ========
+nmap <C-n> :cn<CR>
+nmap <C-p> :cp<CR>
+nmap <C-\><C-]> :GtagsCursor<CR>
 
 
 "========= ctags setting ========
