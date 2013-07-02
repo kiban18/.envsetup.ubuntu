@@ -14,25 +14,27 @@ case $OSTYPE in
     linux*)  OS=ubuntu;;
 esac
 
-envsetup=~/.envsetup.$OS/envsetup.sh
-if [ -f $envsetup ]; then
-    . $envsetup
+envsetup=~/.envsetup.$OS
+
+envsetup_sh=$envsetup/envsetup.sh
+if [ -f $envsetup_sh ]; then
+    . $envsetup_sh
 fi
 
-devsetup=~/.envsetup.$OS/devsetup.sh
-if [ -f $devsetup ]; then
-    . $devsetup
+devsetup_sh=$envsetup/devsetup.sh
+if [ -f $devsetup_sh ]; then
+    . $devsetup_sh
 fi
 
-pathsetup=~/.envsetup.$OS/pathsetup.sh
-if [ -f $pathsetup ]; then
-    . $pathsetup
+pathsetup_sh=$envsetup/pathsetup.sh
+if [ -f $pathsetup_sh ]; then
+    . $pathsetup_sh
 fi
 
 if [ $HOSTNAME == "rum" ]; then
-    rumsetup=~/.envsetup.$OS/rumsetup.sh
-    if [ -f $rumsetup ]; then
-        . $rumsetup
+    rumsetup_sh=$envsetup/rumsetup.sh
+    if [ -f $rumsetup_sh ]; then
+        . $rumsetup_sh
     fi
 fi
 
