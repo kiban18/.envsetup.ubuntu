@@ -25,3 +25,8 @@ pathsetup=~/.envsetup.$OS/pathsetup.sh
 if [ -f $pathsetup ]; then
     . $pathsetup
 fi
+
+gtvsetup=~/.envsetup.$OS/gtvsetup.sh
+if [ -f $gtvsetup ]; then
+    . $gtvsetup
+fi
