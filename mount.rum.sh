@@ -16,4 +16,3 @@ else
 fi
 
 cd ${RUM_HOME}
-#. ./gtv_v2.sh mounted
