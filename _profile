@@ -1,0 +1,27 @@
+# if running bash
+if [ -n "$BASH_VERSION" ]; then
+    # include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+        . "$HOME/.bashrc"
+    fi
+fi
+
+case $OSTYPE in
+    darwin*) OS=macosx;;
+    linux*)  OS=ubuntu;;
+esac
+
+envsetup=~/.envsetup.$OS/envsetup.sh
+if [ -f $envsetup ]; then
+    . $envsetup
+fi
+
+devsetup=~/.envsetup.$OS/devsetup.sh
+if [ -f $devsetup ]; then
+    . $devsetup
+fi
+
+pathsetup=~/.envsetup.$OS/pathsetup.sh
+if [ -f $pathsetup ]; then
+    . $pathsetup
+fi
