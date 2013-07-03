@@ -2,14 +2,12 @@
 
 pushd ~
 
-echo "PWD:$PWD for debug"
-
 case $OSTYPE in
     darwin*) OS=macosx;;
     linux*)  OS=ubuntu;;
 esac
 
-echo "$OS $HOSTNAME for debug"
+echo "[DEBUG] OS:$OS HOSTNAME:$HOSTNAME PWD:$PWD"
 
 if [ -f .profile ]; then
     cat .profile > .profile.bak
