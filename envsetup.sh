@@ -27,6 +27,15 @@ alias vigitconfig='vim $gitconfig'
 alias viprofile='vim $profile'
 alias vivimrc='vim $vimrc'
 
+#@@ auto completion for global - by kiban18
+funcs()
+{
+    local cur
+    cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=(`global -c $cur`)
+}
+complete -F funcs global
+
 alias e='exit'
 
 alias ls='ls -G'
