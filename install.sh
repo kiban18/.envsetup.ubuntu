@@ -12,15 +12,17 @@ esac
 echo "OS:$OS for debug"
 
 if [ -f .profile ]; then
-    mv .profile .profile.bak
+    cat .profile > .profile.bak
+    rm .profile
 fi
-cp .envsetup.$OS/_profile .profile
+ln -s .envsetup.$OS/_profile .profile
 echo "refresh .profile"
 
 if [ -f .vimrc ]; then
-    mv .vimrc .vimrc.bak
+    cat .vimrc > .vimrc.bak
+    rm .vimrc
 fi
-cp .envsetup.$OS/_vimrc .vimrc
+ln -s .envsetup.$OS/_vimrc .vimrc
 echo "refresh .vimrc"
 
 if [ -f .gitconfig ]; then
