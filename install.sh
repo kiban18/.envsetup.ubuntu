@@ -9,7 +9,7 @@ case $OSTYPE in
     linux*)  OS=ubuntu;;
 esac
 
-echo "OS:$OS for debug"
+echo "$OS $HOSTNAME for debug"
 
 if [ -f .profile ]; then
     cat .profile > .profile.bak
