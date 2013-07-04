@@ -122,7 +122,7 @@ map <F2> v]}zf
 map <F3> zo
 
 "map <F5> :Tlist<CR><C-W><C-W>
-map <F5> :Tlist<CR><C-W><C-W> <C-Right> <C-Right> <C-Right> <C-Right> <C-Right> <C-Right>
+map <F5> :Tlist<CR>
 map <F6> :NERDTreeToggle<CR> 
 map <F7> :SrcExplToggle<CR> 
 
@@ -164,9 +164,12 @@ nmap <C-L> <C-W>l
 
 
 "========= gtags setting ========
+nmap <C-g> :Gtags 
+nmap <C-i> :Gtags -f %<CR>
+nmap <C-\> :GtagsCursor<CR>
 nmap <C-n> :cn<CR>
 nmap <C-p> :cp<CR>
-nmap <C-\><C-]> :GtagsCursor<CR>
+nmap <C-Q> :cclose<CR>
 
 
 "========= ctags setting ========
@@ -393,7 +396,7 @@ imap <S-Insert>   <C-V>
 vmap <S-Insert>   <C-V>
 
 " Use CTRL-Q to do what CTRL-V used to do
-noremap <C-Q>     <C-V>
+"noremap <C-Q>     <C-V>
 
 """""""""" source ./paste.vim
 " Vim support file to help with paste mappings and menus
