@@ -30,6 +30,9 @@ alias vivimrc='vim $vimrc'
 #@@ ConqueTerm logcat
 alias lc='while vim -c ":ConqueTerm adb_logcat" -c ":set syntax=logcat"; do echo Restarting...; done'
 
+#@@ ConqueTerm socat
+alias lc='while vim -c ":ConqueTerm sudo socat stdin /dev/ttyS0" -c ":set syntax=dtv"; do echo Restarting...; done'
+
 #@@ ConqueTerm bash
 alias vash='while vim -c ":ConqueTerm bash" -c ":set syntax=logcat"; do echo Restarting...; done'
 
