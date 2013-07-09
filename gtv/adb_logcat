@@ -1,0 +1,15 @@
+#!/bin/bash
+
+ip=192.168.10.42
+port=5555
+
+while true; do
+    if nc -z -w 4 $ip $port; then
+        adb disconnect $ip:$port
+        adb connect $ip:$port
+        adb -s $ip:$port logcat mali_winsys:S mali_winsys-cache:S mali_winsys-worker:S
+    else
+        echo waiting adbd...
+        sleep 1;
+    fi
+done

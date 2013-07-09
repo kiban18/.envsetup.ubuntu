@@ -62,6 +62,8 @@ Bundle 'https://github.com/vim-scripts/The-NERD-tree.git'
 Bundle 'https://github.com/wesleyche/SrcExpl.git'
 Bundle 'https://github.com/wesleyche/Trinity.git'
 Bundle 'https://github.com/vim-scripts/gtags.vim.git'
+Bundle 'https://github.com/thinca/vim-logcat.git'
+Bundle 'Conque-Shell'
 
 filetype plugin indent on "required!
 "

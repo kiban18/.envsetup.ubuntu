@@ -27,6 +27,9 @@ alias vigitconfig='vim $gitconfig'
 alias viprofile='vim $profile'
 alias vivimrc='vim $vimrc'
 
+#@@ ConqueTerm logcat
+alias lc='while vim -c ":ConqueTerm adb_logcat" -c ":set syntax=logcat"; do echo Restarting...; done'
+
 #@@ auto completion for global - by kiban18
 funcs()
 {

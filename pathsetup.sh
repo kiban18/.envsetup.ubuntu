@@ -4,6 +4,7 @@
 PATH=${PATH/\/usr\/local\/buildtools\/java\/jdk\/bin:/}
 
 PATH=$PATH:$envsetup
+PATH=$PATH:$envsetup:$envsetup/gtv
 PATH=/usr/local/bin:$PATH
 
 android_bin=~/tool/android/bin
