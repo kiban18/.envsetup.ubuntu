@@ -437,3 +437,53 @@ else
   let paste#paste_cmd['i'] = 'x<Esc>' . paste#paste_cmd['n'] . '"_s'
 endi
 
+fu! Num2Bin(var)
+        let num=printf("%u", a:var)
+        let bin=""
+        let pos=0
+        while num > 0 || pos % 4 != 0
+                if 0 == pos % 4 && 0 != pos | let bin = "," . bin | endif
+                let bin = num % 2 . bin
+                let num = num / 2
+                let pos += 1
+        endwh
+        if bin == ""
+                let bin = "0000"
+                let pos = 4
+        endif
+        return bin . " (" . pos . ")"
+endfu
+ 
+fu! CheckSymbol(var1)
+    echo
+    let sym = a:var1
+    let config = findfile(".config", ".;")
+    if sym =~ '^CONFIG_'
+        let hit = 0
+        for line in readfile(config, '')
+            if line =~ sym . '\(=\| is\)'
+                echo line
+                let hit += 1
+            endif
+        endfor
+        if hit == 0 | echo "# " . sym . " not found" | endif
+    else
+        if sym =~? '^\(0x\|#\|=\)\?[0-9a-f]\+$'
+            if sym =~ '^\(=\|#\)' | let sym = sym[1:] | endif
+            let s = sym
+            let unit = ['B', 'K', 'M', 'G', 'T', 'P', 'E', 'Z']
+            let cnt = 0
+            while s >= 1024 && (s % 1024) == 0
+                let s = s / 1024
+                let cnt += 1
+            endwh
+            if s == sym
+                echo printf("D:%u H:0x%x B:%s", sym, sym, Num2Bin(sym))
+            else
+                echo printf("D:%u (%u%s) H:0x%x B:%s", sym, s, unit[cnt], sym, Num2Bin(sym))
+            endif
+        endif
+    endif
+endfu
+ 
+nmap <C-c> :call CheckSymbol(expand("<cword>"))<CR>
