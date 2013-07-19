@@ -14,3 +14,11 @@ else
 fi
 
 echo "    ~/.envsetup.$OS/rumsetup.sh sourced!!! : $SRCROOT"
+
+
+
+
+
+cd googletv/android-4.2.2_r1
+source ./build/envsetup.sh
+lunch fox-eng
