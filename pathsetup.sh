@@ -12,6 +12,11 @@ if [[ "$android_bin" != "" ]]; then
     PATH=$android_bin:$PATH
 fi
 
+eclipse_bin=~/tool/android/adt-bundle/eclipse
+if [[ "$eclipse_bin" != "" ]]; then
+    PATH=$PATH:$eclipse_bin
+fi
+
 argouml_path=~/tool/freeware/argouml-0.34
 if [[ "$argouml_path" != "" ]]; then
     PATH=$PATH:$argouml_path
