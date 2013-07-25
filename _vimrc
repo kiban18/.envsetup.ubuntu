@@ -487,3 +487,6 @@ fu! CheckSymbol(var1)
 endfu
  
 nmap <C-c> :call CheckSymbol(expand("<cword>"))<CR>
+
+"au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+vmap ,p !xmllint --format --recover -<CR>
