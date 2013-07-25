@@ -15,7 +15,7 @@ set ai " auto indent
 set tabstop=2 " Tab을 눌렀을 때 8칸 대신 2칸 이동하도록 한다.
 set shiftwidth=2 " 자동 들여쓰기를 할때 2칸 들여쓰도록 한다.
 set background=dark
-set expandtab " TAB을 공백으로 변환.
+"set expandtab " TAB을 공백으로 변환.
 set hlsearch
 set history=1000 " 편집기록을 1000개까지 기억.
 set paste
