@@ -23,6 +23,7 @@ set showmatch " 매치되는 괄호의 반대쪽을 보여줌.
 set autowrite " :next나 :make 같은 명령을 입력하면 자동으로 저장.
 set title " 타이틀바에 현재 편집중인 파일을 표시.
 set mousehide " Hide the mouse pointer when typing text.
+set listchars=tab:>-,trail:. " Show whitespace.
 
 set ruler " 화면 우측 하단에 현재 커서의 위치(줄,칸)를 보여준다.
 set ls=2 " 항상 status 라인을 표시하도록 함.
