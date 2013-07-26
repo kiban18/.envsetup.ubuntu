@@ -7,6 +7,11 @@
 	tool = meld
 [difftool]
 	prompt = false
+[merge]
+	tool = meld
+[mergetool "meld"]
+	path = /usr/bin/meld
+	prompt = false
 [core]
 	editor = vim
 [alias]
