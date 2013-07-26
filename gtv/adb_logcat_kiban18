@@ -8,7 +8,8 @@ while true; do
         #adb disconnect $ip:$port
         #adb connect $ip:$port
         adbcon.sh
-        adb -s $ip:$port logcat | grep kiban18
+        adb -s $ip:$port logcat  | grep kiban18
+        #adb -s $ip:$port logcat PTSPopulator:S | grep kiban18
     else
         echo waiting adbd...
         sleep 1;
