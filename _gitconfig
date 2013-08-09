@@ -3,6 +3,7 @@
 	diff = auto
 	status = auto
 	branch = auto
+	interactive = auto
 [diff]
 	tool = meld
 [difftool]
