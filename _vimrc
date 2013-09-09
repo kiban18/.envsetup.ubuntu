@@ -1,5 +1,7 @@
-:highlight LineNr term=bold cterm=NONE ctermfg=LightGray ctermbg=DarkGray gui=NONE guifg=LightGray guibg=DarkGray
-:highlight Normal term=bold cterm=NONE ctermfg=LightGray ctermbg=DarkGray gui=NONE guifg=LightGray guibg=DarkGray
+:highlight LineNr term=NONE cterm=NONE ctermfg=LightGray ctermbg=DarkGray gui=NONE guifg=LightGray guibg=DarkGray
+":highlight LineNr term=bold cterm=NONE ctermfg=LightGray ctermbg=DarkGray gui=NONE guifg=LightGray guibg=DarkGray
+:highlight Normal term=NONE cterm=NONE ctermfg=LightGray ctermbg=DarkGray gui=NONE guifg=LightGray guibg=DarkGray
+":highlight Normal term=bold cterm=NONE ctermfg=LightGray ctermbg=DarkGray gui=NONE guifg=LightGray guibg=DarkGray
 
 "set wrap " 자동으로 를 삽입하여 다음 줄로 넘어간다.
 set nocompatible " vi 오리지널과 호환하는 모드를 사용하지 않음. (vim 확장)
@@ -11,7 +13,6 @@ set nowrapscan " 검색할 때 문서의 끝에서 다시 처음으로 돌아가
 set nobackup " 백업 파일을 만들지 않는다.
 set visualbell " 키를 잘못눌렀을 때 삑 소리를 내는 대신 번쩍이게 한다.
 set nu " show line number
-set ai " auto indent
 set tabstop=2 " Tab을 눌렀을 때 8칸 대신 2칸 이동하도록 한다.
 set shiftwidth=2 " 자동 들여쓰기를 할때 2칸 들여쓰도록 한다.
 set background=dark
