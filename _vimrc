@@ -8,18 +8,19 @@ set nocompatible " vi 오리지널과 호환하는 모드를 사용하지 않음
 set backspace=indent,eol,start " BS로 라인끝과 처음 자동들여쓰기한 부분을 지날 수 있음.
 set autoindent " 자동으로 들여쓰기를 한다.
 set cindent " C 프로그래밍을 할때 자동으로 들여쓰기를 한다.
+":filetype indent on
 set smartindent " 좀더 똑똑한 들여쓰기를 위한 옵션이다.
 set nowrapscan " 검색할 때 문서의 끝에서 다시 처음으로 돌아가지 않는다.
 set nobackup " 백업 파일을 만들지 않는다.
 set visualbell " 키를 잘못눌렀을 때 삑 소리를 내는 대신 번쩍이게 한다.
 set nu " show line number
-set tabstop=2 " Tab을 눌렀을 때 8칸 대신 2칸 이동하도록 한다.
-set shiftwidth=2 " 자동 들여쓰기를 할때 2칸 들여쓰도록 한다.
+set tabstop=4 " Tab을 눌렀을 때 8칸 대신 2칸 이동하도록 한다.
+set shiftwidth=4 " 자동 들여쓰기를 할때 2칸 들여쓰도록 한다.
 set background=dark
 "set expandtab " TAB을 공백으로 변환.
 set hlsearch
 set history=1000 " 편집기록을 1000개까지 기억.
-set paste
+"set paste
 set showmatch " 매치되는 괄호의 반대쪽을 보여줌.
 set autowrite " :next나 :make 같은 명령을 입력하면 자동으로 저장.
 set title " 타이틀바에 현재 편집중인 파일을 표시.

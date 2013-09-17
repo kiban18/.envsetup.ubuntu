@@ -7,7 +7,13 @@
 #export WORK_MOUNTED=/media/work2
 export WORK_MOUNTED=~/work
 #export WORK_MOUNTED=$HOME_MOUNTED/work2
-export ENVSETUP=~/.envsetup
+
+case $OSTYPE in
+	darwin*) OS=macosx;;
+	linux*)  OS=ubuntu;;
+esac
+
+ENVSETUP=~/.envsetup.$OS
 
 export TOOL_MOUNTED=$WORK_MOUNTED/tool
 export SOURCEDIR=$WORK_MOUNTED/source/android
@@ -164,6 +170,7 @@ alias useavapi='adbshell setprop media.moo.others false'
 alias getomx='adbshell getprop media.moo.others'
 alias activities='$ADBCON_SH && $REPEAT_SH 1 adb -s $ADBHOSTPORT shell dumpsys activity activities | grep Run'
 alias killprocess='$KILLPROCESS_SH'
+alias killqemu='$KILLPROCESS_SH qemu'
 
 alias createapp.help='echo "Example: android create project -n ProjectName -t 1 -p ./projectname -k com.example.projectname -a ProjectActivity"; android --help create project'
 alias createapp='android create project'
