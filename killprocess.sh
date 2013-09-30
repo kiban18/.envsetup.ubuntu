@@ -13,9 +13,9 @@ if [[ "${DEBUG}" == "true" ]]; then
 	echo ""
 	echo ps aux | grep ${PROCESS}
 	ps aux | grep ${PROCESS}
-	echo "ps aux | grep ${PROCESS} | awk '{print $2}'"
+	echo "ps aux | grep ${PROCESS} | awk '{print $$2}'"
 	ps aux | grep ${PROCESS} | awk '{print $2}'
-	echo "ps aux | grep ${PROCESS} | awk '{print $2}' | xargs sudo kill -9 "
+	echo "ps aux | grep ${PROCESS} | awk '{print $$2}' | xargs sudo kill -9 "
 	ps aux | grep ${PROCESS} | awk '{print $2}' | xargs sudo kill -9
 fi
 

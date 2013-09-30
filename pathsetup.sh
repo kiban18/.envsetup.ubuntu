@@ -6,6 +6,8 @@ PATH=${PATH/\/usr\/local\/buildtools\/java\/jdk\/bin:/}
 PATH=$PATH:$envsetup
 PATH=$PATH:$envsetup:$envsetup/gtv
 PATH=/usr/local/bin:$PATH
+PATH=$PATH:/home/k/download/global/global
+PATH=$PATH:/home/k/download/global/gtags
 PATH=/works/studies/rtos/S5PC100/SRC/Linux/GCC/4.3.1-eabi-armv6/usr/bin:$PATH
 LD_LIBRARY_PATH=/works/studies/rtos/S5PC100/SRC/Linux/GCC/4.3.1-eabi-armv6/gmp/lib:/works/studies/rtos/S5PC100/SRC/Linux/GCC/4.3.1-eabi-armv6/mpfr/lib
 export PATH LD_LIBRARY_PATH

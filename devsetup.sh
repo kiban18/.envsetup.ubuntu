@@ -170,7 +170,6 @@ alias useavapi='adbshell setprop media.moo.others false'
 alias getomx='adbshell getprop media.moo.others'
 alias activities='$ADBCON_SH && $REPEAT_SH 1 adb -s $ADBHOSTPORT shell dumpsys activity activities | grep Run'
 alias killprocess='$KILLPROCESS_SH'
-alias killqemu='$KILLPROCESS_SH qemu'
 
 alias createapp.help='echo "Example: android create project -n ProjectName -t 1 -p ./projectname -k com.example.projectname -a ProjectActivity"; android --help create project'
 alias createapp='android create project'
