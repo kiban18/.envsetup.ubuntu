@@ -5,9 +5,9 @@
 
 IMAGE=$1
 if [[ "${IMAGE}" == "" ]]; then
-	echo "Usage : $0 <IMAGE_NAME>"
-	echo "    ex) $0 zImage"
-	echo "    ex) $0 zImage gdb"
+	echo "Usage : make && $0 <IMAGE_NAME>"
+	echo "        make && $0 rtos.img"
+	echo "        make && $0 rtos.img gdb"
 	exit 1
 fi
 
@@ -22,4 +22,5 @@ MEMORY="-m 128M"
 DISPLAY=-nographic
 KERNEL="-kernel ${IMAGE}"
 
-echo ${QEMU} ${MACHINE} ${MEMORY} ${DISPLAY} ${DEBUG} ${KERNEL}
+echo ${QEMU} ${MACHINE} ${MEMORY} ${DISPLAY} ${DEBUG} ${KERNEL} ${IMAGE} 2>&1 | tee run.log
+${QEMU} ${MACHINE} ${MEMORY} ${DISPLAY} ${DEBUG} ${KERNEL} ${IMAGE} 2>&1 | tee run.log

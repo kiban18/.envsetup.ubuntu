@@ -17,7 +17,7 @@ set nu " show line number
 set tabstop=4 " Tab을 눌렀을 때 8칸 대신 2칸 이동하도록 한다.
 set shiftwidth=4 " 자동 들여쓰기를 할때 2칸 들여쓰도록 한다.
 set background=dark
-"set expandtab " TAB을 공백으로 변환.
+set expandtab " TAB을 공백으로 변환.
 set hlsearch
 set history=1000 " 편집기록을 1000개까지 기억.
 "set paste
@@ -363,11 +363,13 @@ map <F10> <ESC>:A<CR>
 
 map <F1> <ESC>A jasper<ESC>
 map <S-F4> <ESC>:s/ jasper$//<CR>
-map <F11> <ESC>/.* jasper<CR>
-map <F12> <ESC>:g!/ jasper/d<CR>
+
+map <C-I> <ESC>0i//<ESC>j:w<CR>
+map <C-N> <ESC>k0xx:w<CR>
+
 map = <ESC>/JOIN<CR>DJ
-map <C-F1> <ESC>ggVG"+y
-map <C-F2> <ESC>ggVG"+gP
+"map <C-F1> <ESC>ggVG"+y
+"map <C-F2> <ESC>ggVG"+gP
 
 " switch from foo.cpp to foo.h (or vice versa) on a single key stroke
 map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
