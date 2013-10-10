@@ -20,7 +20,7 @@ set background=dark
 set expandtab " TAB을 공백으로 변환.
 set hlsearch
 set history=1000 " 편집기록을 1000개까지 기억.
-"set paste
+set paste
 set showmatch " 매치되는 괄호의 반대쪽을 보여줌.
 set autowrite " :next나 :make 같은 명령을 입력하면 자동으로 저장.
 set title " 타이틀바에 현재 편집중인 파일을 표시.
@@ -193,6 +193,7 @@ set tags=tags;/
 " Vim will look for cscope.out file everywhere starting from the current directory up to the root
 " http://vim.wikia.com/wiki/Autoloading_Cscope_Database
 function! LoadCscope()
+    exe "silent cs reset"
     let db = findfile("cscope.out", ".;")
     if (!empty(db))
         let path = strpart(db, 0, match(db, "/cscope.out$"))
