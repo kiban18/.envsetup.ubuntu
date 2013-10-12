@@ -265,7 +265,7 @@ nmap ,h :call CscopeHelp()<CR>
 "       c: 이 함수를 부르는 함수들 찾기
 func! CscopeCaller()
 let csc = expand("<cword>")
-new
+"new
 exe "cs find c ".csc
 if getline(1) == " "
 exe "q!"
@@ -277,7 +277,7 @@ nmap ,c :call CscopeCaller()<CR>
 "       d: 이 함수에 의해 불려지는 함수들 찾기
 func! CscopeCalled()
 let csd = expand("<cword>")
-new
+"new
 exe "cs find d ".csd
 if getline(1) == " "
 exe "q!"
@@ -289,7 +289,7 @@ nmap ,d :call CscopeCalled()<CR>
 "       e: 이 egrep 패턴 찾기
 func! CscopeEgrep()
 let cse = expand("<cword>")
-new
+"new
 exe "cs find e ".cse
 if getline(1) == " "
 exe "q!"
@@ -301,7 +301,7 @@ nmap ,e :call CscopeEgrep()<CR>
 "       f: 이 파일 찾기
 func! CscopeFile()
 let csf = expand("<cword>")
-new
+"new
 exe "cs find f ".csf
 if getline(1) == " "
 exe "q!"
@@ -313,7 +313,7 @@ nmap ,f :call CscopeFile()<CR>
 "       g: 이 정의 찾기
 func! CscopeGlobal()
 let csg = expand("<cword>")
-new
+"new
 exe "cs find g ".csg
 if getline(1) == " "
 exe "q!"
@@ -325,7 +325,7 @@ nmap ,g :call CscopeGlobal()<CR>
 "       i: 이 파일을 포함하는 파일들 찾기
 func! CscopeIncludes()
 let csi = expand("<cword>")
-new
+"new
 exe "cs find i ".csi
 if getline(1) == " "
 exe "q!"
@@ -337,7 +337,7 @@ nmap ,i :call CscopeIncludes()<CR>
 "       s: 이 C 심볼 찾기
 func! CscopeSymbol()
 let css = expand("<cword>")
-new
+"new
 exe "cs find s ".css
 if getline(1) == " "
 exe "q!"
@@ -349,7 +349,7 @@ nmap ,s :call CscopeSymbol()<CR>
 "       t: Find assignments to
 func! CscopeText()
 let cst = expand("<cword>")
-new
+"new
 exe "cs find t ".cst
 if getline(1) == " "
 exe "q!"

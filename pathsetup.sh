@@ -27,10 +27,15 @@ if [[ "$argouml_path" != "" ]]; then
     PATH=$PATH:$argouml_path
 fi
 
-
-PS1="\[\e[0;32m\]\u@\h\[\e[m\] \[\e[1;32m\]\w\[\e[m\] \`ruby -e \"print (%x{git branch 2> /dev/null}.split(%r{\n}).grep(/^\*/).first || '').gsub(/^\* (.+)$/, '(\1) ')\"\`\[\e[0;32m\]\$ \[\e[m\]\[\e[0;32m\]"
-if [[ `uname -a | grep rum` != "" ]]; then
-    PS1="\[\e[0;31m\]\u@\h\[\e[m\] \[\e[1;31m\]\w\[\e[m\] \`ruby -e \"print (%x{git branch 2> /dev/null}.split(%r{\n}).grep(/^\*/).first || '').gsub(/^\* (.+)$/, '(\1) ')\"\`\[\e[0;31m\]\$ \[\e[m\]\[\e[0;31m\]"
+ecos_path=/opt/ecos/ecos-3.0/tools/bin
+if [[ "$ecos_path" != "" ]]; then
+    PATH=$PATH:$ecos_path
 fi
+
+
+# show (git branch) only
+#PS1="\[\e[0;32m\]\u@\h\[\e[m\] \[\e[1;32m\]\w\[\e[m\] \`ruby -e \"print (%x{git branch 2> /dev/null}.split(%r{\n}).grep(/^\*/).first || '').gsub(/^\* (.+)$/, '(\1) ')\"\`\[\e[0;32m\]\$ \[\e[m\]\[\e[0;32m\]"
+# show (git branch / git tag) both
+PS1="\[\e[0;32m\]\u@\h\[\e[m\] \[\e[1;32m\]\w\[\e[m\] (\`ruby -e \"print (%x{git branch 2> /dev/null}.split(%r{\n}).grep(/^\*/).first || '').gsub(/^\* (.+)$/, '\1/')\" -e \"print (%x{git describe --tags 2> /dev/null}.split(%r{\n}).first || '')\"\`) \[\e[0;32m\]\$ \[\e[m\]\[\e[0;32m\]"
 
 echo "    ~/.envsetup.$OS/pathsetup.sh sourced!!!"
