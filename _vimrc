@@ -193,7 +193,7 @@ set tags=tags;/
 " Vim will look for cscope.out file everywhere starting from the current directory up to the root
 " http://vim.wikia.com/wiki/Autoloading_Cscope_Database
 function! LoadCscope()
-    exe "silent cs reset"
+"    exe "silent cs reset"
     let db = findfile("cscope.out", ".;")
     if (!empty(db))
         let path = strpart(db, 0, match(db, "/cscope.out$"))
@@ -365,8 +365,8 @@ map <F10> <ESC>:A<CR>
 map <F1> <ESC>A jasper<ESC>
 map <S-F4> <ESC>:s/ jasper$//<CR>
 
-map <C-I> <ESC>0i//<ESC>j:w<CR>
-map <C-N> <ESC>k0xx:w<CR>
+"map <C-I> <ESC>0i//<ESC>j:w<CR>
+"map <C-N> <ESC>k0xx:w<CR>
 
 map = <ESC>/JOIN<CR>DJ
 "map <C-F1> <ESC>ggVG"+y

@@ -33,9 +33,24 @@ if [[ "$ecos_path" != "" ]]; then
 fi
 
 
+WHITE="\[\e[1;37m\]"
+GREEN="\[\e[0;32m\]"
+CYAN="\[\e[0;36m\]"
+GRAY="\[\e[0;37m\]"
+BLUE="\[\e[0;34m\]"
+END="\[\e[m\]"
+GIT_BRANCH="\`ruby -e \"print (%x{git branch 2> /dev/null}.split(%r{\n}).grep(/^\*/).first || '').gsub(/^\* (.+)$/, '(\1) ')\"\`"
+GIT_BR_TAG='$(__git_ps1)'
+#GIT_BR_TAG="\`ruby -e \"print (%x{git branch 2> /dev/null}.split(%r{\n}).grep(/^\*/).first || '').gsub(/^\* (.+)$/, '\1/')\" -e \"print (%x{git describe --tags 2> /dev/null}.split(%r{\n}).first || '').gsub(/\*/, '\1')\"\`"
+#PS1="${GRAY}\u@\h${END} ${GREEN}\w${END} $GIT_BRANCH${BLUE}$ ${END}"
+PS1="${GREEN}\w${END}${GIT_BR_TAG}${BLUE}$ ${END}"
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+#PS1="${GRAY}\u@\h${END} ${GREEN}\w${END} $(__git_ps1 "(%s)")${BLUE}$ ${END}"
+
 # show (git branch) only
 #PS1="\[\e[0;32m\]\u@\h\[\e[m\] \[\e[1;32m\]\w\[\e[m\] \`ruby -e \"print (%x{git branch 2> /dev/null}.split(%r{\n}).grep(/^\*/).first || '').gsub(/^\* (.+)$/, '(\1) ')\"\`\[\e[0;32m\]\$ \[\e[m\]\[\e[0;32m\]"
 # show (git branch / git tag) both
-PS1="\[\e[0;32m\]\u@\h\[\e[m\] \[\e[1;32m\]\w\[\e[m\] \`ruby -e \"print (%x{git branch 2> /dev/null}.split(%r{\n}).grep(/^\*/).first || '').gsub(/^\* (.+)$/, '\1/')\" -e \"print (%x{git describe --tags 2> /dev/null}.split(%r{\n}).first || '').gsub(/\*/, '\1')\"\`\[\e[0;32m\]\$ \[\e[m\]\[\e[0;32m\]"
+#PS1="\[\e[0;32m\]\u@\h\[\e[m\] \[\e[1;32m\]\w\[\e[m\] \`ruby -e \"print (%x{git branch 2> /dev/null}.split(%r{\n}).grep(/^\*/).first || '').gsub(/^\* (.+)$/, '\1/')\" -e \"print (%x{git describe --tags 2> /dev/null}.split(%r{\n}).first || '').gsub(/\*/, '\1')\"\`\[\e[0;32m\]\$ \[\e[m\]\[\e[0;32m\]"
 
 echo "    ~/.envsetup.$OS/pathsetup.sh sourced!!!"
