@@ -68,6 +68,7 @@ Bundle 'https://github.com/wesleyche/Trinity.git'
 Bundle 'https://github.com/vim-scripts/gtags.vim.git'
 Bundle 'https://github.com/thinca/vim-logcat.git'
 Bundle 'Conque-Shell'
+Bundle 'DoxygenToolkit.vim'
 
 filetype plugin indent on "required!
 "
@@ -193,7 +194,7 @@ set tags=tags;/
 " Vim will look for cscope.out file everywhere starting from the current directory up to the root
 " http://vim.wikia.com/wiki/Autoloading_Cscope_Database
 function! LoadCscope()
-"    exe "silent cs reset"
+    exe "silent cs reset"
     let db = findfile("cscope.out", ".;")
     if (!empty(db))
         let path = strpart(db, 0, match(db, "/cscope.out$"))
@@ -497,3 +498,19 @@ nmap <C-c> :call CheckSymbol(expand("<cword>"))<CR>
 
 "au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
 vmap ,p !xmllint --format --recover -<CR>
+
+"Doxygen Toolkit Settings
+let g:DoxygenToolkit_commentType = "C++"
+"let g:DoxygenToolkit_briefTag_pre = "@Synopsis  "
+"let g:DoxygenToolkit_paramTag_pre = "@Param "
+"let g:DoxygenToolkit_returnTag = "@Returns   "
+let g:DoxygenToolkit_blockHeader = "--------------------------------------------------"
+let g:DoxygenToolkit_blockFooter = "--------------------------------------------------"
+let g:DoxygenToolkit_authorName = "KiHwan Lee"
+
+let s:licenseTag = "Copyright (C) \<enter>\<enter>"
+let s:licenseTag = s:licenseTag . "This program is free software; you can\<enter>"
+let s:licenseTag = s:licenseTag . "redistribute it and/or modify it under\<enter>"
+let s:licenseTag = s:licenseTag . "the terms of the GNU General Public License\<enter>"
+let s:licenseTag = s:licenseTag . "as published by the FSF.\<enter>"
+let g:DoxygenToolkit_licenseTag = s:licenseTag
