@@ -3,29 +3,52 @@
 :highlight Normal term=NONE cterm=NONE ctermfg=LightGray ctermbg=DarkGray gui=NONE guifg=LightGray guibg=DarkGray
 ":highlight Normal term=bold cterm=NONE ctermfg=LightGray ctermbg=DarkGray gui=NONE guifg=LightGray guibg=DarkGray
 
-"set wrap " 자동으로 를 삽입하여 다음 줄로 넘어간다.
+set colorcolumn=80 " 80컬럼에 붉은 줄을 표시한다.
+match ErrorMsg '\s\+$'
+":map <Leader>rtw :%s/\s\+$//e<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Removes trailing spaces
+function! TrimWhiteSpace()
+    %s/\s\+$//e
+endfunction
+
+"nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
+
+autocmd FileWritePre   * :call TrimWhiteSpace()
+autocmd FileAppendPre  * :call TrimWhiteSpace()
+autocmd FilterWritePre * :call TrimWhiteSpace()
+autocmd BufWritePre    * :call TrimWhiteSpace()
+"autocmd FileType c,cpp,h,S,s autocmd FileWritePre   * :call TrimWhiteSpace()
+"autocmd FileType c,cpp,h,S,s autocmd FileAppendPre  * :call TrimWhiteSpace()
+"autocmd FileType c,cpp,h,S,s autocmd FilterWritePre * :call TrimWhiteSpace()
+"autocmd FileType c,cpp,h,S,s autocmd BufWritePre    * :call TrimWhiteSpace()
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"set comments=sl:/*,mb:**,elx:*/
+
+set wrap " 자동으로 줄바꿈을 삽입하여 다음 줄로 넘어간다.
 set nocompatible " vi 오리지널과 호환하는 모드를 사용하지 않음. (vim 확장)
 set backspace=indent,eol,start " BS로 라인끝과 처음 자동들여쓰기한 부분을 지날 수 있음.
 set autoindent " 자동으로 들여쓰기를 한다.
 set cindent " C 프로그래밍을 할때 자동으로 들여쓰기를 한다.
-":filetype indent on
 set smartindent " 좀더 똑똑한 들여쓰기를 위한 옵션이다.
 set nowrapscan " 검색할 때 문서의 끝에서 다시 처음으로 돌아가지 않는다.
 set nobackup " 백업 파일을 만들지 않는다.
 set visualbell " 키를 잘못눌렀을 때 삑 소리를 내는 대신 번쩍이게 한다.
 set nu " show line number
-set tabstop=4 " Tab을 눌렀을 때 8칸 대신 2칸 이동하도록 한다.
-set shiftwidth=4 " 자동 들여쓰기를 할때 2칸 들여쓰도록 한다.
+set tabstop=4 " Tab을 눌렀을 때 8칸 대신 4칸 이동하도록 한다.
+set shiftwidth=4 " 자동 들여쓰기를 할때 4칸 들여쓰도록 한다.
 set background=dark
 set expandtab " TAB을 공백으로 변환.
 set hlsearch
 set history=1000 " 편집기록을 1000개까지 기억.
-set paste
+set pastetoggle=<F4>
 set showmatch " 매치되는 괄호의 반대쪽을 보여줌.
 set autowrite " :next나 :make 같은 명령을 입력하면 자동으로 저장.
 set title " 타이틀바에 현재 편집중인 파일을 표시.
 set mousehide " Hide the mouse pointer when typing text.
-set list " Show whitespace.
+"set list " Show whitespace.
 set listchars=tab:>-,trail:. " Show tab as >-.
 
 set ruler " 화면 우측 하단에 현재 커서의 위치(줄,칸)를 보여준다.
@@ -46,7 +69,7 @@ vmap <S-Tab> <gv
 
 " 문법 강조 기능을 사용한다.
 if has("syntax")
-syntax on " Default to no syntax highlightning 
+syntax on " Default to no syntax highlightning
 endif
 
 
@@ -130,8 +153,8 @@ map <F3> zo
 
 "map <F5> :Tlist<CR><C-W><C-W>
 map <F5> :Tlist<CR>
-map <F6> :NERDTreeToggle<CR> 
-map <F7> :SrcExplToggle<CR> 
+map <F6> :NERDTreeToggle<CR>
+map <F7> :SrcExplToggle<CR>
 
 "Open and close all the three plugins on the same time
 map <F8> :TrinityToggleAll<CR>
@@ -164,14 +187,14 @@ nmap <A-Up> <C-W>_
 nmap <C-Down> <C-W>-<C-W>-<C-W>-<C-W>-
 nmap <S-Down> <C-W>-
 
-nmap <C-H> <C-W>h 
-nmap <C-J> <C-W>j 
-nmap <C-K> <C-W>k 
-nmap <C-L> <C-W>l 
+nmap <C-H> <C-W>h
+nmap <C-J> <C-W>j
+nmap <C-K> <C-W>k
+nmap <C-L> <C-W>l
 
 
 "========= gtags setting ========
-nmap <C-g> :Gtags 
+nmap <C-g> :Gtags
 nmap <C-i> :Gtags -f %<CR>
 nmap <C-\> :GtagsCursor<CR>
 nmap <C-n> :cn<CR>
@@ -363,9 +386,6 @@ Bundle 'a.vim'
 " Ctrl+s는 소스파일과 헤더파일 전환
 map <F10> <ESC>:A<CR>
 
-map <F1> <ESC>A jasper<ESC>
-map <S-F4> <ESC>:s/ jasper$//<CR>
-
 "map <C-I> <ESC>0i//<ESC>j:w<CR>
 "map <C-N> <ESC>k0xx:w<CR>
 
@@ -374,8 +394,8 @@ map = <ESC>/JOIN<CR>DJ
 "map <C-F2> <ESC>ggVG"+gP
 
 " switch from foo.cpp to foo.h (or vice versa) on a single key stroke
-map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
-
+"map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+"""" <F4> is being used for pastetoggle
 
 
 """""""""" source ./mswin.vim
@@ -461,7 +481,7 @@ fu! Num2Bin(var)
         endif
         return bin . " (" . pos . ")"
 endfu
- 
+
 fu! CheckSymbol(var1)
     echo
     let sym = a:var1
@@ -493,7 +513,7 @@ fu! CheckSymbol(var1)
         endif
     endif
 endfu
- 
+
 nmap <C-c> :call CheckSymbol(expand("<cword>"))<CR>
 
 "au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
