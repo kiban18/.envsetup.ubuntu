@@ -8,6 +8,11 @@ match ErrorMsg '\s\+$'
 ":map <Leader>rtw :%s/\s\+$//e<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Removes trailing blank lines
+autocmd BufWritePre * $put _ | $;?\(^\s*$\)\@!?+1,$d
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Removes trailing spaces
 function! TrimWhiteSpace()
     %s/\s\+$//e
@@ -15,15 +20,17 @@ endfunction
 
 "nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
 
-autocmd FileWritePre   * :call TrimWhiteSpace()
-autocmd FileAppendPre  * :call TrimWhiteSpace()
-autocmd FilterWritePre * :call TrimWhiteSpace()
+"autocmd FileWritePre   * :call TrimWhiteSpace()
+"autocmd FileAppendPre  * :call TrimWhiteSpace()
+"autocmd FilterWritePre * :call TrimWhiteSpace()
 autocmd BufWritePre    * :call TrimWhiteSpace()
 "autocmd FileType c,cpp,h,S,s autocmd FileWritePre   * :call TrimWhiteSpace()
 "autocmd FileType c,cpp,h,S,s autocmd FileAppendPre  * :call TrimWhiteSpace()
 "autocmd FileType c,cpp,h,S,s autocmd FilterWritePre * :call TrimWhiteSpace()
 "autocmd FileType c,cpp,h,S,s autocmd BufWritePre    * :call TrimWhiteSpace()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
 
 "set comments=sl:/*,mb:**,elx:*/
 
