@@ -17,7 +17,7 @@ if [[ "$android_bin" != "" ]]; then
     PATH=$android_bin:$PATH
 fi
 
-eclipse_bin=~/tool/android/adt-bundle/eclipse
+eclipse_bin=~/tools/eclipse
 if [[ "$eclipse_bin" != "" ]]; then
     PATH=$PATH:$eclipse_bin
 fi

@@ -204,7 +204,7 @@ function! LoadCscope()
     endif
 endfunction
 call LoadCscope()
-"au BufEnter /* call LoadCscope()
+au BufEnter /* call LoadCscope()
 
 
 if version >= 500
@@ -247,7 +247,7 @@ endif
 " for ubuntu
 "set csprg=/usr/bin/cscope
 " for macosx
-set csprg=/opt/local/bin/cscope " cscope location
+set csprg=/usr/bin/cscope " cscope location
 set csto=0 " cscope DB search first
 set cst " cscope DB tag DB search
 set nocsverb " verbose off
