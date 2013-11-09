@@ -3,73 +3,66 @@
 :highlight Normal term=NONE cterm=NONE ctermfg=LightGray ctermbg=DarkGray gui=NONE guifg=LightGray guibg=DarkGray
 ":highlight Normal term=bold cterm=NONE ctermfg=LightGray ctermbg=DarkGray gui=NONE guifg=LightGray guibg=DarkGray
 
-set colorcolumn=80 " 80컬럼에 붉은 줄을 표시한다.
-match ErrorMsg '\s\+$'
-":map <Leader>rtw :%s/\s\+$//e<CR>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Removes trailing blank lines
-autocmd BufWritePre * $put _ | $;?\(^\s*$\)\@!?+1,$d
-autocmd BufWritePre * 0put _ | 0,0;/\(^\s*$\)\@!/-1d
+""""""""""""""""""""""""""""""""""""""""
+" 코딩 가이드라인 준수를 위한 vim 설정 "
+""""""""""""""""""""""""""""""""""""""""
+set colorcolumn=80 " 80컬럼에 붉은 줄을 표시한다. 붉은 줄을 넘기지 않도록 코딩하자.
 
+autocmd BufWritePre * mark a " 편집하던 위치 북마크.
+autocmd BufWritePre * :%s/\s\+$//e " trailing whitespace 자동 제거.
+autocmd BufWritePre * $put _ | $;?\(^\s*$\)\@!?+1,$d " 파일의 끝부분 빈줄 자동 제거.
+autocmd BufWritePre * 0put _ | 0,0;/\(^\s*$\)\@!/-1d " 파일의 앞부분 빈줄 자동 제거.
+autocmd BufWritePre * 'a " 편집하던 위치로 이동.
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Removes trailing spaces
-function! TrimWhiteSpace()
-    %s/\s\+$//e
-endfunction
+set autoindent " 자동으로 들여쓰기를 한다.
+set cindent " C 프로그래밍을 할 때 자동으로 들여쓰기를 한다.
+set smartindent " 좀 더 똑똑한 들여쓰기를 위한 옵션이다.
 
-"nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
+" set paste가 설정되어 있으면 자동 들여쓰기가 안된다.
+" set paste가 설정되어 있지 않으면 vim 에서 붙여넣기 할 때 매 라인들이 들여쓰기가 된다.
+" 따라서 set paste를 toggle할 수 있도록 <F4>키를 설정한다.
+set pastetoggle=<F4> " set paste toggle 기능에 <F4>키를 설정한다.
 
-"autocmd FileWritePre   * :call TrimWhiteSpace()
-"autocmd FileAppendPre  * :call TrimWhiteSpace()
-"autocmd FilterWritePre * :call TrimWhiteSpace()
-autocmd BufWritePre    * :call TrimWhiteSpace()
-"autocmd FileType c,cpp,h,S,s autocmd FileWritePre   * :call TrimWhiteSpace()
-"autocmd FileType c,cpp,h,S,s autocmd FileAppendPre  * :call TrimWhiteSpace()
-"autocmd FileType c,cpp,h,S,s autocmd FilterWritePre * :call TrimWhiteSpace()
-"autocmd FileType c,cpp,h,S,s autocmd BufWritePre    * :call TrimWhiteSpace()
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set tabstop=4 " 탭을 눌렀을 때 8칸 대신 4칸 이동하도록 한다.
+set shiftwidth=4 " 자동 들여쓰기를 할 때 4칸 들여쓰도록 한다.
+set expandtab " 탭을 공백으로 변환한다. 만일 Makefile 등에서 탭이 필요한 경우에는 :se noet
 
+" 이렇게 설정했는데도 불구하고 탭이 있다면 붉은색으로 경고한다.
+match ErrorMsg '	' " 이렇게 설정했는데도 불구하고 탭이 있다면 노랜색으로 경고한다.
 
-
-"set comments=sl:/*,mb:**,elx:*/
+" Makefile 등 의도한 탭이 아니라면 탭을 스페이스로 바꾸자.
+" 콤마(,)와 <TAB>을 순서대로 누르면 탭을 스페이스로 변경.
+map ,<TAB> :%s/	/    /g<CR>
 
 set wrap " 자동으로 줄바꿈을 삽입하여 다음 줄로 넘어간다.
 set nocompatible " vi 오리지널과 호환하는 모드를 사용하지 않음. (vim 확장)
 set backspace=indent,eol,start " BS로 라인끝과 처음 자동들여쓰기한 부분을 지날 수 있음.
-set autoindent " 자동으로 들여쓰기를 한다.
-set cindent " C 프로그래밍을 할때 자동으로 들여쓰기를 한다.
-set smartindent " 좀더 똑똑한 들여쓰기를 위한 옵션이다.
 set nowrapscan " 검색할 때 문서의 끝에서 다시 처음으로 돌아가지 않는다.
 set nobackup " 백업 파일을 만들지 않는다.
 set visualbell " 키를 잘못눌렀을 때 삑 소리를 내는 대신 번쩍이게 한다.
 set nu " show line number
-set tabstop=4 " Tab을 눌렀을 때 8칸 대신 4칸 이동하도록 한다.
-set shiftwidth=4 " 자동 들여쓰기를 할때 4칸 들여쓰도록 한다.
 set background=dark
-set expandtab " TAB을 공백으로 변환.
 set hlsearch
 set history=1000 " 편집기록을 1000개까지 기억.
-set pastetoggle=<F4>
 set showmatch " 매치되는 괄호의 반대쪽을 보여줌.
 set autowrite " :next나 :make 같은 명령을 입력하면 자동으로 저장.
 set title " 타이틀바에 현재 편집중인 파일을 표시.
 set mousehide " Hide the mouse pointer when typing text.
-"set list " Show whitespace.
+set list " Show whitespace.
 set listchars=tab:>-,trail:. " Show tab as >-.
 
 set ruler " 화면 우측 하단에 현재 커서의 위치(줄,칸)를 보여준다.
 set ls=2 " 항상 status 라인을 표시하도록 함.
 set statusline=%<%F%h%m%r%h%w%y\ %{strftime(\"%Y/%m/%d-%H:%M\")}%=\ col:%c%V\ ascii:%b\ pos:%o\ lin:%l\,%L\ %P
 set laststatus=2
+set wmnu " Tab 자동 완성시 가능한 목록을 보여줌.
 
 set sm " 함수 닫기 표시.
 set fdl=1 " 폴더설정이 되어있는 파일을 열었을 때, 폴더 레벨을 설정한다. 기본값은 0이고 모두 폴딩된다.
 "set fdc=3 " 소스파일이 폴딩되어 있을 때 폴딩범위를 보여주는 컬럼의 수를 설정한다.
 "set list
 
-set wmnu " Tab 자동 완성시 가능한 목록을 보여줌.
 
 " 영역이 지정된 상태에서 Tab과 Shift-Tab으로 들여쓰기/내어쓰기를 할 수 있도록 함.
 vmap <Tab> >gv
@@ -401,10 +394,6 @@ map = <ESC>/JOIN<CR>DJ
 "map <C-F1> <ESC>ggVG"+y
 "map <C-F2> <ESC>ggVG"+gP
 
-" switch from foo.cpp to foo.h (or vice versa) on a single key stroke
-"map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
-"""" <F4> is being used for pastetoggle
-
 
 """""""""" source ./mswin.vim
 " CTRL-X and SHIFT-Del are Cut
@@ -528,12 +517,19 @@ nmap <C-c> :call CheckSymbol(expand("<cword>"))<CR>
 vmap ,p !xmllint --format --recover -<CR>
 
 "Doxygen Toolkit Settings
-let g:DoxygenToolkit_commentType = "C++"
+"let g:DoxygenToolkit_commentType = "C++"
 "let g:DoxygenToolkit_briefTag_pre = "@Synopsis  "
 "let g:DoxygenToolkit_paramTag_pre = "@Param "
 "let g:DoxygenToolkit_returnTag = "@Returns   "
-let g:DoxygenToolkit_blockHeader = "--------------------------------------------------"
-let g:DoxygenToolkit_blockFooter = "--------------------------------------------------"
+"let g:DoxygenToolkit_blockHeader = "--------------------------------------------------"
+"let g:DoxygenToolkit_blockFooter = "--------------------------------------------------"
+"let g:DoxygenToolkit_startCommentTag   = "/** "
+"let g:DoxygenToolkit_startCommentBlock = "/* "
+"let g:DoxygenToolkit_interCommentTag   = "* "
+"let g:DoxygenToolkit_interCommentBlock = "* "
+"let g:DoxygenToolkit_endCommentTag     = "*/"
+"let g:DoxygenToolkit_endCommentBlock   = "*/"
+
 let g:DoxygenToolkit_authorName = "KiHwan Lee"
 
 let s:licenseTag = "Copyright (C) \<enter>\<enter>"
