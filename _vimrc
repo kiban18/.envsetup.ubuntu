@@ -49,7 +49,7 @@ set showmatch " 매치되는 괄호의 반대쪽을 보여줌.
 set autowrite " :next나 :make 같은 명령을 입력하면 자동으로 저장.
 set title " 타이틀바에 현재 편집중인 파일을 표시.
 set mousehide " Hide the mouse pointer when typing text.
-set list " Show whitespace.
+"set list " Show whitespace.
 set listchars=tab:>-,trail:. " Show tab as >-.
 
 set ruler " 화면 우측 하단에 현재 커서의 위치(줄,칸)를 보여준다.
@@ -61,7 +61,6 @@ set wmnu " Tab 자동 완성시 가능한 목록을 보여줌.
 set sm " 함수 닫기 표시.
 set fdl=1 " 폴더설정이 되어있는 파일을 열었을 때, 폴더 레벨을 설정한다. 기본값은 0이고 모두 폴딩된다.
 "set fdc=3 " 소스파일이 폴딩되어 있을 때 폴딩범위를 보여주는 컬럼의 수를 설정한다.
-"set list
 
 
 " 영역이 지정된 상태에서 Tab과 Shift-Tab으로 들여쓰기/내어쓰기를 할 수 있도록 함.

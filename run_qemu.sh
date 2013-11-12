@@ -17,10 +17,11 @@ if [[ "${GDB}" == "gdb" ]]; then
 fi
 
 QEMU=qemu-system-arm
-MACHINE="-M versatilepb"
+MACHINE="-M vexpress-a9"
+#MACHINE="-M versatilepb"
 MEMORY="-m 128M"
 DISPLAY=-nographic
 KERNEL="-kernel ${IMAGE}"
 
-echo ${QEMU} ${MACHINE} ${MEMORY} ${DISPLAY} ${DEBUG} ${KERNEL} ${IMAGE} 2>&1 | tee run.log
-${QEMU} ${MACHINE} ${MEMORY} ${DISPLAY} ${DEBUG} ${KERNEL} ${IMAGE} 2>&1 | tee run.log
+echo ${QEMU} ${MACHINE} ${MEMORY} ${DISPLAY} ${DEBUG} ${KERNEL} 2>&1 | tee run.log
+${QEMU} ${MACHINE} ${MEMORY} ${DISPLAY} ${DEBUG} ${KERNEL} 2>&1 | tee run.log

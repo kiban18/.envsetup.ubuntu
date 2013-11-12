@@ -32,6 +32,11 @@ if [[ "$ecos_path" != "" ]]; then
     PATH=$PATH:$ecos_path
 fi
 
+arm_none_eabi_path=/home/k/works/rtos_study/tools/arm-2013.05/bin
+if [[ "$arm_none_eabi_path" != "" ]]; then
+    PATH=$PATH:$arm_none_eabi_path
+fi
+
 
 WHITE="\[\e[1;37m\]"
 GREEN="\[\e[0;32m\]"
