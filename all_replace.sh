@@ -5,6 +5,6 @@ TO=$2
 
 #read -p "${FROM} --> ${TO}, Press [Enter] ..."
 
-find . -type f -exec sed -i "s/\<${FROM}\>/${TO}/g" {} \;
+time find . -type f -exec sed -i "s/\<${FROM}\>/${TO}/g" {} \;
 db_create.sh
 #find . -type f \( ! -iname "tags" -or ! -iname "cscope.*" \) -exec sed -i "s/\<${FROM}\>/${TO}/g" {} \;
