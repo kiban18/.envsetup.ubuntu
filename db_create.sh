@@ -4,6 +4,10 @@ rm -rf tags
 rm -rf cscope.*
 rm -rf GPATH GRTAGS GTAGS
 
+ACTION=$1
+if [[ "${ACTION}" != "" ]]; then
+    exit 1
+fi
 
 ctags -R
 

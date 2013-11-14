@@ -29,11 +29,14 @@ set shiftwidth=4 " 자동 들여쓰기를 할 때 4칸 들여쓰도록 한다.
 set expandtab " 탭을 공백으로 변환한다. 만일 Makefile 등에서 탭이 필요한 경우에는 :se noet
 
 " 이렇게 설정했는데도 불구하고 탭이 있다면 붉은색으로 경고한다.
-match ErrorMsg '	' " 이렇게 설정했는데도 불구하고 탭이 있다면 노랜색으로 경고한다.
+match ErrorMsg '	' " 이렇게 설정했는데도 불구하고 탭이 있다면 붉은색으로 경고한다.
 
 " Makefile 등 의도한 탭이 아니라면 탭을 스페이스로 바꾸자.
 " 콤마(,)와 <TAB>을 순서대로 누르면 탭을 스페이스로 변경.
 map ,<TAB> :%s/	/    /g<CR>
+
+" 현재 편집중인 파일 전체를 대상으로 들여쓰기를 정리한다.
+map <F9> <ESC>:mark i<CR>G=gg<CR>'i:w<CR>
 
 set wrap " 자동으로 줄바꿈을 삽입하여 다음 줄로 넘어간다.
 set nocompatible " vi 오리지널과 호환하는 모드를 사용하지 않음. (vim 확장)
@@ -167,7 +170,8 @@ map <C-F7> :TrinityToggleSourceExplorer<CR>
 "Close all windows
 map <C-F8> :q<CR>:q<CR>:q<CR>:q<CR>
 
-map <F9> :BufExplorer<CR>
+"Auto reindent the entire document
+map <F9> <ESC>:mark i<CR>G=gg<CR>'i:w<CR>
 
 
 map <PageUp> <C-U><C-U>
@@ -389,7 +393,7 @@ map <F10> <ESC>:A<CR>
 "map <C-I> <ESC>0i//<ESC>j:w<CR>
 "map <C-N> <ESC>k0xx:w<CR>
 
-map = <ESC>/JOIN<CR>DJ
+"map = <ESC>/JOIN<CR>DJ
 "map <C-F1> <ESC>ggVG"+y
 "map <C-F2> <ESC>ggVG"+gP
 

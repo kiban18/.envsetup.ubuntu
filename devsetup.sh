@@ -231,14 +231,14 @@ alias jdbattach='$JDBATTACH_SH'
 alias gdbattach='$GDBATTACH_SH'
 
 alias whatamidoingnowAll='
-gotogit0; whatamidoingnow; 
-gotogit1; whatamidoingnow; 
-gotogit2; whatamidoingnow; 
-gotogitv2.1; whatamidoingnow; 
-gotogitv3.0; whatamidoingnow; 
-gotogitv4.0; whatamidoingnow; 
-gotolg0; whatamidoingnow; 
-gotolgv3.0; whatamidoingnow; 
+gotogit0; whatamidoingnow;
+gotogit1; whatamidoingnow;
+gotogit2; whatamidoingnow;
+gotogitv2.1; whatamidoingnow;
+gotogitv3.0; whatamidoingnow;
+gotogitv4.0; whatamidoingnow;
+gotolg0; whatamidoingnow;
+gotolgv3.0; whatamidoingnow;
 '
 
 alias checkremote.help='echo "repo start checkremote ."; echo "git remote update"; echo "git branch -a"; echo "git diff checkremote remotes/m/master"; echo "repo abandon checkremote"'
@@ -255,6 +255,8 @@ alias findpkg='$FINDPKG_SH'
 alias whichpkg='$WHICHPKG_SH'
 alias findtest='$FINDTEST_SH'
 alias listtest='runtest -l'
+
+alias mk='make clean; make'
 
 alias chrome='google-chrome'
 
