@@ -60,7 +60,7 @@ export JAVA_HOME=$TOOL_MOUNTED/jdk1.6.0_33
 #export WORKSPACE=$TOOL_MOUNTED/eclipse/workspace
 export ADT_BUNDLE=$TOOL_MOUNTED/adt-bundle-linux
 export WORKSPACE=$ADT_BUNDLE/workspace
-export CCACHE_DIR=$WORK_MOUNTED/.ccache
+export CCACHE_DIR=~/ccache
 export ANDROID_SWT=$GITCORPDIR/prebuilt/linux-x86_64/swt
 export USE_CCACHE=1
 #export GDB=$GOOGLETVDIR/gitcorp_2/prebuilt/linux-x86_64/toolchain/arm-unknown-linux-gnueabi-4.5.3-glibc/bin/arm-unknown-linux-gnueabi-gdb
@@ -256,7 +256,7 @@ alias whichpkg='$WHICHPKG_SH'
 alias findtest='$FINDTEST_SH'
 alias listtest='runtest -l'
 
-alias mk='make clean; make'
+alias mk='make clean; make; make calm_clean'
 
 alias chrome='google-chrome'
 

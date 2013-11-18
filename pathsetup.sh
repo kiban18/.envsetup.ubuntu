@@ -12,7 +12,7 @@ PATH=/works/studies/rtos/S5PC100/SRC/Linux/GCC/4.3.1-eabi-armv6/usr/bin:$PATH
 LD_LIBRARY_PATH=/works/studies/rtos/S5PC100/SRC/Linux/GCC/4.3.1-eabi-armv6/gmp/lib:/works/studies/rtos/S5PC100/SRC/Linux/GCC/4.3.1-eabi-armv6/mpfr/lib
 export PATH LD_LIBRARY_PATH
 
-android_bin=~/tool/android/bin
+android_bin=~/tools/android/bin
 if [[ "$android_bin" != "" ]]; then
     PATH=$android_bin:$PATH
 fi
