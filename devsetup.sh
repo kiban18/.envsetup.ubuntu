@@ -267,4 +267,8 @@ alias ecosenv='. /opt/ecos/ecosenv.sh'
 
 alias copy2glibc='croot; cp out/target/product/fox_glibc/system/lib/* out/target/product/fox/system/glibc; find ./out -name libOmxCore.so -exec ls -al {} \;'
 
+export T32SYS=/opt/t32
+export T32TMP=/tmp
+export T32ID=T32
+
 echo "    ~/.envsetup.$OS/devsetup.sh sourced!!!"

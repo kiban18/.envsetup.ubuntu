@@ -28,13 +28,15 @@ alias viprofile='vim $profile'
 alias vivimrc='vim $vimrc'
 
 #@@ ConqueTerm logcat
-alias ctlogcat='while vim -c ":/.*kiban18.*" -c ":ConqueTerm adb_logcat" -c ":set syntax=logcat"; do echo Restarting...; done'
+alias ctlogcat='while vim -c ":ConqueTerm adb_logcat.sh" -c ":set syntax=logcat"; do echo Restarting...; done'
+#alias ctlogcat='while vim -c ":/.*kiban18.*" -c ":ConqueTerm adb_logcat.sh" -c ":set syntax=logcat"; do echo Restarting...; done'
 
 #@@ ConqueTerm logcat
 alias ctlogcat.kiban18='while vim -c ":ConqueTerm adb_logcat_kiban18" -c ":set syntax=logcat"; do echo Restarting...; done'
 
 #@@ ConqueTerm socat
-alias ctsocat='while vim -c ":ConqueTerm socat stdin /dev/ttyS0" -c ":set syntax=dtv"; do echo Restarting...; done'
+alias ctsocat='while vim -c ":ConqueTerm socat stdin /dev/ttyUSB0"; do echo Restarting...; done'
+#alias ctsocat='while vim -c ":ConqueTerm socat stdin /dev/ttyUSB0" -c ":set syntax=dtv"; do echo Restarting...; done'
 
 #@@ ConqueTerm bash
 alias vash='while vim -c ":ConqueTerm bash" -c ":set syntax=logcat"; do echo Restarting...; done'
@@ -50,10 +52,10 @@ complete -F funcs global
 
 alias e='exit'
 
-alias ls='ls -G'
-alias l='ls -l'
-alias ll='ls -alh'
-alias llr='ls -alRh'
+alias ls='ls --color=auto -G'
+alias l='ls --color=auto -l'
+alias ll='ls --color=auto -alh'
+alias llr='ls --color=auto -alRh'
 alias cd..='cd ..'
 alias df='df -H'
 alias du.1='du -d 1 -h'

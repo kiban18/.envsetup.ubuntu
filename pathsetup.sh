@@ -12,12 +12,22 @@ PATH=/works/studies/rtos/S5PC100/SRC/Linux/GCC/4.3.1-eabi-armv6/usr/bin:$PATH
 LD_LIBRARY_PATH=/works/studies/rtos/S5PC100/SRC/Linux/GCC/4.3.1-eabi-armv6/gmp/lib:/works/studies/rtos/S5PC100/SRC/Linux/GCC/4.3.1-eabi-armv6/mpfr/lib
 export PATH LD_LIBRARY_PATH
 
-android_bin=~/tools/android/bin
+t32_bin=/opt/t32/bin/pc_linux64
+if [[ "$t32_bin" != "" ]]; then
+    PATH=$t32_bin:$PATH
+fi
+
+jdk_bin=~/tool/jdk1.6.0_45/bin
+if [[ "$jdk_bin" != "" ]]; then
+    PATH=$jdk_bin:$PATH
+fi
+
+android_bin=~/tool/android/bin
 if [[ "$android_bin" != "" ]]; then
     PATH=$android_bin:$PATH
 fi
 
-eclipse_bin=~/tools/eclipse
+eclipse_bin=~/tool/eclipse
 if [[ "$eclipse_bin" != "" ]]; then
     PATH=$PATH:$eclipse_bin
 fi
