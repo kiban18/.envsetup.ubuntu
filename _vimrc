@@ -44,7 +44,7 @@ set backspace=indent,eol,start " BS로 라인끝과 처음 자동들여쓰기한
 set nowrapscan " 검색할 때 문서의 끝에서 다시 처음으로 돌아가지 않는다.
 set nobackup " 백업 파일을 만들지 않는다.
 set visualbell " 키를 잘못눌렀을 때 삑 소리를 내는 대신 번쩍이게 한다.
-set nu " show line number
+"set nu " show line number
 set background=dark
 set hlsearch
 set history=1000 " 편집기록을 1000개까지 기억.

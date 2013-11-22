@@ -17,7 +17,7 @@ if [[ "$t32_bin" != "" ]]; then
     PATH=$t32_bin:$PATH
 fi
 
-jdk_bin=~/tool/jdk1.6.0_45/bin
+jdk_bin=/opt/oracle/jdk1.6.0_45/bin
 if [[ "$jdk_bin" != "" ]]; then
     PATH=$jdk_bin:$PATH
 fi
@@ -42,9 +42,9 @@ if [[ "$ecos_path" != "" ]]; then
     PATH=$PATH:$ecos_path
 fi
 
-arm_none_eabi_path=/home/k/works/rtos_study/tools/arm-2013.05/bin
-if [[ "$arm_none_eabi_path" != "" ]]; then
-    PATH=$PATH:$arm_none_eabi_path
+arm_eabi_path=/home/k/tool/gcc/linux-x86/arm/arm-eabi-4.6/bin
+if [[ "$arm_eabi_path" != "" ]]; then
+    PATH=$PATH:$arm_eabi_path
 fi
 
 

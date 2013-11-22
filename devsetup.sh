@@ -271,4 +271,6 @@ export T32SYS=/opt/t32
 export T32TMP=/tmp
 export T32ID=T32
 
+export ADOBE_PATH=/opt/Adobe/Reader9
+
 echo "    ~/.envsetup.$OS/devsetup.sh sourced!!!"
