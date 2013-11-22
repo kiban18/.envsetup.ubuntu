@@ -27,7 +27,17 @@ if [[ "$android_bin" != "" ]]; then
     PATH=$android_bin:$PATH
 fi
 
-eclipse_bin=~/tool/eclipse
+android_platform_tools=/home/k/tool/android/adt-bundle/sdk/platform-tools
+if [[ "$android_platform_tools" != "" ]]; then
+    PATH=$android_platform_tools:$PATH
+fi
+
+android_tools=/home/k/tool/android/adt-bundle/sdk/tools
+if [[ "$android_tools" != "" ]]; then
+    PATH=$android_tools:$PATH
+fi
+
+eclipse_bin=/home/k/tool/android/adt-bundle/eclipse
 if [[ "$eclipse_bin" != "" ]]; then
     PATH=$PATH:$eclipse_bin
 fi
