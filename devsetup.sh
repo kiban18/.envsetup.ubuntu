@@ -56,13 +56,14 @@ export MAKEOTAWITHLOG_SH=$ENVSETUP/makeotawithlog.sh
 export GTV_REINSTALL_SH=$ENVSETUP/gtv_reinstall.sh
 export DO_ALL_AT_ONCE_SH=$ENVSETUP/do_all_at_once.sh
 
-export JAVA_HOME=$TOOL_MOUNTED/jdk1.6.0_33
+export JAVA_HOME=~/tool/jdk1.6.0_45
+export ANDROID_JAVA_HOME=$JAVA_HOME
 #export WORKSPACE=$TOOL_MOUNTED/eclipse/workspace
 export ADT_BUNDLE=$TOOL_MOUNTED/adt-bundle-linux
 export WORKSPACE=$ADT_BUNDLE/workspace
-export CCACHE_DIR=~/ccache
 export ANDROID_SWT=$GITCORPDIR/prebuilt/linux-x86_64/swt
 export USE_CCACHE=1
+export CCACHE_DIR=~/tool/ccache
 #export GDB=$GOOGLETVDIR/gitcorp_2/prebuilt/linux-x86_64/toolchain/arm-unknown-linux-gnueabi-4.5.3-glibc/bin/arm-unknown-linux-gnueabi-gdb
 export GDB=$GOOGLETVDIR/gitv4.0/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-gdb
 
