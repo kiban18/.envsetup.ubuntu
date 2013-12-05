@@ -22,27 +22,27 @@ if [[ "$t32_bin" != "" ]]; then
     PATH=$t32_bin:$PATH
 fi
 
-jdk_bin=/opt/oracle/jdk1.6.0_45/bin
+jdk_bin=~/tool/jdk1.6.0_45/bin
 if [[ "$jdk_bin" != "" ]]; then
     PATH=$jdk_bin:$PATH
 fi
 
-android_bin=/home/k/tool/android/bin
+android_bin=~/tool/android/bin
 if [[ "$android_bin" != "" ]]; then
     PATH=$android_bin:$PATH
 fi
 
-android_platform_tools=/home/k/tool/android/adt-bundle/sdk/platform-tools
+android_platform_tools=~/tool/android/adt-bundle/sdk/platform-tools
 if [[ "$android_platform_tools" != "" ]]; then
     PATH=$android_platform_tools:$PATH
 fi
 
-android_tools=/home/k/tool/android/adt-bundle/sdk/tools
+android_tools=~/tool/android/adt-bundle/sdk/tools
 if [[ "$android_tools" != "" ]]; then
     PATH=$android_tools:$PATH
 fi
 
-eclipse_bin=/home/k/tool/android/adt-bundle/eclipse
+eclipse_bin=~/tool/android/adt-bundle/eclipse
 if [[ "$eclipse_bin" != "" ]]; then
     PATH=$PATH:$eclipse_bin
 fi
@@ -57,12 +57,12 @@ if [[ "$ecos_path" != "" ]]; then
     PATH=$PATH:$ecos_path
 fi
 
-arm_eabi_path=/home/k/tool/gcc/linux-x86/arm/arm-eabi-4.6/bin
+arm_eabi_path=~/tool/gcc/linux-x86/arm/arm-eabi-4.6/bin
 if [[ "$arm_eabi_path" != "" ]]; then
     PATH=$PATH:$arm_eabi_path
 fi
 
-arm_2009q3_path=/home/k/tool/gcc/arm-2009q3/bin
+arm_2009q3_path=~/tool/gcc/arm-2009q3/bin
 if [[ "$arm_2009q3_path" != "" ]]; then
     PATH=$PATH:$arm_2009q3_path
 fi
