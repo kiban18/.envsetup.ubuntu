@@ -66,6 +66,9 @@ export USE_CCACHE=1
 #export GDB=$GOOGLETVDIR/gitcorp_2/prebuilt/linux-x86_64/toolchain/arm-unknown-linux-gnueabi-4.5.3-glibc/bin/arm-unknown-linux-gnueabi-gdb
 export GDB=$GOOGLETVDIR/gitv4.0/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-gdb
 
+# set the number of open files to be 1024 for android
+ulimit -S -n 1024
+
 export adt_bundle_ubuntu=$TOOL_MOUNTED/android-adt/adt-bundle-linux-x86_64-20130219
 export sdk=$adt_bundle_ubuntu/sdk
 export skindir=$sdk/platforms/android-16/skins

@@ -12,6 +12,11 @@ PATH=/works/studies/rtos/S5PC100/SRC/Linux/GCC/4.3.1-eabi-armv6/usr/bin:$PATH
 LD_LIBRARY_PATH=/works/studies/rtos/S5PC100/SRC/Linux/GCC/4.3.1-eabi-armv6/gmp/lib:/works/studies/rtos/S5PC100/SRC/Linux/GCC/4.3.1-eabi-armv6/mpfr/lib
 export PATH LD_LIBRARY_PATH
 
+llvm_bin=/home/k/dev/llvm31_install/bin
+if [[ "$llvm_bin" != "" ]]; then
+    PATH=$llvm_bin:$PATH
+fi
+
 t32_bin=/opt/t32/bin/pc_linux64
 if [[ "$t32_bin" != "" ]]; then
     PATH=$t32_bin:$PATH
@@ -22,7 +27,7 @@ if [[ "$jdk_bin" != "" ]]; then
     PATH=$jdk_bin:$PATH
 fi
 
-android_bin=~/tool/android/bin
+android_bin=/home/k/tool/android/bin
 if [[ "$android_bin" != "" ]]; then
     PATH=$android_bin:$PATH
 fi
@@ -57,6 +62,10 @@ if [[ "$arm_eabi_path" != "" ]]; then
     PATH=$PATH:$arm_eabi_path
 fi
 
+arm_2009q3_path=/home/k/tool/gcc/arm-2009q3/bin
+if [[ "$arm_2009q3_path" != "" ]]; then
+    PATH=$PATH:$arm_2009q3_path
+fi
 
 WHITE="\[\e[1;37m\]"
 GREEN="\[\e[0;32m\]"
