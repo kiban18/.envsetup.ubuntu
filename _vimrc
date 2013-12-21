@@ -29,7 +29,7 @@ set shiftwidth=4 " 자동 들여쓰기를 할 때 4칸 들여쓰도록 한다.
 set expandtab " 탭을 공백으로 변환한다. 만일 Makefile 등에서 탭이 필요한 경우에는 :se noet
 
 " 이렇게 설정했는데도 불구하고 탭이 있다면 붉은색으로 경고한다.
-match ErrorMsg '	' " 이렇게 설정했는데도 불구하고 탭이 있다면 붉은색으로 경고한다.
+"match ErrorMsg '	' " 이렇게 설정했는데도 불구하고 탭이 있다면 붉은색으로 경고한다.
 
 " Makefile 등 의도한 탭이 아니라면 탭을 스페이스로 바꾸자.
 " 콤마(,)와 <TAB>을 순서대로 누르면 탭을 스페이스로 변경.
@@ -44,7 +44,7 @@ set backspace=indent,eol,start " BS로 라인끝과 처음 자동들여쓰기한
 set nowrapscan " 검색할 때 문서의 끝에서 다시 처음으로 돌아가지 않는다.
 set nobackup " 백업 파일을 만들지 않는다.
 set visualbell " 키를 잘못눌렀을 때 삑 소리를 내는 대신 번쩍이게 한다.
-"set nu " show line number
+set nu " show line number
 set background=dark
 set hlsearch
 set history=1000 " 편집기록을 1000개까지 기억.

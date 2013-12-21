@@ -2,7 +2,7 @@
 
 rm -rf tags
 rm -rf cscope.*
-rm -rf GPATH GRTAGS GTAGS
+rm -rf GPATH GRTAGS GTAGS GSYMS
 
 ACTION=$1
 if [[ "${ACTION}" != "" ]]; then
