@@ -44,7 +44,7 @@ set backspace=indent,eol,start " BS로 라인끝과 처음 자동들여쓰기한
 set nowrapscan " 검색할 때 문서의 끝에서 다시 처음으로 돌아가지 않는다.
 set nobackup " 백업 파일을 만들지 않는다.
 set visualbell " 키를 잘못눌렀을 때 삑 소리를 내는 대신 번쩍이게 한다.
-"set nu " show line number
+set nu " show line number
 set background=dark
 set hlsearch
 set history=1000 " 편집기록을 1000개까지 기억.
@@ -52,7 +52,7 @@ set showmatch " 매치되는 괄호의 반대쪽을 보여줌.
 set autowrite " :next나 :make 같은 명령을 입력하면 자동으로 저장.
 set title " 타이틀바에 현재 편집중인 파일을 표시.
 set mousehide " Hide the mouse pointer when typing text.
-"set list " Show whitespace.
+set list " Show whitespace.
 set listchars=tab:>-,trail:. " Show tab as >-.
 
 set ruler " 화면 우측 하단에 현재 커서의 위치(줄,칸)를 보여준다.
@@ -95,6 +95,9 @@ Bundle 'https://github.com/vim-scripts/gtags.vim.git'
 Bundle 'https://github.com/thinca/vim-logcat.git'
 Bundle 'Conque-Shell'
 Bundle 'DoxygenToolkit.vim'
+
+nmap ,x :Dox<CR>
+nmap ,a :<ESC>A<SPACE>/**<<SPACE><SPACE>*/<ESC>hhi
 
 filetype plugin indent on "required!
 "
@@ -522,8 +525,8 @@ vmap ,p !xmllint --format --recover -<CR>
 "Doxygen Toolkit Settings
 "let g:DoxygenToolkit_commentType = "C++"
 "let g:DoxygenToolkit_briefTag_pre = "@Synopsis  "
-"let g:DoxygenToolkit_paramTag_pre = "@Param "
-"let g:DoxygenToolkit_returnTag = "@Returns   "
+let g:DoxygenToolkit_paramTag_pre = "@param [in]   "
+let g:DoxygenToolkit_returnTag    = "@retval  "
 "let g:DoxygenToolkit_blockHeader = "--------------------------------------------------"
 "let g:DoxygenToolkit_blockFooter = "--------------------------------------------------"
 "let g:DoxygenToolkit_startCommentTag   = "/** "
