@@ -62,7 +62,12 @@ if [[ "$arm_eabi_path" != "" ]]; then
     PATH=$PATH:$arm_eabi_path
 fi
 
-arm_2009q3_path=~/tool/gcc/arm-2009q3/bin
+achro_gcc_path=/usr/local/arm/4.2.2-eabi/usr/bin
+if [[ "$achro_gcc_path" != "" ]]; then
+    PATH=$PATH:$achro_gcc_path
+fi
+
+arm_2009q3_path=~/tool/arm-2009q3/bin
 if [[ "$arm_2009q3_path" != "" ]]; then
     PATH=$PATH:$arm_2009q3_path
 fi

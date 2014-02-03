@@ -52,7 +52,7 @@ complete -F funcs global
 
 alias e='exit'
 
-alias grep='grep --exclude=tags --exclude=cscope.* --exclude=*.map --color=auto'
+alias grep='grep --exclude=GTAGS --exclude=tags --exclude=cscope.* --exclude=*.map --exclude=*.p --color=auto'
 alias ls='ls --color=auto -G'
 alias l='ls --color=auto -l'
 alias ll='ls --color=auto -alh'
