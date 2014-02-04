@@ -8,7 +8,7 @@
 " 코딩 가이드라인 준수를 위한 vim 설정 "
 """"""""""""""""""""""""""""""""""""""""
 set colorcolumn=80 " 80컬럼에 붉은 줄을 표시한다. 붉은 줄을 넘기지 않도록 코딩하자.
-colorscheme desert " vi color theme
+"colorscheme desert " vi color theme
 
 autocmd BufWritePre * mark a " 편집하던 위치 북마크.
 autocmd BufWritePre * :%s/\s\+$//e " trailing whitespace 자동 제거.
