@@ -47,7 +47,7 @@ if [[ "$eclipse_bin" != "" ]]; then
     PATH=$PATH:$eclipse_bin
 fi
 
-argouml_path=~/tool/freeware/argouml-0.34
+argouml_path=~/tool/argouml-0.34
 if [[ "$argouml_path" != "" ]]; then
     PATH=$PATH:$argouml_path
 fi
