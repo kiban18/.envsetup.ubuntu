@@ -72,4 +72,5 @@ alias tree.2.size='tree -L 2 --si'
 alias tree.3.size='tree -L 3 --si'
 alias tree.4.size='tree -L 4 --si'
 
+alias cb='xclip -sel clip'
 echo "    ~/.envsetup.$OS/envsetup.sh sourced!!!"
