@@ -22,7 +22,7 @@ if [[ "$t32_bin" != "" ]]; then
     PATH=$t32_bin:$PATH
 fi
 
-jdk_bin=~/tool/jdk1.6.0_45/bin
+jdk_bin=~/tool/jdk1.7.0_51/bin
 if [[ "$jdk_bin" != "" ]]; then
     PATH=$jdk_bin:$PATH
 fi
@@ -35,6 +35,11 @@ fi
 android_platform_tools=~/tool/android/adt-bundle/sdk/platform-tools
 if [[ "$android_platform_tools" != "" ]]; then
     PATH=$android_platform_tools:$PATH
+fi
+
+android_ndk=~/tool/android/ndk
+if [[ "$android_ndk" != "" ]]; then
+    PATH=$android_ndk:$PATH
 fi
 
 android_tools=~/tool/android/adt-bundle/sdk/tools
