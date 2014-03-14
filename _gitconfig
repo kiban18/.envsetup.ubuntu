@@ -31,5 +31,5 @@
 	ci  = clean -f -f -X
 	cin = clean -f -f -X -n
 [user]
+	name = kay-kihwanlee
 	email = k.nousco@gmail.com
-	name = Kay Lee
