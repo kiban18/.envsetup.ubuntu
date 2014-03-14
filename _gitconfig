@@ -33,3 +33,5 @@
 [user]
 	name = kay-kihwanlee
 	email = k.nousco@gmail.com
+[review "http://dev.nousco.net:8080"]
+	username = Kay
