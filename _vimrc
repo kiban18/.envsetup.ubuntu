@@ -148,7 +148,7 @@ let g:SrcExpl_updateTagsCmd = "ctags -B -F -R . --exclude='^out'"
 "let g:SrcExpl_updateTagsCmd = "ctags --langmap=C++:.inc --c++-kinds=+p --fields=+iaS --extra=+q --sort=foldcase -R ."
 
 " // Set "<F12>" key for updating the tags file artificially
-let g:SrcExpl_updateTagsKey = "<F12>"
+"let g:SrcExpl_updateTagsKey = "<F12>"
 
 let NERDTreeWinPos='right'
 

@@ -22,10 +22,10 @@ if [[ "$t32_bin" != "" ]]; then
     PATH=$t32_bin:$PATH
 fi
 
-jdk_bin=~/tool/jdk1.7.0_51/bin
-if [[ "$jdk_bin" != "" ]]; then
-    PATH=$jdk_bin:$PATH
-fi
+#jdk_bin=~/tool/jdk1.7.0_51/bin
+#if [[ "$jdk_bin" != "" ]]; then
+#    PATH=$jdk_bin:$PATH
+#fi
 
 android_bin=~/tool/android/bin
 if [[ "$android_bin" != "" ]]; then
@@ -96,5 +96,7 @@ PS1="${GREEN}\w${END}${GIT_BR_TAG}${BLUE}$ ${END}"
 #PS1="\[\e[0;32m\]\u@\h\[\e[m\] \[\e[1;32m\]\w\[\e[m\] \`ruby -e \"print (%x{git branch 2> /dev/null}.split(%r{\n}).grep(/^\*/).first || '').gsub(/^\* (.+)$/, '(\1) ')\"\`\[\e[0;32m\]\$ \[\e[m\]\[\e[0;32m\]"
 # show (git branch / git tag) both
 #PS1="\[\e[0;32m\]\u@\h\[\e[m\] \[\e[1;32m\]\w\[\e[m\] \`ruby -e \"print (%x{git branch 2> /dev/null}.split(%r{\n}).grep(/^\*/).first || '').gsub(/^\* (.+)$/, '\1/')\" -e \"print (%x{git describe --tags 2> /dev/null}.split(%r{\n}).first || '').gsub(/\*/, '\1')\"\`\[\e[0;32m\]\$ \[\e[m\]\[\e[0;32m\]"
+
+PATH=~/bin:$PATH
 
 echo "    ~/.envsetup.$OS/pathsetup.sh sourced!!!"
