@@ -276,6 +276,8 @@ export T32SYS=/opt/t32
 export T32TMP=/tmp
 export T32ID=T32
 
+alias gerrit='ssh -p 29418 Kay@dev.nousco.net gerrit'
+
 export ADOBE_PATH=/opt/Adobe/Reader9
 
 echo "    ~/.envsetup.$OS/devsetup.sh sourced!!!"

@@ -16,6 +16,7 @@ pathsetup_sh=$envsetup/pathsetup.sh
 alias source.envsetup='source $envsetup_sh'
 alias source.devsetup='source $devsetup_sh'
 alias source.pathsetup='source $pathsetup_sh'
+alias source.all='source.envsetup; source.devsetup; source.pathsetup'
 alias vienvsetup='vim $envsetup_sh'
 alias videvsetup='vim $devsetup_sh'
 alias vipathsetup='vim $pathsetup_sh'
