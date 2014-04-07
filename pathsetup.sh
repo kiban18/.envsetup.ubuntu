@@ -22,10 +22,10 @@ if [[ "$t32_bin" != "" ]]; then
     PATH=$t32_bin:$PATH
 fi
 
-#jdk_bin=~/tool/jdk1.7.0_51/bin
-#if [[ "$jdk_bin" != "" ]]; then
-#    PATH=$jdk_bin:$PATH
-#fi
+jdk_bin=~/tool/jdk1.6.0_45/bin
+if [[ "$jdk_bin" != "" ]]; then
+    PATH=$jdk_bin:$PATH
+fi
 
 android_bin=~/tool/android/bin
 if [[ "$android_bin" != "" ]]; then
