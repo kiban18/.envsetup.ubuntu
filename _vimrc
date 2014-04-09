@@ -95,6 +95,7 @@ Bundle 'https://github.com/wesleyche/Trinity.git'
 Bundle 'https://github.com/vim-scripts/gtags.vim.git'
 Bundle 'https://github.com/thinca/vim-logcat.git'
 Bundle 'Conque-Shell'
+Bundle 'vim-logcat'
 Bundle 'DoxygenToolkit.vim'
 
 nmap ,x :Dox<CR>

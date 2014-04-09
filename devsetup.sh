@@ -280,7 +280,8 @@ alias gerrit='ssh -p 29418 Kay@dev.nousco.net gerrit'
 
 export ADOBE_PATH=/opt/Adobe/Reader9
 
-alias cdw='cd /home/kay/work/secureos'
+alias cda='cd /home/kay/work/arndale'
+alias cds='cd /home/kay/work/secureos'
 alias cdd='cd /home/kay/docu/secureos_doc'
 alias cdr='cd /home/kay/ref'
 alias cdrt='cd /home/kay/ref/trustonic/SVN/Products'

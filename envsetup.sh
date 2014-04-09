@@ -29,14 +29,14 @@ alias viprofile='vim $profile'
 alias vivimrc='vim $vimrc'
 
 #@@ ConqueTerm logcat
-alias ctlogcat='while vim -c ":ConqueTerm adb_logcat.sh" -c ":set syntax=logcat"; do echo Restarting...; done'
-#alias ctlogcat='while vim -c ":/.*kiban18.*" -c ":ConqueTerm adb_logcat.sh" -c ":set syntax=logcat"; do echo Restarting...; done'
+alias ctlogcat='while vim -c ":ConqueTerm adb_logcat_usb.sh" -c ":set syntax=logcat"; do echo Restarting...; done'
+#alias ctlogcat='while vim -c ":/.*kiban18.*" -c ":ConqueTerm adb_logcat_usb.sh" -c ":set syntax=logcat"; do echo Restarting...; done'
 
 #@@ ConqueTerm logcat
 alias ctlogcat.kiban18='while vim -c ":ConqueTerm adb_logcat_kiban18" -c ":set syntax=logcat"; do echo Restarting...; done'
 
 #@@ ConqueTerm socat
-alias ctsocat='while vim -c ":ConqueTerm socat stdin /dev/ttyUSB0"; do echo Restarting...; done'
+alias ctsocat='while vim -c ":ConqueTerm sudo socat stdin /dev/ttyUSB0"; do echo Restarting...; done'
 #alias ctsocat='while vim -c ":ConqueTerm socat stdin /dev/ttyUSB0" -c ":set syntax=dtv"; do echo Restarting...; done'
 
 #@@ ConqueTerm bash
@@ -72,6 +72,8 @@ alias tree.1.size='tree -L 1 --si'
 alias tree.2.size='tree -L 2 --si'
 alias tree.3.size='tree -L 3 --si'
 alias tree.4.size='tree -L 4 --si'
+
+alias tail.syslog='tail -f /var/log/syslog'
 
 alias cb='xclip -sel clip'
 echo "    ~/.envsetup.$OS/envsetup.sh sourced!!!"
