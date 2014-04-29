@@ -36,6 +36,10 @@ set expandtab " 탭을 공백으로 변환한다. 만일 Makefile 등에서 탭�
 " 콤마(,)와 <TAB>을 순서대로 누르면 탭을 스페이스로 변경.
 map ,<TAB> :%s/	/    /g<CR>
 
+" Tab과 Shift-Tab으로 라인주석 추가/삭제.
+map <Tab> <ESC>0i//<ESC>
+map <S-Tab> <ESC>:s/^\/\//<ESC>
+
 " 현재 편집중인 파일 전체를 대상으로 들여쓰기를 정리한다.
 map <F9> <ESC>:mark i<CR>G=gg<CR>'i:w<CR>
 
@@ -204,7 +208,7 @@ nmap <C-L> <C-W>l
 
 "========= gtags setting ========
 nmap <C-g> :Gtags
-nmap <C-i> :Gtags -f %<CR>
+"nmap <C-i> :Gtags -f %<CR>
 nmap <C-\> :GtagsCursor<CR>
 nmap <C-n> :cn<CR>
 nmap <C-p> :cp<CR>
