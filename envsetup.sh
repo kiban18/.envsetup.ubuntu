@@ -72,6 +72,7 @@ alias tree.1.size='tree -L 1 --si'
 alias tree.2.size='tree -L 2 --si'
 alias tree.3.size='tree -L 3 --si'
 alias tree.4.size='tree -L 4 --si'
+alias ivim='vim'
 
 alias tail.syslog='tail -f /var/log/syslog'
 

@@ -3,8 +3,8 @@
 FROM=$1
 TO=$2
 
-#read -p "${FROM} --> ${TO}, Press [Enter] ..."
+read -p "${FROM} --> ${TO}, Press [Enter] ..."
 
-time find . -type f -exec sed -i "s/\<${FROM}\>/${TO}/g" {} \;
+#time find . -type f -exec sed -i "s/\<${FROM}\>/${TO}/g" {} \;
 #db_create.sh
-#find . -type f \( ! -iname "tags" -or ! -iname "cscope.*" \) -exec sed -i "s/\<${FROM}\>/${TO}/g" {} \;
+find . -type f \( ! -iname "tags" -or ! -iname "cscope.*" \) -exec sed -i "s/\<${FROM}\>/${TO}/g" {} \;
