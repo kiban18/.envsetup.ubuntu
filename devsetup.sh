@@ -282,6 +282,7 @@ export ADOBE_PATH=/opt/Adobe/Reader9
 
 alias cda='cd /home/kay/work/arndale_k'
 alias cds='cd /home/kay/work/secureos'
+alias cdstr='cd /home/kay/work/secureos/TEE/rtos'
 alias cdd='cd /home/kay/work_doc/secureos_doc'
 alias cdr='cd /home/kay/ref'
 alias cdrt='cd /home/kay/ref/trustonic/SVN/Products'
