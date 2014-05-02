@@ -285,7 +285,6 @@ alias cds='cd /home/kay/work/secureos'
 alias cdt='cd /home/kay/work/secureos/TEE'
 alias cdr='cd /home/kay/work/secureos/TEE/rtos'
 alias cdd='cd /home/kay/work_doc/secureos_doc'
-alias cdr='cd /home/kay/ref'
 alias cdrt='cd /home/kay/ref/trustonic/SVN/Products'
 
 echo "    ~/.envsetup.$OS/devsetup.sh sourced!!!"
