@@ -282,9 +282,16 @@ export ADOBE_PATH=/opt/Adobe/Reader9
 
 alias cda='cd /home/kay/work/arndale_k'
 alias cds='cd /home/kay/work/secureos'
+alias cdr='cd /home/kay/work/secureos/REE'
 alias cdt='cd /home/kay/work/secureos/TEE'
-alias cdr='cd /home/kay/work/secureos/TEE/rtos'
+alias cdk='cd /home/kay/work/secureos/TEE/kernel'
+alias cdl='cd /home/kay/work/secureos/TEE/lib'
+alias cdu='cd /home/kay/work/secureos/TEE/usr'
 alias cdd='cd /home/kay/work_doc/secureos_doc'
 alias cdrt='cd /home/kay/ref/trustonic/SVN/Products'
+
+alias go='time (make clean; make; find . -name "*.so" -exec ls -alh {} \;)'
+
+alias git.merged='CUR=`__git_ps1 | sed -e "s/(//" | sed -e "s/)//"`; git checkout master && git pull && git checkout -B $CUR'
 
 echo "    ~/.envsetup.$OS/devsetup.sh sourced!!!"

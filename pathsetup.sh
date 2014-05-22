@@ -77,6 +77,12 @@ if [[ "$arm_2009q3_path" != "" ]]; then
     PATH=$PATH:$arm_2009q3_path
 fi
 
+openssl_path=/usr/local/ssl/bin
+if [[ "$openssl_path " != "" ]]; then
+    PATH=$PATH:$openssl_path
+fi
+
+
 WHITE="\[\e[1;37m\]"
 GREEN="\[\e[0;32m\]"
 CYAN="\[\e[0;36m\]"
