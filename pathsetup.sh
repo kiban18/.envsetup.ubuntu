@@ -32,22 +32,22 @@ if [[ "$android_bin" != "" ]]; then
     PATH=$android_bin:$PATH
 fi
 
-android_platform_tools=~/tool/android/adt-bundle/sdk/platform-tools
-if [[ "$android_platform_tools" != "" ]]; then
-    PATH=$android_platform_tools:$PATH
+android_sdk_platform_tools=~/tool/android/adt-bundle/sdk/platform-tools
+if [[ "$android_sdk_platform_tools" != "" ]]; then
+    PATH=$android_sdk_platform_tools:$PATH
 fi
 
-android_ndk=~/tool/android/ndk
-if [[ "$android_ndk" != "" ]]; then
-    PATH=$android_ndk:$PATH
+android_sdk_tools=~/tool/adt-bundle-linux-x86_64-20140321/sdk/tools
+if [[ "$android_sdk_tools" != "" ]]; then
+    PATH=$android_sdk_tools:$PATH
 fi
 
-android_tools=~/tool/android/adt-bundle/sdk/tools
-if [[ "$android_tools" != "" ]]; then
-    PATH=$android_tools:$PATH
+android_sdk_build_tools=~/tool/adt-bundle-linux-x86_64-20140321/sdk/build-tools/19.1.0
+if [[ "$android_sdk_build_tools" != "" ]]; then
+    PATH=$android_sdk_build_tools:$PATH
 fi
 
-eclipse_bin=~/tool/android/adt-bundle/eclipse
+eclipse_bin=~/tool/adt-bundle-linux-x86_64-20140321/eclipse
 if [[ "$eclipse_bin" != "" ]]; then
     PATH=$PATH:$eclipse_bin
 fi
@@ -75,6 +75,11 @@ fi
 arm_2009q3_path=~/tool/arm-2009q3/bin
 if [[ "$arm_2009q3_path" != "" ]]; then
     PATH=$PATH:$arm_2009q3_path
+fi
+
+android_ndk_path=~/tool/android-ndk-r9d
+if [[ "$android_ndk_path" != "" ]]; then
+    PATH=$PATH:$android_ndk_path
 fi
 
 openssl_path=/usr/local/ssl/bin

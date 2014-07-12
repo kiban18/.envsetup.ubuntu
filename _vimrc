@@ -259,6 +259,12 @@ exe "tj ".st
 endfunc
 nmap ,tj :call Tj()<CR>
 
+func! Vtj()
+    let st = expand("<cword>")
+    exe "vs"
+endfunc
+nmap ,tt :call Vtj()<cr><C-l>:call Tj()<cr>
+
 func! Tn()
 exe "tn"
 endfunc
@@ -1022,3 +1028,7 @@ map <silent> gl :call GitLog(GetHash())<CR>
 map <silent> gL :call GitFullLog()<CR>
 map <silent> ga :call GitShow(GetHash(),1)<CR>
 map <silent> gA :call GitShow(GetHash(),0)<CR>
+
+map ,, :%s/cores/kernel/gc<CR>
+
+map <C-p> :%w !lp<CR><CR>

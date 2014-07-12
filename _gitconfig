@@ -15,6 +15,7 @@
 	prompt = false
 [core]
 	editor = vim
+	quotepath = false
 [alias]
 	tree = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate

@@ -62,7 +62,7 @@ export ANDROID_JAVA_HOME=$JAVA_HOME
 #export WORKSPACE=$TOOL_MOUNTED/eclipse/workspace
 export ADT_BUNDLE=$TOOL_MOUNTED/adt-bundle-linux
 export WORKSPACE=$ADT_BUNDLE/workspace
-export ANDROID_SWT=$GITCORPDIR/prebuilt/linux-x86_64/swt
+export ANDROID_SWT=~/tool/adt-bundle-linux-x86_64-20140321/sdk/tools/lib/x86_64
 export USE_CCACHE=1
 export CCACHE_DIR=~/tool/ccache
 #export GDB=$GOOGLETVDIR/gitcorp_2/prebuilt/linux-x86_64/toolchain/arm-unknown-linux-gnueabi-4.5.3-glibc/bin/arm-unknown-linux-gnueabi-gdb
@@ -91,14 +91,6 @@ alias ln.gdb='rm -f $gdb_name; ln -s $ANDROID_TOOLCHAIN/*gdb $gdb_name'
 symbols_name=ln.symbols
 alias ln.symbols='rm -f $symbols_name; ln -s $OUT/symbols $symbols_name'
 
-alias cdroot='cd ../../../../..; ll'
-alias cdres='cd ../../../../../res/; ll'
-alias cdlayout='cd ../../../../../res/layout; ll'
-alias cdwork='cd $WORK_MOUNTED'
-alias cdgoogletv='cd $GOOGLETVDIR'
-alias cdworkspace='cd $WORKSPACE'
-alias cdcts='cd $CTSTOOLSDIR'
-alias cdgcts='cd $GCTSTOOLSDIR'
 
 alias whereaminow='$WHEREAMINOW_SH'
 alias whatamidoingnow='$WHATAMIDOINGNOW_SH'
@@ -280,18 +272,54 @@ alias gerrit='ssh -p 29418 Kay@dev.nousco.net gerrit'
 
 export ADOBE_PATH=/opt/Adobe/Reader9
 
-alias cda='cd /home/kay/work/arndale_k'
-alias cds='cd /home/kay/work/secureos'
-alias cdr='cd /home/kay/work/secureos/REE'
-alias cdt='cd /home/kay/work/secureos/TEE'
-alias cdk='cd /home/kay/work/secureos/TEE/kernel'
-alias cdl='cd /home/kay/work/secureos/TEE/lib'
-alias cdu='cd /home/kay/work/secureos/TEE/usr'
-alias cdd='cd /home/kay/work_doc/secureos_doc'
+alias cda='cd /home/kay/work/arndale'
+alias cdak='cd /home/kay/work/arndale_k'
+alias cdsdk='cd /home/kay/work/secureos/SDK'
+alias cdree='cd /home/kay/work/secureos/REE'
+alias cdtee='cd /home/kay/work/secureos/TEE'
+alias cdkernel='cd /home/kay/work/secureos/TEE/kernel'
+alias cdlib='cd /home/kay/work/secureos/TEE/lib'
+alias cdusr='cd /home/kay/work/secureos/TEE/usr'
+alias cddoc='cd /home/kay/work_doc/secureos_doc'
+alias cdtool='~/tool'
 alias cdrt='cd /home/kay/ref/trustonic/SVN/Products'
 
-alias go='time (make clean; make; find . -name "*.so" -exec ls -alh {} \;)'
+alias go='time (make clean && make && make result)'
+alias kernelmake='time (pushd kernel; make clean && make dep && make && make fastboot; popd)'
+alias fullmake='time (make clean && make dep && make && make install && pushd ../REE; make clean && make && make install && popd); adb reboot'
+alias go.all='time (pushd TEE; make clean && make dep && make; popd; pushd REE; make clean && make; popd; pushd SDK; make clean && make; popd; pushd TEE; make result; popd; pushd REE; make result; popd; pushd SDK; make result; popd)'
+
+alias log.minicom='minicom 2>&1 | tee minicom.log'
+alias 000='time (./test_repeat.sh 000 10000 2>&1 | tee test_000.log)'
+alias 001='time (./test_repeat.sh 001 10000 2>&1 | tee test_001.log)'
+alias 002='time (./test_repeat.sh 002 10000 2>&1 | tee test_002.log)'
+alias 003='time (./test_repeat.sh 003 10000 2>&1 | tee test_003.log)'
+alias 004='time (./test_repeat.sh 004 10000 2>&1 | tee test_004.log)'
+alias 005='time (./test_repeat.sh 005 10000 2>&1 | tee test_005.log)'
+alias 006='time (./test_repeat.sh 006 10000 2>&1 | tee test_006.log)'
+alias 007='time (./test_repeat.sh 007 10000 2>&1 | tee test_007.log)'
+alias 008='time (./test_repeat.sh 008 10000 2>&1 | tee test_008.log)'
+alias 009='time (./test_repeat.sh 009 10000 2>&1 | tee test_009.log)'
+alias 010='time (./test_repeat.sh 010 10000 2>&1 | tee test_010.log)'
+alias 011='time (./test_repeat.sh 011 10000 2>&1 | tee test_011.log)'
+alias 012='time (./test_repeat.sh 012 10000 2>&1 | tee test_012.log)'
+alias 013='time (./test_repeat.sh 013 10000 2>&1 | tee test_013.log)'
+alias 014='time (./test_repeat.sh 014 10000 2>&1 | tee test_014.log)'
+alias 015='time (./test_repeat.sh 015 10000 2>&1 | tee test_015.log)'
+alias 016='time (./test_repeat.sh 016 10000 2>&1 | tee test_016.log)'
+alias 017='time (./test_repeat.sh 017 10000 2>&1 | tee test_017.log)'
+alias 018='time (./test_repeat.sh 018 10000 2>&1 | tee test_018.log)'
+alias 019='time (./test_repeat.sh 019 10000 2>&1 | tee test_019.log)'
+alias 010='time (./test_repeat.sh 020 10000 2>&1 | tee test_020.log)'
+alias 777='time (./test_repeat.sh 777 10000 2>&1 | tee test_777.log)'
+alias 999='time (./test_repeat.sh 999 10000 2>&1 | tee test_999.log)'
+alias all='time (./test_all_repeat.sh 10000 2>&1 | tee test_all.log)'
+
+alias todolist='grep -nwr TODO .; grep -nwr TODO . | wc'
 
 alias git.merged='CUR=`__git_ps1 | sed -e "s/(//" | sed -e "s/)//"`; git checkout master && git pull && git checkout -B $CUR'
+
+alias elf.info.header='arm-none-linux-gnueabi-readelf -l'
+alias elf.info.symbol='arm-none-linux-gnueabi-nm -l -S --size-sort'
 
 echo "    ~/.envsetup.$OS/devsetup.sh sourced!!!"
