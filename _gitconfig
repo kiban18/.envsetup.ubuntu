@@ -29,8 +29,8 @@
 	la = "!git config -l | grep alias | cut -c 7-"
 	ca  = clean -f -f -d
 	can = clean -f -f -d -n
-	ci  = clean -f -f -X
-	cin = clean -f -f -X -n
+	ci  = clean -f -f -x
+	cin = clean -f -f -x -n
 [user]
 	name = kay-kihwanlee
 	email = k.nousco@gmail.com
