@@ -159,6 +159,7 @@ let NERDTreeWinPos='right'
 
 "========= key mapping ==========
 
+map <Insert> :r! sed -n
 map <ESC><ESC><ESC> :q!<CR>
 map <F2> v]}zf
 map <F3> zo
