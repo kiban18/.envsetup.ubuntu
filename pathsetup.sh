@@ -32,17 +32,17 @@ if [[ "$android_bin" != "" ]]; then
     PATH=$android_bin:$PATH
 fi
 
-android_sdk_platform_tools=~/tool/android/adt-bundle/sdk/platform-tools
+android_sdk_platform_tools=~/tool/adt-bundle-linux-x86_64-20140702/sdk/platform-tools
 if [[ "$android_sdk_platform_tools" != "" ]]; then
     PATH=$android_sdk_platform_tools:$PATH
 fi
 
-android_sdk_tools=~/tool/adt-bundle-linux-x86_64-20140321/sdk/tools
+android_sdk_tools=~/tool/adt-bundle-linux-x86_64-20140702/sdk/tools
 if [[ "$android_sdk_tools" != "" ]]; then
     PATH=$android_sdk_tools:$PATH
 fi
 
-android_sdk_build_tools=~/tool/adt-bundle-linux-x86_64-20140321/sdk/build-tools/19.1.0
+android_sdk_build_tools=~/tool/adt-bundle-linux-x86_64-20140702/sdk/build-tools/android-4.4W
 if [[ "$android_sdk_build_tools" != "" ]]; then
     PATH=$android_sdk_build_tools:$PATH
 fi
@@ -77,7 +77,7 @@ if [[ "$arm_2009q3_path" != "" ]]; then
     PATH=$PATH:$arm_2009q3_path
 fi
 
-android_ndk_path=~/tool/android-ndk-r9d
+android_ndk_path=~/tool/android-ndk-r10
 if [[ "$android_ndk_path" != "" ]]; then
     PATH=$PATH:$android_ndk_path
 fi

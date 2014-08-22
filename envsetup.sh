@@ -77,9 +77,11 @@ alias vmi='vim'
 
 alias tail.syslog='tail -f /var/log/syslog'
 
-#alias cb='xclip -sel clip'
-alias cb='xsel --clipboard'
-alias pwdx='pwd | cb'
-alias cdx='cd `xsel --clipboard`'
+alias x='xsel --clipboard'
+alias pwdx='pwd | x'
+alias cdx='cd `x`'
+alias vix='vi `x`'
+
+alias db='db_create.sh'
 
 echo "    ~/.envsetup.$OS/envsetup.sh sourced!!!"
