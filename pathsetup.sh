@@ -82,6 +82,11 @@ if [[ "$android_ndk_path" != "" ]]; then
     PATH=$PATH:$android_ndk_path
 fi
 
+android_ndk9_path=~/tool/android-ndk-r9d
+if [[ "$android_ndk9_path" != "" ]]; then
+    PATH=$PATH:$android_ndk9_path
+fi
+
 openssl_path=/usr/local/ssl/bin
 if [[ "$openssl_path " != "" ]]; then
     PATH=$PATH:$openssl_path
