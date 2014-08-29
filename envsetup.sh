@@ -83,10 +83,9 @@ alias cdx='cd `x`'
 alias vix='vi `x`'
 
 alias db='db_create.sh'
-alias testlog='./reliability_test.sh | tee test.log'
-alias testgrep='tail -f ./test.log | grep "\(TEST.*\|RUN\|OK\|.*FAILED.*\)"'
+alias testlog='./make_result.sh | tee test.log'
+alias testgrep='tail -f ./test.log | grep "\(TEST.*\|RUN\|OK\|FAILED\)"'
 alias minicomlog='minicom | tee minicom.log'
-alias minicomgrep='tail -f ./minicom.log | grep "\(RUN\|OK\|.*FAILED.*\|Dram Remain Size.*|\iRam used size.*\)"'
-alias goall='time (go && cd ../REE/ && go && make install && cd ../TEE && make install)'
+alias minicomgrep='tail -f ./minicom.log | grep "\(RUN\|OK\|FAILED\|Dram Remain Size\|iRam used size\)"'
 
 echo "    ~/.envsetup.$OS/envsetup.sh sourced!!!"
