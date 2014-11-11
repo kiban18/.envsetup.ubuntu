@@ -88,4 +88,7 @@ alias testgrep='tail -f ./test.log | grep "\(TEST.*\|RUN\|OK\|FAILED\)"'
 alias minicomlog='minicom | tee minicom.log'
 alias minicomgrep='tail -f ./minicom.log | grep "\(RUN\|OK\|FAILED\|Dram Remain Size\|iRam used size\)"'
 
+alias ssh.redmine='ssh redmine@192.168.100.254'
+alias ssh.redmine.test='ssh redmine@192.168.100.253'
+
 echo "    ~/.envsetup.$OS/envsetup.sh sourced!!!"
