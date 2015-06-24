@@ -14,7 +14,8 @@ echo INTERVAL:$INTERVAL
 echo COMMANDS:\"$COMMANDS\"
 
 RESULT=0
-while [ $RESULT -eq 0 ]
+#while [ $RESULT -eq 0 ]
+while true
 do
     $COMMANDS
     RESULT=$?

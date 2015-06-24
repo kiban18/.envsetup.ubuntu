@@ -41,7 +41,11 @@ map <Tab> <ESC>I//<ESC>:nohl<CR>j0
 map <S-Tab> <ESC>:s/\/\//<ESC>:nohl<CR>k0
 
 " 현재 편집중인 파일 전체를 대상으로 들여쓰기를 정리한다.
-map <F9> <ESC>:mark i<CR>G=gg<CR>'i:w<CR>
+"map <F9> <ESC>:mark i<CR>G=gg<CR>'i:w<CR>
+map <F9> <ESC>:mark i<CR>ggVG=<ESC>'i<CR>
+
+map ,m <ESC>:mark `<CR>
+map 8 <ESC>N<ESC>dd<ESC>n<ESC>dd<ESC>k
 
 set wrap " 자동으로 줄바꿈을 삽입하여 다음 줄로 넘어간다.
 set nocompatible " vi 오리지널과 호환하는 모드를 사용하지 않음. (vim 확장)
@@ -77,7 +81,7 @@ vmap <S-Tab> <gv
 
 " 문법 강조 기능을 사용한다.
 if has("syntax")
-syntax on " Default to no syntax highlightning
+    syntax on " Default to no syntax highlightning
 endif
 
 
@@ -105,6 +109,17 @@ Bundle 'DoxygenToolkit.vim'
 
 nmap ,x :Dox<CR>
 nmap ,a :<ESC>A<SPACE>/**<<SPACE><SPACE>*/<ESC>hhi
+
+nmap ,, :<ESC>O//%
+nmap ,. :<ESC>O##%
+
+nmap ,cb :ConqueTermSplit bash<CR><CR>
+nmap ,vb :ConqueTermVSplit bash<CR><CR>
+
+nmap ,sp :sp<CR><C-j>
+nmap ,vp :vsp<CR><C-l>
+nmap ,ls :vsp<CR><C-l>:e.<CR>
+
 
 filetype plugin indent on "required!
 "
@@ -135,10 +150,10 @@ let g:SrcExpl_gobackKey = "<SPACE>"
 " // are using buffers. And you need add their bufname into the list below
 " // according to the command ":buffers!"
 let g:SrcExpl_pluginList = [
-        \ "__Tag_List__",
-        \ "_NERD_tree_",
-        \ "Source_Explorer"
-        \ ]
+            \ "__Tag_List__",
+            \ "_NERD_tree_",
+            \ "Source_Explorer"
+            \ ]
 
 " // Enable/Disable the local definition searching, and note that this is not
 " // guaranteed to work, the Source Explorer doesn't check the syntax for now.
@@ -249,43 +264,43 @@ au BufEnter /* call LoadCscope()
 
 if version >= 500
 
-func! Sts()
-let st = expand("<cword>")
-exe "sts ".st
-endfunc
-nmap ,st :call Sts()<CR>
+    func! Sts()
+        let st = expand("<cword>")
+        exe "sts ".st
+    endfunc
+    nmap ,st :call Sts()<CR>
 
-func! Tj()
-let st = expand("<cword>")
-exe "tj ".st
-endfunc
-nmap ,tj :call Tj()<CR>
+    func! Tj()
+        let st = expand("<cword>")
+        exe "tj ".st
+    endfunc
+    nmap ,tj :call Tj()<CR>
 
-func! Vtj()
-    let st = expand("<cword>")
-    exe "vs"
-endfunc
-nmap ,tt :call Vtj()<cr><C-l>:call Tj()<cr>
+    func! Vtj()
+        let st = expand("<cword>")
+        exe "vs"
+    endfunc
+    nmap ,tt :call Vtj()<cr><C-l>:call Tj()<cr>
 
-func! Tn()
-exe "tn"
-endfunc
-nmap ,tn :call Tn()<CR>
+    func! Tn()
+        exe "tn"
+    endfunc
+    nmap ,tn :call Tn()<CR>
 
-func! Tp()
-exe "tp"
-endfunc
-nmap ,tp :call Tp()<CR>
+    func! Tp()
+        exe "tp"
+    endfunc
+    nmap ,tp :call Tp()<CR>
 
-func! Tr()
-exe "tr"
-endfunc
-nmap ,tr :call Tr()<CR>
+    func! Tr()
+        exe "tr"
+    endfunc
+    nmap ,tr :call Tr()<CR>
 
-func! Tl()
-exe "tl"
-endfunc
-nmap ,tl :call Tl()<CR>
+    func! Tl()
+        exe "tl"
+    endfunc
+    nmap ,tl :call Tl()<CR>
 
 endif
 
@@ -299,108 +314,108 @@ set cst " cscope DB tag DB search
 set nocsverb " verbose off
 
 func! CscopeShow()
-exe "cs show"
+    exe "cs show"
 endfunc
 nmap ,w :call CscopeShow()<CR>
 
 func! CscopeHelp()
-exe "cs help"
+    exe "cs help"
 endfunc
 nmap ,h :call CscopeHelp()<CR>
 
 " calls: find all calls to the function name under cursor
 "       c: 이 함수를 부르는 함수들 찾기
 func! CscopeCaller()
-let csc = expand("<cword>")
-"new
-exe "cs find c ".csc
-if getline(1) == " "
-exe "q!"
-endif
+    let csc = expand("<cword>")
+    "new
+    exe "cs find c ".csc
+    if getline(1) == " "
+        exe "q!"
+    endif
 endfunc
 nmap ,c :call CscopeCaller()<CR>
 
 " called: find functions that function under cursor calls
 "       d: 이 함수에 의해 불려지는 함수들 찾기
 func! CscopeCalled()
-let csd = expand("<cword>")
-"new
-exe "cs find d ".csd
-if getline(1) == " "
-exe "q!"
-endif
+    let csd = expand("<cword>")
+    "new
+    exe "cs find d ".csd
+    if getline(1) == " "
+        exe "q!"
+    endif
 endfunc
 nmap ,d :call CscopeCalled()<CR>
 
 " egrep: egrep search for the word under cursor
 "       e: 이 egrep 패턴 찾기
 func! CscopeEgrep()
-let cse = expand("<cword>")
-"new
-exe "cs find e ".cse
-if getline(1) == " "
-exe "q!"
-endif
+    let cse = expand("<cword>")
+    "new
+    exe "cs find e ".cse
+    if getline(1) == " "
+        exe "q!"
+    endif
 endfunc
 nmap ,e :call CscopeEgrep()<CR>
 
 " file: open the filename under cursor
 "       f: 이 파일 찾기
 func! CscopeFile()
-let csf = expand("<cword>")
-"new
-exe "cs find f ".csf
-if getline(1) == " "
-exe "q!"
-endif
+    let csf = expand("<cword>")
+    "new
+    exe "cs find f ".csf
+    if getline(1) == " "
+        exe "q!"
+    endif
 endfunc
 nmap ,f :call CscopeFile()<CR>
 
 " global: find global definition(s) of the token under cursor
 "       g: 이 정의 찾기
 func! CscopeGlobal()
-let csg = expand("<cword>")
-"new
-exe "cs find g ".csg
-if getline(1) == " "
-exe "q!"
-endif
+    let csg = expand("<cword>")
+    "new
+    exe "cs find g ".csg
+    if getline(1) == " "
+        exe "q!"
+    endif
 endfunc
 nmap ,g :call CscopeGlobal()<CR>
 
 " includes: find files that include the filename under cursor
 "       i: 이 파일을 포함하는 파일들 찾기
 func! CscopeIncludes()
-let csi = expand("<cword>")
-"new
-exe "cs find i ".csi
-if getline(1) == " "
-exe "q!"
-endif
+    let csi = expand("<cword>")
+    "new
+    exe "cs find i ".csi
+    if getline(1) == " "
+        exe "q!"
+    endif
 endfunc
 nmap ,i :call CscopeIncludes()<CR>
 
 " symbol: find all references to the token under cursor
 "       s: 이 C 심볼 찾기
 func! CscopeSymbol()
-let css = expand("<cword>")
-"new
-exe "cs find s ".css
-if getline(1) == " "
-exe "q!"
-endif
+    let css = expand("<cword>")
+    "new
+    exe "cs find s ".css
+    if getline(1) == " "
+        exe "q!"
+    endif
 endfunc
 nmap ,s :call CscopeSymbol()<CR>
 
 " text: find all instances of the text under cursor
 "       t: Find assignments to
 func! CscopeText()
-let cst = expand("<cword>")
-"new
-exe "cs find t ".cst
-if getline(1) == " "
-exe "q!"
-endif
+    let cst = expand("<cword>")
+    "new
+    exe "cs find t ".cst
+    if getline(1) == " "
+        exe "q!"
+    endif
 endfunc
 nmap ,t :call CscopeText()<CR>
 
@@ -460,45 +475,45 @@ cmap <S-Insert>   <C-R>+
 " were characterwise instead.  Add to that some tricks to leave the cursor in
 " the right position, also for "gi".
 if has("virtualedit")
-  let paste#paste_cmd = {'n': ":call paste#Paste()<CR>"}
-  let paste#paste_cmd['v'] = '"-c<Esc>' . paste#paste_cmd['n']
-  let paste#paste_cmd['i'] = 'x<BS><Esc>' . paste#paste_cmd['n'] . 'gi'
+    let paste#paste_cmd = {'n': ":call paste#Paste()<CR>"}
+    let paste#paste_cmd['v'] = '"-c<Esc>' . paste#paste_cmd['n']
+    let paste#paste_cmd['i'] = 'x<BS><Esc>' . paste#paste_cmd['n'] . 'gi'
 
-  func! paste#Paste()
-    let ove = &ve
-    set ve=all
-    normal! `^
-    if @+ != ''
-      normal! "+gP
-    endif
-    let c = col(".")
-    normal! i
-    if col(".") < c " compensate for i<ESC> moving the cursor left
-      normal! l
-    endif
-    let &ve = ove
-  endfunc
+    func! paste#Paste()
+        let ove = &ve
+        set ve=all
+        normal! `^
+        if @+ != ''
+            normal! "+gP
+        endif
+        let c = col(".")
+        normal! i
+        if col(".") < c " compensate for i<ESC> moving the cursor left
+            normal! l
+        endif
+        let &ve = ove
+    endfunc
 else
-  let paste#paste_cmd = {'n': "\"=@+.'xy'<CR>gPFx\"_2x"}
-  let paste#paste_cmd['v'] = '"-c<Esc>gix<Esc>' . paste#paste_cmd['n'] . '"_x'
-  let paste#paste_cmd['i'] = 'x<Esc>' . paste#paste_cmd['n'] . '"_s'
+    let paste#paste_cmd = {'n': "\"=@+.'xy'<CR>gPFx\"_2x"}
+    let paste#paste_cmd['v'] = '"-c<Esc>gix<Esc>' . paste#paste_cmd['n'] . '"_x'
+    let paste#paste_cmd['i'] = 'x<Esc>' . paste#paste_cmd['n'] . '"_s'
 endi
 
 fu! Num2Bin(var)
-        let num=printf("%u", a:var)
-        let bin=""
-        let pos=0
-        while num > 0 || pos % 4 != 0
-                if 0 == pos % 4 && 0 != pos | let bin = "," . bin | endif
-                let bin = num % 2 . bin
-                let num = num / 2
-                let pos += 1
-        endwh
-        if bin == ""
-                let bin = "0000"
-                let pos = 4
-        endif
-        return bin . " (" . pos . ")"
+    let num=printf("%u", a:var)
+    let bin=""
+    let pos=0
+    while num > 0 || pos % 4 != 0
+        if 0 == pos % 4 && 0 != pos | let bin = "," . bin | endif
+        let bin = num % 2 . bin
+        let num = num / 2
+        let pos += 1
+    endwh
+    if bin == ""
+        let bin = "0000"
+        let pos = 4
+    endif
+    return bin . " (" . pos . ")"
 endfu
 
 fu! CheckSymbol(var1)
@@ -600,7 +615,7 @@ fu! Bitwise(var1, var2, one, two)
     let p1 = strlen(b1) - 1
     let p2 = strlen(b2) - 1
     let result = ""
-        while p1 >= 0 || p2 >= 0
+    while p1 >= 0 || p2 >= 0
         let bit = strpart(b1, p1, 1) + strpart(b2, p2, 1)
         if bit == 0
             let result = "0" . result
@@ -633,15 +648,15 @@ endfu
 
 fu! Bin2Num(bin)
     let i = 0
-        let num = 0
+    let num = 0
     let len = strlen(a:bin)
-        while i < len
+    while i < len
         let c = strpart(a:bin,i,1)
         let i += 1
         if c !~ '[01]' | continue | endif
-                let num = num * 2 + c
-        endw
-        return printf("%u",num)
+        let num = num * 2 + c
+    endw
+    return printf("%u",num)
 endfu
 
 fu! Num2Bin(var)
@@ -1034,3 +1049,9 @@ map <silent> gA :call GitShow(GetHash(),0)<CR>
 map ,, :%s/cores/kernel/gc<CR>
 
 map <C-p> :%w !lp<CR><CR>
+
+
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '>'

@@ -36,7 +36,7 @@ alias ctlogcat='while vim -c ":ConqueTerm adb_logcat_usb.sh" -c ":set syntax=log
 alias ctlogcat.kiban18='while vim -c ":ConqueTerm adb_logcat_kiban18" -c ":set syntax=logcat"; do echo Restarting...; done'
 
 #@@ ConqueTerm socat
-alias ctsocat='while vim -c ":ConqueTerm socat stdin /dev/ttyUSB0"; do echo Restarting...; done'
+alias ctsocat='while vim -c ":ConqueTerm socat stdin /dev/ttyUSB0,raw,echo=0,nonblock,min=0,b115200"; do echo Restarting...; done'
 #alias ctsocat='while vim -c ":ConqueTerm socat stdin /dev/ttyUSB0" -c ":set syntax=dtv"; do echo Restarting...; done'
 
 #@@ ConqueTerm bash
@@ -81,6 +81,7 @@ alias x='xsel --clipboard'
 alias pwdx='pwd | x'
 alias cdx='cd `x`'
 alias vix='vi `x`'
+alias cdstudy='cd ~/study/iamrootN/linux-4.1-rc4'
 
 alias db='db_create.sh'
 alias testlog='./make_result.sh | tee test.log'

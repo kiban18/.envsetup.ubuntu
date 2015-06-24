@@ -62,8 +62,8 @@ export ANDROID_JAVA_HOME=$JAVA_HOME
 #export WORKSPACE=$TOOL_MOUNTED/eclipse/workspace
 export ADT_BUNDLE=$TOOL_MOUNTED/adt-bundle-linux
 export WORKSPACE=$ADT_BUNDLE/workspace
-#export ANDROID_SWT=~/tool/adt-bundle-linux-x86_64-20140702/sdk/tools/lib/x86_64
-export ANDROID_SWT=~/tool/adt-bundle-linux-x86_64-20140321/sdk/tools/lib/x86_64
+export ANDROID_SWT=~/tool/adt-bundle-linux-x86_64-20140702/sdk/tools/lib/x86_64
+#export ANDROID_SWT=~/tool/adt-bundle-linux-x86_64-20140321/sdk/tools/lib/x86_64
 export USE_CCACHE=1
 export CCACHE_DIR=~/tool/ccache
 #export GDB=$GOOGLETVDIR/gitcorp_2/prebuilt/linux-x86_64/toolchain/arm-unknown-linux-gnueabi-4.5.3-glibc/bin/arm-unknown-linux-gnueabi-gdb
@@ -269,27 +269,49 @@ export T32SYS=/opt/t32
 export T32TMP=/tmp
 export T32ID=T32
 
-alias gerrit='ssh -p 29418 Kay@dev.nousco.net gerrit'
+alias gerrit='ssh -p 29418 kiban18@dev.nousco.net gerrit'
 
 export ADOBE_PATH=/opt/Adobe/Reader9
 
-alias cda='cd /home/kay/work/arndale'
-alias cdak='cd /home/kay/work/arndale_k'
-alias cdsdk='cd /home/kay/work/secureos/SDK'
-alias cdree='cd /home/kay/work/secureos/REE'
-alias cdtee='cd /home/kay/work/secureos/TEE'
-alias cdkernel='cd /home/kay/work/secureos/TEE/kernel'
-alias cdlib='cd /home/kay/work/secureos/TEE/lib'
-alias cdusr='cd /home/kay/work/secureos/TEE/usr'
-alias cddoc='cd /home/kay/work_doc/secureos_doc'
-alias cdtool='~/tool'
-alias cdrt='cd /home/kay/ref/trustonic/SVN/Products'
+alias cda='     cd ~/work/arndale'
+alias cdak='    cd ~/work/arndale_k'
+alias cdsdk='   cd ~/work/secureos/SDK'
+alias cdree='   cd ~/work/secureos/REE'
+alias cdtee='   cd ~/work/secureos/TEE'
+alias pushree=' pushd ~/work/secureos/REE'
+alias pushtee=' pushd ~/work/secureos/TEE'
+alias cdkern='  cd ~/work/secureos/TEE/kernel'
+alias cdlib='   cd ~/work/secureos/TEE/lib'
+alias cdusr='   cd ~/work/secureos/TEE/usr'
+alias cdwork='  cd ~/work'
+alias cddoc='   cd ~/doc'
+alias cdtool='  cd ~/tool'
+alias cdrt='    cd ~/ref/trustonic/SVN/Products'
 
-alias go='time (make clean && make && make result)'
-alias gok='time (pushd kernel && make clean && make dep && make && make result && popd)'
-alias goall='time (gok && cd ../REE && go && cd ../TEE)'
-alias go.install='time (make install && cd ../REE && make install && cd ../TEE)'
-alias gok.install='time (adbreboot; make kinstall)'
+alias go='         time (make clean && make && make result)'
+alias gok='        time (pushd kernel && make clean && make dep && make && make result && popd)'
+alias goall='      time (cdtee && go && cdree && go && cdtee)'
+alias goinstall='  time (cdtee && make install && cdree && make install && cdtee)'
+alias kinstall='   time (adb reboot && make kinstall)'
+alias teeinstall=' time (make install -C kernel && make install -C lib)'
+alias reeinstall=' time (make install -C ../REE/drivers && make install -C ../REE/lib && make install -C ../REE/tee_daemon)'
+
+alias vios='         vi ../Config.mk'
+alias viree='        pushree && vi ./Config.mk && popd'
+alias vitee='        pushtee && vi ./Config.mk && popd'
+alias vica='         pushree && vi apps/testcase/Makefile && popd'
+alias goca='         pushree && pushd apps/testcase && go && make install && popd && popd'
+alias vita='         pushtee && vi usr/testcase/Makefile && popd'
+alias gota='         pushtee && pushd usr/testcase && go && make install && popd && popd'
+
+alias gotest='     time (make clean && make && make result && make install && adb shell /system/test/`echo $(basename $PWD)`)'
+alias test='       time (adb shell /system/test/`echo $(basename $PWD)`)'
+
+alias install='    time (cdtee && make kinstall && cd kernel && make install && cd ../lib && make install && cd ../usr/testcase/000_* && make install && cdree && cd drivers && make install && cd ../lib && make install && cd ../tee_daemon && make install && cd ../apps/testcase/000_* && make install && cdtee && adb reboot && echo "Success")'
+alias run='    time (adb wait-for-device shell /data/.toss/start_tz_driver.sh && adb shell /data/.toss/tee_daemon)'
+
+alias min='minicom 2>&1| tee minicom.log'
+alias kkk='tail -f ./minicom.log | grep KKKKK'
 
 alias log.minicom='minicom 2>&1 | tee minicom.log'
 alias 000='time (./test_repeat.sh 000 10000 2>&1 | tee test_000.log)'
@@ -312,10 +334,28 @@ alias 016='time (./test_repeat.sh 016 10000 2>&1 | tee test_016.log)'
 alias 017='time (./test_repeat.sh 017 10000 2>&1 | tee test_017.log)'
 alias 018='time (./test_repeat.sh 018 10000 2>&1 | tee test_018.log)'
 alias 019='time (./test_repeat.sh 019 10000 2>&1 | tee test_019.log)'
-alias 010='time (./test_repeat.sh 020 10000 2>&1 | tee test_020.log)'
+alias 020='time (./test_repeat.sh 020 10000 2>&1 | tee test_020.log)'
+alias 022='time (./test_repeat.sh 022 10000 2>&1 | tee test_022.log)'
 alias 777='time (./test_repeat.sh 777 10000 2>&1 | tee test_777.log)'
+alias 800='time (./test_repeat.sh 800 10000 2>&1 | tee test_800.log)'
 alias 999='time (./test_repeat.sh 999 10000 2>&1 | tee test_999.log)'
+alias 1006='time (./test_repeat.sh 1006 10000 2>&1 | tee test_1006.log)'
+alias 1007='time (./test_repeat.sh 1007 10000 2>&1 | tee test_1007.log)'
+alias 1200='time (./test_repeat.sh 1200 10000 2>&1 | tee test_1200.log)'
+alias 1201='time (./test_repeat.sh 1201 10000 2>&1 | tee test_1201.log)'
+alias 1202='time (./test_repeat.sh 1202 10000 2>&1 | tee test_1202.log)'
+alias 1203='time (./test_repeat.sh 1203 10000 2>&1 | tee test_1203.log)'
+alias 1204='time (./test_repeat.sh 1204 10000 2>&1 | tee test_1204.log)'
+alias 1205='time (./test_repeat.sh 1205 10000 2>&1 | tee test_1205.log)'
+alias 1206='time (./test_repeat.sh 1206 10000 2>&1 | tee test_1206.log)'
+alias 1207='time (./test_repeat.sh 1207 10000 2>&1 | tee test_1207.log)'
+alias 1208='time (./test_repeat.sh 1208 10000 2>&1 | tee test_1208.log)'
+alias 1300='time (./test_repeat.sh 1300 10000 2>&1 | tee test_1300.log)'
+alias 2017='time (./test_repeat.sh 2017 10000 2>&1 | tee test_2017.log)'
+alias 3000='time (./test_repeat.sh 3000 10000 2>&1 | tee test_3000.log)'
 alias all='time (./test_all_repeat.sh 10000 2>&1 | tee test_all.log)'
+
+alias t32='pushd /opt/t32/iTSP; sudo /opt/t32/iTSP/start_powerview.sh'
 
 alias todolist='grep -nwr TODO .; grep -nwr TODO . | wc'
 
@@ -323,5 +363,7 @@ alias git.merged='CUR=`__git_ps1 | sed -e "s/(//" | sed -e "s/)//"`; git checkou
 
 alias elf.info.header='arm-none-linux-gnueabi-readelf -l'
 alias elf.info.symbol='arm-none-linux-gnueabi-nm -l -S --size-sort'
+
+alias ssh.vdi='ssh root@192.168.1.149'
 
 echo "    ~/.envsetup.$OS/devsetup.sh sourced!!!"

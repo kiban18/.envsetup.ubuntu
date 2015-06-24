@@ -62,7 +62,7 @@ if [[ "$android_sdk2_build_tools" != "" ]]; then
     PATH=$android_sdk2_build_tools:$PATH
 fi
 
-eclipse_bin=~/tool/adt-bundle-linux-x86_64-20140321/eclipse
+eclipse_bin=~/tool/adt-bundle-linux-x86_64-20140702/eclipse
 if [[ "$eclipse_bin" != "" ]]; then
     PATH=$PATH:$eclipse_bin
 fi
