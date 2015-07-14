@@ -19,6 +19,7 @@ autocmd BufWritePre * 'a " 편집하던 위치로 이동.
 set autoindent " 자동으로 들여쓰기를 한다.
 set cindent " C 프로그래밍을 할 때 자동으로 들여쓰기를 한다.
 set smartindent " 좀 더 똑똑한 들여쓰기를 위한 옵션이다.
+"set cursorline " 현재 커서가 있는 라인에 밑줄 그어준다.
 
 " set paste가 설정되어 있으면 자동 들여쓰기가 안된다.
 " set paste가 설정되어 있지 않으면 vim 에서 붙여넣기 할 때 매 라인들이 들여쓰기가 된다.
@@ -45,7 +46,6 @@ map <S-Tab> <ESC>:s/\/\//<ESC>:nohl<CR>k0
 map <F9> <ESC>:mark i<CR>ggVG=<ESC>'i<CR>
 
 map ,m <ESC>:mark `<CR>
-map 8 <ESC>N<ESC>dd<ESC>n<ESC>dd<ESC>k
 
 set wrap " 자동으로 줄바꿈을 삽입하여 다음 줄로 넘어간다.
 set nocompatible " vi 오리지널과 호환하는 모드를 사용하지 않음. (vim 확장)
