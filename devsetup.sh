@@ -367,6 +367,7 @@ alias 2031='time (./test_repeat.sh 2031 10000 2>&1 | tee test_2031.log)'
 alias 3000='time (./test_repeat.sh 3000 10000 2>&1 | tee test_3000.log)'
 alias all='time (./test_all_repeat.sh 10000 2>&1 | tee test_all.log)'
 
+alias n='nautilus .&'
 alias make.error='make 2>&1 | grep error:.*'
 alias make.warning='make 2>&1 | grep warning:.*'
 
