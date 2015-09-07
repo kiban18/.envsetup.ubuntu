@@ -12,6 +12,21 @@ PATH=/works/studies/rtos/S5PC100/SRC/Linux/GCC/4.3.1-eabi-armv6/usr/bin:$PATH
 LD_LIBRARY_PATH=/works/studies/rtos/S5PC100/SRC/Linux/GCC/4.3.1-eabi-armv6/gmp/lib:/works/studies/rtos/S5PC100/SRC/Linux/GCC/4.3.1-eabi-armv6/mpfr/lib
 export PATH LD_LIBRARY_PATH
 
+pmd_bin=~/tool/pmd-bin-4.2.6/bin
+if [[ "$pmd_bin" != "" ]]; then
+    PATH=$pmd_bin:$PATH
+fi
+
+nsiqcppstyle_bin=~/tool/nsiqcppstyle_server_0.2.2.12
+if [[ "$nsiqcppstyle_bin" != "" ]]; then
+    PATH=$nsiqcppstyle_bin:$PATH
+fi
+
+nsiqcollector_bin=~/tool/nsiqcollector
+if [[ "$nsiqcollector_bin" != "" ]]; then
+    PATH=$nsiqcollector_bin:$PATH
+fi
+
 llvm_bin=/home/k/dev/llvm31_install/bin
 if [[ "$llvm_bin" != "" ]]; then
     PATH=$llvm_bin:$PATH
@@ -22,9 +37,19 @@ if [[ "$t32_bin" != "" ]]; then
     PATH=$t32_bin:$PATH
 fi
 
+jdk8_bin=~/tool/jdk1.8.0_51/bin
+if [[ "$jdk8_bin" != "" ]]; then
+    PATH=$jdk8_bin:$PATH
+fi
+
 jdk_bin=~/tool/jdk1.6.0_45/bin
 if [[ "$jdk_bin" != "" ]]; then
     PATH=$jdk_bin:$PATH
+fi
+
+android_studio=~/tool/android-studio/bin
+if [[ "$android_studio" != "" ]]; then
+    PATH=$android_studio:$PATH
 fi
 
 android_bin=~/tool/android/bin
