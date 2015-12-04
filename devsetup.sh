@@ -96,20 +96,6 @@ alias ln.symbols='rm -f $symbols_name; ln -s $OUT/symbols $symbols_name'
 
 alias whereaminow='$WHEREAMINOW_SH'
 alias whatamidoingnow='$WHATAMIDOINGNOW_SH'
-alias gotowiththesamedepth='$GOTOWITHTHESAMEDEPTH_SH'
-
-alias gotogit='. $GOTOWITHTHESAMEDEPTH_SH gitcorp'
-alias gotogit0='. $GOTOWITHTHESAMEDEPTH_SH gitcorp_0'
-alias gotogit1='. $GOTOWITHTHESAMEDEPTH_SH gitcorp_1'
-alias gotogit2='. $GOTOWITHTHESAMEDEPTH_SH gitcorp_2'
-alias gotogit3='. $GOTOWITHTHESAMEDEPTH_SH gitcorp_3'
-alias gotogitdbg='. $GOTOWITHTHESAMEDEPTH_SH gitcorp_dgb'
-alias gotogitv2.1='. $GOTOWITHTHESAMEDEPTH_SH gitv2.1'
-alias gotogitv3.0='. $GOTOWITHTHESAMEDEPTH_SH gitv3.0'
-alias gotogitv4.0='. $GOTOWITHTHESAMEDEPTH_SH gitv4.0'
-alias gotolg='. $GOTOWITHTHESAMEDEPTH_SH partnerlg'
-alias gotolg0='. $GOTOWITHTHESAMEDEPTH_SH partnerlg_0'
-alias gotolgv3.0='. $GOTOWITHTHESAMEDEPTH_SH lgv3.0'
 
 alias activitiesOnce='$ADBCON_SH && adb -s $ADBHOSTPORT shell dumpsys activity activities | grep Run'
 alias activities='$ADBCON_SH && $REPEAT_SH 1 adb -s $ADBHOSTPORT shell dumpsys activity activities | grep Run'
@@ -201,7 +187,7 @@ alias lunch.aosp.android-4.2.2_r1='cd $AOSPDIR/android-4.2.2_r1; . build/envsetu
 #alias night.gtv-4.0-aosp-jb-mr1='cd $GOOGLETVDIR/gtv-4.0-aosp-jb-mr1; . build/envsetup.sh; lunch cosmo-eng; source.devsetup; repo sync -j20; makewithlog; makeotawithlog'
 
 alias deletelog='echo "delete logfiles below..."; ll make_*.log 2>/dev/null; rm ./make_*.log; echo "remained logfiles below..."; find . -name "make_*.log"'
-alias makewithlog='$MAKEWITHLOG_SH'
+#alias makewithlog='$MAKEWITHLOG_SH'
 alias makeotawithlog='$MAKEOTAWITHLOG_SH'
 alias gtv_reinstall='$GTV_REINSTALL_SH'
 alias do_all_at_once='$DO_ALL_AT_ONCE_SH'
@@ -214,8 +200,8 @@ alias cp.emulator='cp -ar $OUT/*.img $system_images'
 alias rb.emulator='cp -ar $system_images_org/*.img $system_images'
 alias cp.userdata='cp -ar $system_images_org/userdata.img $OUT'
 
-alias makeepkwithlog='time make epk -j8 2>&1 | tee make_epk_build.log; ll $OUT/cosmo.epk | grep $OUT/cosmo.epk'
-alias copyepk='cp $OUT/cosmo.epk /var/lib/tftpboot/cosmo/cosmo.epk; sudo chmod -R 777 /var/lib/tftpboot/*; ls -alRh /var/lib/tftpboot'
+#alias makeepkwithlog='time make epk -j8 2>&1 | tee make_epk_build.log; ll $OUT/cosmo.epk | grep $OUT/cosmo.epk'
+#alias copyepk='cp $OUT/cosmo.epk /var/lib/tftpboot/cosmo/cosmo.epk; sudo chmod -R 777 /var/lib/tftpboot/*; ls -alRh /var/lib/tftpboot'
 
 alias mmwithlog='time mm -j8 2>&1 | tee make_mm_build.log'
 # alias make GtvVideoViewTest -j8
@@ -274,11 +260,16 @@ alias gerrit='ssh -p 29418 kiban18@dev.nousco.net gerrit'
 
 export ADOBE_PATH=/opt/Adobe/Reader9
 
+alias cdks='    cd ~/work/kecureos; . ./build/envsetup.sh'
+alias cdos='    cd ~/work/secureos; . ./build/envsetup.sh'
+
+alias cdtest='  cd ~/test'
 alias cda='     cd ~/work/arndale'
 alias cdak='    cd ~/work/arndale_k'
-alias cdsdk='   cd ~/work/secureos/SDK'
+alias cdbuild=' cd ~/work/secureos/build'
 alias cdree='   cd ~/work/secureos/REE'
 alias cdtee='   cd ~/work/secureos/TEE'
+alias cdsdk='   cd ~/work/secureos/SDK'
 alias pushree=' pushd ~/work/secureos/REE'
 alias pushtee=' pushd ~/work/secureos/TEE'
 alias cdkern='  cd ~/work/secureos/TEE/kernel'
@@ -289,29 +280,64 @@ alias cddoc='   cd ~/doc'
 alias cdtool='  cd ~/tool'
 alias cdrt='    cd ~/ref/trustonic/SVN/Products'
 
-alias go='         time (make clean && make && make result)'
-alias gok='        time (pushd kernel && make clean && make dep && make && make result && popd)'
-alias goall='      time (cdtee && go && cdree && go && cdtee)'
-alias goinstall='  time (cdtee && make install && cdree && make install && cdtee)'
-alias kinstall='   time (adb reboot && make kinstall)'
-alias teeinstall=' time (make install -C kernel && make install -C lib)'
-alias reeinstall=' time (make install -C ../REE/drivers && make install -C ../REE/lib && make install -C ../REE/tee_daemon)'
 
-alias vios='         vi ../Config.mk'
+alias toss='pushd ~/work/secureos 1>/dev/null; . ./build/envsetup.sh; popd 1>/dev/null'
+#alias toss='pushd ~/work/secureos/SDK/toss_sdk_ubuntu 1>/dev/null; . ./build/envsetup.sh; popd 1>/dev/null'
+alias toss+='videvsetup +/"alias toss="'
+alias toss?='echo $TOPDIR'
+
+
+#alias make='make'
+alias make='make TARGET_BOARD=artik5'
+#alias make='make TARGET_BOARD=espresso'
+alias make+='videvsetup +/"alias make="'
+alias make?='alias make'
+
+alias makeerror='make 2>&1 | egrep "error:.*|undefined reference .*|Error .*"'
+func_go()
+{
+    make clean $* && make $*
+    RESULT=$?
+    if [ $RESULT -ne 0 ]; then
+        #make 2>&1 | egrep "error:.*|undefined reference .*|Error .*"
+        makeerror
+        return $RESULT
+    fi
+}
+alias go='func_go'
+#alias go='         (make clean V=1 && make V=1 || RESULT=$?;makeerror)'
+alias gor='        (go; make result)'
+alias goi='        (go && make install)'
+alias goki='       (go && make kinstall)'
+alias gooi='       (go && make otainstall)'
+alias goall='      (cdtee && go && cdree && go && cdtee)'
+alias goresult='   (cdtee && make result && echo "" && cdree && make result && cdtee)'
+alias goinstall='  (cdtee && make install && cdree && make install && cdtee)'
+alias gokinstall=' (cdtee && make kinstall)'
+alias GODEV='      (goall && goinstall && gokinstall && adb reboot)'
+#alias GODEV='      (goall && goinstall && gokinstall && adb reboot && ./kernel/fastboot.flash.sh)'
+alias GOREL='      (goall && goinstall && gokinstall && ./make_firstboot.sh && adb reboot && ./kernel/fastboot.flash.sh)'
+alias IDEV='       (goinstall && gokinstall && adb reboot && ./kernel/fastboot.flash.sh)'
+alias IREL='       (goinstall && gokinstall && ./make_firstboot.sh && adb reboot && ./kernel/fastboot.flash.sh)'
+alias teeinstall=' (make install -C kernel && make install -C lib)'
+alias reeinstall=' (make install -C ../REE/drivers && make install -C ../REE/lib && make install -C ../REE/tee_daemon)'
+
+alias viconfig='     (cdos; vi ./Config.mk)'
 alias viree='        pushree && vi ./Config.mk && popd'
 alias vitee='        pushtee && vi ./Config.mk && popd'
 alias vica='         pushree && vi apps/testcase/Makefile && popd'
 alias goca='         pushree && pushd apps/testcase && go && make install && popd && popd'
 alias vita='         pushtee && vi usr/testcase/Makefile && popd'
 alias gota='         pushtee && pushd usr/testcase && go && make install && popd && popd'
+alias godr='         push ~tee && pushd usr/testcase && go && make install && popd && popd'
 
-alias gotest='     time (make clean && make && make result && make install && adb shell /system/test/`echo $(basename $PWD)`)'
-alias test='       time (adb shell /system/test/`echo $(basename $PWD)`)'
+#alias gotest='     time (make clean && make && make result && make install && adb shell /system/test/`echo $(basename $PWD)`)'
 
 alias install='    time (cdtee && make kinstall && cd kernel && make install && cd ../lib && make install && cd ../usr/testcase/000_* && make install && cdree && cd drivers && make install && cd ../lib && make install && cd ../tee_daemon && make install && cd ../apps/testcase/000_* && make install && cdtee && adb reboot && echo "Success")'
 alias run='    time (adb wait-for-device shell /data/.toss/start_tz_driver.sh && adb shell /data/.toss/tee_daemon)'
 
 alias min='minicom 2>&1| tee minicom.log'
+alias min1='minicom usb1 2>&1| tee minicom1.log'
 alias grep.min='tail -f ./minicom.log | grep "RUN\|FAIL"'
 alias log='minicom 2>&1| tee adb.log'
 alias grep.log='tail -f ./adb.log | grep "RUN\|FAIL"'
@@ -369,8 +395,20 @@ alias 3000='time (./test_repeat.sh 3000 10000 2>&1 | tee test_3000.log)'
 alias all='time (./test_all_repeat.sh 10000 2>&1 | tee test_all.log)'
 
 alias n='nautilus .&'
-alias make.error='make 2>&1 | grep error:.*'
-alias make.warning='make 2>&1 | grep warning:.*'
+alias makewarning='make 2>&1 | grep warning:.*'
+func_makelog()
+{
+    if [ "$1" != "" ]; then
+        make clean; make 2>&1 -p > make.print.$1
+        make clean; make 2>&1 -d > make.debug.$1
+        make clean; make 2>&1 > make.log.$1
+    else
+        make clean; make 2>&1 -p > make.print
+        make clean; make 2>&1 -d > make.debug
+        make clean; make 2>&1 > make.log
+    fi
+}
+alias makelog='func_makelog'
 
 alias t32='pushd /opt/t32/iTSP; sudo /opt/t32/iTSP/start_powerview.sh'
 
@@ -382,5 +420,7 @@ alias elf.info.header='arm-none-linux-gnueabi-readelf -l'
 alias elf.info.symbol='arm-none-linux-gnueabi-nm -l -S --size-sort'
 
 alias ssh.vdi='ssh root@192.168.1.149'
+
+alias genignore='basename $PWD >> .gitignore'
 
 echo "    ~/.envsetup.$OS/devsetup.sh sourced!!!"

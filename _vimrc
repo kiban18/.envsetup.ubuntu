@@ -7,7 +7,7 @@
 """"""""""""""""""""""""""""""""""""""""
 " 코딩 가이드라인 준수를 위한 vim 설정 "
 """"""""""""""""""""""""""""""""""""""""
-"set colorcolumn=80 " 80컬럼에 붉은 줄을 표시한다. 붉은 줄을 넘기지 않도록 코딩하자.
+set colorcolumn=80 " 80컬럼에 붉은 줄을 표시한다. 붉은 줄을 넘기지 않도록 코딩하자.
 "colorscheme desert " vi color theme
 
 autocmd BufWritePre * mark a " 편집하던 위치 북마크.
@@ -36,6 +36,7 @@ set expandtab " 탭을 공백으로 변환한다. 만일 Makefile 등에서 탭�
 " Makefile 등 의도한 탭이 아니라면 탭을 스페이스로 바꾸자.
 " 콤마(,)와 <TAB>을 순서대로 누르면 탭을 스페이스로 변경.
 map ,<TAB> :%s/	/    /g<CR>
+map ,<TAB><TAB> :%s/^    /	/g<CR>
 
 " Tab과 Shift-Tab으로 라인주석 추가/삭제.
 map <Tab> <ESC>I//<ESC>:nohl<CR>j0
@@ -110,8 +111,8 @@ Bundle 'DoxygenToolkit.vim'
 nmap ,x :Dox<CR>
 nmap ,a :<ESC>A<SPACE>/**<<SPACE><SPACE>*/<ESC>hhi
 
-nmap ,, :<ESC>O//%
-nmap ,. :<ESC>O##%
+"nmap ,, :<ESC>O//%
+"nmap ,. :<ESC>O##%
 
 nmap ,cb :ConqueTermSplit bash<CR><CR>
 nmap ,vb :ConqueTermVSplit bash<CR><CR>
@@ -175,7 +176,7 @@ let NERDTreeWinPos='right'
 
 "========= key mapping ==========
 
-map <Insert> :r! sed -n
+map <Insert> :r! sed -n ,p
 map <ESC><ESC><ESC> :q!<CR>
 map <F2> v]}zf
 map <F3> zo
@@ -1046,9 +1047,31 @@ map <silent> gL :call GitFullLog()<CR>
 map <silent> ga :call GitShow(GetHash(),1)<CR>
 map <silent> gA :call GitShow(GetHash(),0)<CR>
 
-map ,, :%s/cores/kernel/gc<CR>
+"map ,, :g/fPIC/d<CR>:w<CR>
+"map ,, :%s/cores/kernel/gc<CR>
+
+map <F12> :!gedit %<CR><CR>
 
 map <C-p> :%w !lp<CR><CR>
+
+
+"map ,t :%s/TOPDIR)/&\/TEE/gc<CR>
+"map ,r :%s/TOPDIR)/&\/REE/gc<CR>
+"map ,, :/TOPDIR<CR>
+"map ,, :%s/ /\r/g<CR>:sort<CR>:g/^$/d<CR>
+
+"map ,, :<ESC>gg/Dram.*0x[0-9a-fA-F][0-9a-fA-F]*$<CR>
+"map ,. :<ESC>$<S-*>
+"map .. :<ESC>A leak<ESC>:w<CR>
+
+map ,, :<ESC>:%s/ /\r/g<CR>:g/^$/d<CR>
+map ,. :<ESC>:sort<CR>:g/^$/d<CR>
+
+" Marking duplicate lines
+" http://stackoverflow.com/questions/1268032/marking-duplicate-lines
+" org :syn clear Repeat | g/^\(.*\)\n\ze\%(.*\n\)*\1$/exe 'syn match Repeat "^' . escape(getline('.'), '".\^$*[]') . '$"' | nohlsearch"
+map .. :<ESC>:syn clear Repeat \| g/^\(.*\)\n\ze\%(.*\n\)*\1$/exe 'syn match Repeat "^' . escape(getline('.'), '".\^$*[]') . '$"'<CR> \| nohlsearch<CR>
+
 
 
 let g:ycm_autoclose_preview_window_after_completion = 1

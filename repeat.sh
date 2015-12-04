@@ -19,6 +19,6 @@ while true
 do
     $COMMANDS
     RESULT=$?
-    echo ""
+    #echo ""
     sleep $INTERVAL
 done

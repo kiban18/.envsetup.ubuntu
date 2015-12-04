@@ -153,5 +153,6 @@ PS1="${GREEN}\w${END}${GIT_BR_TAG}${BLUE}$ ${END}"
 #PS1="\[\e[0;32m\]\u@\h\[\e[m\] \[\e[1;32m\]\w\[\e[m\] \`ruby -e \"print (%x{git branch 2> /dev/null}.split(%r{\n}).grep(/^\*/).first || '').gsub(/^\* (.+)$/, '\1/')\" -e \"print (%x{git describe --tags 2> /dev/null}.split(%r{\n}).first || '').gsub(/\*/, '\1')\"\`\[\e[0;32m\]\$ \[\e[m\]\[\e[0;32m\]"
 
 PATH=~/bin:$PATH
+PATH=$PATH:~/work/secureos/build
 
 echo "    ~/.envsetup.$OS/pathsetup.sh sourced!!!"

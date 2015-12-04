@@ -21,6 +21,13 @@ alias vienvsetup='vim $envsetup_sh'
 alias videvsetup='vim $devsetup_sh'
 alias vipathsetup='vim $pathsetup_sh'
 
+devsetup_hp_sh=$envsetup/devsetup.hp.sh
+alias source.hp='source $devsetup_hp_sh'
+devsetup_a5_sh=$envsetup/devsetup.a5.sh
+alias source.a5='source $devsetup_a5_sh'
+devsetup_a10_sh=$envsetup/devsetup.a10.sh
+alias source.a10='source $devsetup_a10_sh'
+
 gitconfig=$envsetup/_gitconfig
 profile=$envsetup/_profile
 vimrc=$envsetup/_vimrc
@@ -91,5 +98,43 @@ alias minicomgrep='tail -f ./minicom.log | grep "\(RUN\|OK\|FAILED\|Dram Remain 
 
 alias ssh.redmine='ssh redmine@192.168.100.254'
 alias ssh.redmine.test='ssh redmine@192.168.100.253'
+
+
+JOBLIST_FILE=~/.joblist
+func_joblist() {
+    touch $JOBLIST_FILE
+    LAST_PUSHED_ITEM=`head -n 1 $JOBLIST_FILE`
+    if [ "$LAST_PUSHED_ITEM" == "" ]; then
+        echo "there is no job!"
+    else
+        cat $JOBLIST_FILE
+    fi
+}
+alias job?='func_joblist'
+func_jobpush() {
+    if [ "$#" != 0 ]; then
+        #sed -i -e '1i$*\' $JOBLIST_FILE
+        #echo $* >> $JOBLIST_FILE
+        { echo -e "$*"; cat $JOBLIST_FILE; } > $JOBLIST_FILE.new
+            mv $JOBLIST_FILE{.new,}
+        echo "new job [$*] is inserted!"
+        echo ""
+        job?
+    fi
+}
+alias job+='func_jobpush'
+func_jobpop() {
+    LAST_PUSHED_ITEM=`head -n 1 $JOBLIST_FILE`
+    sed -i "1d" $JOBLIST_FILE
+    if [ "$LAST_PUSHED_ITEM" == "" ]; then
+        echo "no job to drop!"
+    else
+        echo "[$LAST_PUSHED_ITEM] is dropped!"
+        echo ""
+        job?
+    fi
+}
+alias job-='func_jobpop'
+alias jobclear='rm -rf $JOBLIST_FILE; touch $JOBLIST_FILE'
 
 echo "    ~/.envsetup.$OS/envsetup.sh sourced!!!"
