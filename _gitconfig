@@ -18,6 +18,7 @@
 	quotepath = false
 [alias]
 	tree = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	treed = log --graph --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short --all
 	st = status
 	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
 	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
@@ -34,4 +35,4 @@
 	cin = clean -f -f -x -n
 [user]
 	name = kay-kihwanlee
-	email = k.nousco@gmail.com
+	email = kiban18@gmail.com
