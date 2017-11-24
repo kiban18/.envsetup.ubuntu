@@ -11,7 +11,7 @@
 [merge]
 	tool = meld
 [mergetool "meld"]
-	path = /usr/bin/meld
+	path = /usr/bin/bcompare
 	prompt = false
 [core]
 	editor = vim
@@ -34,5 +34,5 @@
 	ci  = clean -f -f -x
 	cin = clean -f -f -x -n
 [user]
-	name = kay-kihwanlee
-	email = kiban18@gmail.com
+	name = khlee
+	email = khlee@crazyupinc.com

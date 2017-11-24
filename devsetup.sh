@@ -57,8 +57,8 @@ export GTV_REINSTALL_SH=$ENVSETUP/gtv_reinstall.sh
 export DO_ALL_AT_ONCE_SH=$ENVSETUP/do_all_at_once.sh
 
 #export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
-export JAVA_HOME=~/tool/jdk1.6.0_45
 #export JAVA_HOME=~/tool/jdk1.6.0_45
+export JAVA_HOME=~/tool/jdk1.8.0_92
 export ANDROID_JAVA_HOME=$JAVA_HOME
 #export WORKSPACE=$TOOL_MOUNTED/eclipse/workspace
 export ADT_BUNDLE=$TOOL_MOUNTED/adt-bundle-linux
@@ -84,6 +84,8 @@ alias emulator.build='$emulator_cmd_common'
 alias emulator.build.skin='$emulator_cmd_common -skindir $skindir -skin '
 
 alias agdb='$GDB'
+alias gi='$ENVSETUP/grep_nwrIi_for_ios.sh'
+alias ga='$ENVSETUP/grep_nwrIi_for_android.sh'
 
 alias vijdbrc='vi $ENVSETUP/.jdbrc'
 alias ln.gdbinit='ln -s $ENVSETUP/.gdbinit .gdbinit'
@@ -260,6 +262,9 @@ alias gerrit='ssh -p 29418 kiban18@dev.nousco.net gerrit'
 
 export ADOBE_PATH=/opt/Adobe/Reader9
 
+#Hierarchy Viewer Variable
+export ANDROID_HVPROTO=ddm
+
 alias cdks='    cd ~/work/kecureos; . ./build/envsetup.sh'
 alias cdos='    cd ~/work/secureos; . ./build/envsetup.sh'
 
@@ -304,7 +309,7 @@ func_go()
         return $RESULT
     fi
 }
-alias go='func_go'
+#alias go='func_go'
 #alias go='         (make clean V=1 && make V=1 || RESULT=$?;makeerror)'
 alias gor='        (go; make result)'
 alias goi='        (go && make install)'
@@ -341,6 +346,15 @@ alias min1='minicom usb1 2>&1| tee minicom1.log'
 alias grep.min='tail -f ./minicom.log | grep "RUN\|FAIL"'
 alias log='minicom 2>&1| tee adb.log'
 alias grep.log='tail -f ./adb.log | grep "RUN\|FAIL"'
+
+alias aws.s3='ssh -i "aws201603s3.pem" ubuntu@ec2-52-78-81-28.ap-northeast-2.compute.amazonaws.com'
+alias aws.cloudwatch.infomark='ssh -i "infomark-dev.pem" ubuntu@ec2-52-78-46-95.ap-northeast-2.compute.amazonaws.com'
+alias aws.cloudwatch.vinaphone='ssh -i "infomark-dev.pem" ubuntu@ec2-52-78-46-95.ap-northeast-2.compute.amazonaws.com'
+alias aws.cloudwatch.pepcall='ssh -i "pepcall.pem" ubuntu@ec2-52-211-211-160.eu-west-1.compute.amazonaws.com'
+alias aws.getlog.pcbeta='time scp -i ~/work/infomark/kidsphone/server/pcbeta/sshaws/pepcall.pem ubuntu@ec2-34-253-49-185.eu-west-1.compute.amazonaws.com:/var/crazy/log/crazy-logger.log ./kidsphone_pcbeta.log'
+#alias aws.getlog.pcbeta='time scp -i ~/work/infomark/kidsphone/server/pcbeta/sshaws/pepcall.pem ubuntu@ec2-52-210-3-72.eu-west-1.compute.amazonaws.com:/var/crazy/log/crazy-logger.log ./kidsphone_pcbeta.log'
+alias aws.getlog.vinaphone='time scp -i ~/work/joon2/june2-global/sshaws/kidzone-s.pem ubuntu@ec2-54-169-237-92.ap-southeast-1.compute.amazonaws.com:/var/crazy/log/crazy-logger.log ./kidsphone_vina.log'
+alias aws.getlog.demo='time scp -i ~/work/joon2/june2-global/sshaws/infomark-dev.pem ubuntu@ec2-52-78-151-73.ap-northeast-2.compute.amazonaws.com:/var/crazy/log/crazy-logger.log ./kidsphone_demo.log'
 
 alias 000='time (./test_repeat.sh 000 10000 2>&1 | tee test_000.log)'
 alias 001='time (./test_repeat.sh 001 10000 2>&1 | tee test_001.log)'
@@ -422,5 +436,8 @@ alias elf.info.symbol='arm-none-linux-gnueabi-nm -l -S --size-sort'
 alias ssh.vdi='ssh root@192.168.1.149'
 
 alias genignore='basename $PWD >> .gitignore'
+alias android-studio='~/tool/android-studio-2.2/bin/studio.sh &'
+alias argouml='~/tool/argouml-0.34/argouml.sh &'
+alias argouml2='~/tool/argouml-0.34/argouml2.sh &'
 
 echo "    ~/.envsetup.$OS/devsetup.sh sourced!!!"

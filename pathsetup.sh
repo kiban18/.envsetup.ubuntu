@@ -37,15 +37,15 @@ if [[ "$t32_bin" != "" ]]; then
     PATH=$t32_bin:$PATH
 fi
 
-jdk8_bin=~/tool/jdk1.8.0_51/bin
+jdk8_bin=~/tool/jdk1.8.0_92/bin
 if [[ "$jdk8_bin" != "" ]]; then
     PATH=$jdk8_bin:$PATH
 fi
 
-jdk_bin=~/tool/jdk1.6.0_45/bin
-if [[ "$jdk_bin" != "" ]]; then
-    PATH=$jdk_bin:$PATH
-fi
+#jdk_bin=~/tool/jdk1.6.0_45/bin
+#if [[ "$jdk_bin" != "" ]]; then
+#    PATH=$jdk_bin:$PATH
+#fi
 
 android_studio=~/tool/android-studio/bin
 if [[ "$android_studio" != "" ]]; then

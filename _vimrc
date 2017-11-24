@@ -7,7 +7,7 @@
 """"""""""""""""""""""""""""""""""""""""
 " 코딩 가이드라인 준수를 위한 vim 설정 "
 """"""""""""""""""""""""""""""""""""""""
-set colorcolumn=80 " 80컬럼에 붉은 줄을 표시한다. 붉은 줄을 넘기지 않도록 코딩하자.
+"set colorcolumn=80 " 80컬럼에 붉은 줄을 표시한다. 붉은 줄을 넘기지 않도록 코딩하자.
 "colorscheme desert " vi color theme
 
 autocmd BufWritePre * mark a " 편집하던 위치 북마크.
@@ -39,12 +39,15 @@ map ,<TAB> :%s/	/    /g<CR>
 map ,<TAB><TAB> :%s/^    /	/g<CR>
 
 " Tab과 Shift-Tab으로 라인주석 추가/삭제.
-map <Tab> <ESC>I//<ESC>:nohl<CR>j0
-map <S-Tab> <ESC>:s/\/\//<ESC>:nohl<CR>k0
+"map <Tab> <ESC>I//<ESC>:nohl<CR>j0
+"map <S-Tab> <ESC>:s/\/\//<ESC>:nohl<CR>k0
+" Tab과 Shift-Tab으로 라인주석 추가/삭제.
+map <Tab> <ESC>0i#<ESC>:nohl<CR>j0
+map <S-Tab> <ESC>:s/#/<ESC>:nohl<CR>k0
 
 " 현재 편집중인 파일 전체를 대상으로 들여쓰기를 정리한다.
 "map <F9> <ESC>:mark i<CR>G=gg<CR>'i:w<CR>
-map <F9> <ESC>:mark i<CR>ggVG=<ESC>'i<CR>
+"map <F9> <ESC>:mark i<CR>ggVG=<ESC>'i<CR>
 
 map ,m <ESC>:mark `<CR>
 
@@ -103,7 +106,7 @@ Bundle 'https://github.com/wesleyche/SrcExpl.git'
 Bundle 'https://github.com/wesleyche/Trinity.git'
 Bundle 'https://github.com/vim-scripts/gtags.vim.git'
 Bundle 'https://github.com/thinca/vim-logcat.git'
-Bundle 'https://github.com/Valloric/YouCompleteMe.git'
+"Bundle 'https://github.com/Valloric/YouCompleteMe.git'
 Bundle 'Conque-Shell'
 "Bundle 'vim-logcat'
 Bundle 'DoxygenToolkit.vim'
@@ -182,12 +185,16 @@ map <F2> v]}zf
 map <F3> zo
 
 "map <F5> :Tlist<CR><C-W><C-W>
-map <F5> :Tlist<CR>
-map <F6> :NERDTreeToggle<CR>
-map <F7> :SrcExplToggle<CR>
+"map <F5> :Tlist<CR>
+"map <F6> :NERDTreeToggle<CR>
+"map <F7> :SrcExplToggle<CR>
+map <F5> <ESC>:%s/,/,<C-K><C-K><C-M>/g<CR>
+map <F6> <ESC>:%s/{/<C-K><C-K><C-M>{<C-K><C-K><C-M>/g<CR>
+map <F7> <ESC>:%s/}/<C-K><C-K><C-M>}/g<CR>
+map <F8> <ESC>ggVG=<CR>:w<CR>
 
 "Open and close all the three plugins on the same time
-map <F8> :TrinityToggleAll<CR>
+"map <F8> :TrinityToggleAll<CR>
 "Open and close the taglist.vim separately
 map <C-F5> :TrinityToggleTagList<CR>
 "Open and close the NERD_Tree.vim separately
@@ -195,10 +202,10 @@ map <C-F6> :TrinityToggleNERDTree<CR>
 "Open and close the srcexpl.vim separately
 map <C-F7> :TrinityToggleSourceExplorer<CR>
 "Close all windows
-map <C-F8> :q<CR>:q<CR>:q<CR>:q<CR>
+"map <C-F8> :q<CR>:q<CR>:q<CR>:q<CR>
 
 "Auto reindent the entire document
-map <F9> <ESC>:mark i<CR>G=gg<CR>'i:w<CR>
+"map <F9> <ESC>:mark i<CR>G=gg<CR>'i:w<CR>
 
 
 map <PageUp> <C-U><C-U>
@@ -1078,3 +1085,61 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_error_symbol = '>>'
 let g:ycm_warning_symbol = '>'
+
+" kay added 2017.03.11
+"fu! KayExec(cmd)
+"    let l:cmd_cd = "cd ~/work/infomark/kidsphone/ios/pcbeta;"
+"
+"    "silent! execute "0read ! " . l:cmd_cd . a:cmd
+"    "let result = execute "0read ! " . l:cmd_cd . a:cmd
+"    let result = "test"
+"    return printf(result)
+"    "setl noma | 1
+"endfu
+"
+"fu! KayTest(var)
+"    let sym = a:var
+"    call KayExec('grep -nwrI ' . sym . ' .')
+"endfu
+"
+"nmap <silent> <C-f> :call KayTest(expand("<cword>"))<CR>
+
+
+" test
+"nnoremap <F8> :call GetDate('')<CR>
+"function! GetDate(format)
+"  let format = empty(a:format) ? '+%A %Y-%m-%d %H:%M UTC' : a:format
+"  let cmd = '/bin/date -u ' . shellescape(format)
+"  let result = substitute(system(cmd), '[\]\|[[:cntrl:]]', '', 'g')
+"  " Append space + result to current line without moving cursor.
+"  call setline(line('.'), getline('.') . ' ' . result)
+"endfunction
+"
+"nnoremap <F9> :call KayTest2(expand("<cword>"))<CR>
+"function! KayTest2(word)
+"GitNewWindow()
+"let search_str = a:word
+"let cmd = 'grep -nwrI ' . search_str
+"let result = substitute(system(cmd), '[\]\|[[:cntrl:]]', '', 'g')
+"call setline(line('.'), getline('.') . ' ' . result)
+"endfunction
+"
+"fu! GitBlame() range
+"    let l:line = line(".")
+"    if GitNewWindow() < 0
+"        echo "File not found"
+"        return
+"    endif
+"
+"    if a:firstline == a:lastline
+"        call GitExec('git blame ' . b:file)
+"        execute l:line
+"    else
+"        call GitExec('git blame -L ' . a:firstline .','. a:lastline .' '. b:file)
+"    endif
+"    setl cursorline
+"    map <silent> <buffer> ]] :call FindHash(1)<CR>
+"    map <silent> <buffer> [[ :call FindHash(-1)<CR>
+"    map <silent> <buffer> <CR> :call GitLog(GetHash())<CR>
+"    map <silent> <buffer> q :close<CR>
+"endfu
