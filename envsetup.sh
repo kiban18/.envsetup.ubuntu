@@ -7,7 +7,7 @@ case $OSTYPE in
   linux*)  OS=ubuntu;;
 esac
 
-envsetup=~/.envsetup.$OS
+export envsetup=~/.envsetup.$OS
 alias cdenvsetup='cd $envsetup'
 
 envsetup_sh=$envsetup/envsetup.sh
