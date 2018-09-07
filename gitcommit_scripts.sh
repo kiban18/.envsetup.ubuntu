@@ -5,7 +5,8 @@ INCLUDE_PUSH=$1
 git add scripts
 git commit -m "move all version script into envsetup"
 
-if [[ $INCLUDE_PUSH == "" ]]; then
+if [[ $INCLUDE_PUSH != "" ]]; then
+    git push
     exit 0
 fi
 

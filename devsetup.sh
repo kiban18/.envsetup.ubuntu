@@ -445,7 +445,6 @@ alias android-studio-new='~/tool/android-studio-3.1.x/bin/studio.sh &'
 alias argouml='~/tool/argouml-0.34/argouml.sh &'
 alias argouml2='~/tool/argouml-0.34/argouml2.sh &'
 
-alias geolocation='curl -d @geolocation.json -H "Content-Type: application/json" -i "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDfqwfzYStSel_0JZdXT8uGUzfA5tIHISs"'
 alias pconf.demo='adb shell imutil pconf ro.pconf.kidslink.url https://demo.kidslink.co.kr/1.0'
 alias pconf.filip='adb shell imutil pconf ro.pconf.kidslink.url https://joon-api.myfilip.com:443/1.0'
 alias pconf.show='adb shell imutil pconf'
