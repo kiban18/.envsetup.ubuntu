@@ -19,15 +19,18 @@ do
     echo "    refresh $SCRIPTS/$file"
 done
 
-if [[ $INCLUDE_PROJECT == "" ]]; then
-    exit 0
+if [[ $INCLUDE_PROJECT != "" ]]; then
+    REALPATH=`realpath $0`
+    #echo $REALPATH
+    TARGET_DIR=`dirname ${REALPATH}`
+    #echo $TARGET_DIR
+    cp $TARGET_DIR/$SCRIPTS/project.sh.include $SCRIPTS
+    echo "    refresh $SCRIPTS/project.sh.include"
 fi
 
-REALPATH=`realpath $0`
-#echo $REALPATH
-TARGET_DIR=`dirname ${REALPATH}`
-#echo $TARGET_DIR
-cp $TARGET_DIR/$SCRIPTS/project.sh.include $SCRIPTS
-echo "    refresh $SCRIPTS/project.sh.include"
+echo ""
+#ls -al $SCRIPTS
+git st
+#vim $SCRIPTS/project.sh.include
 
 exit 0
