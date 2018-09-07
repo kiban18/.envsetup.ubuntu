@@ -8,6 +8,8 @@
 export WORK_MOUNTED=~/work
 #export WORK_MOUNTED=$HOME_MOUNTED/work2
 
+export PATH=/home/khlee/tool/swift-4.1.2-RELEASE-ubuntu16.04/usr/bin:"${PATH}"
+
 case $OSTYPE in
 	darwin*) OS=macosx;;
 	linux*)  OS=ubuntu;;
@@ -436,8 +438,18 @@ alias elf.info.symbol='arm-none-linux-gnueabi-nm -l -S --size-sort'
 alias ssh.vdi='ssh root@192.168.1.149'
 
 alias genignore='basename $PWD >> .gitignore'
-alias android-studio='~/tool/android-studio-2.2/bin/studio.sh &'
+#alias android-studio-working='~/tool/android-studio-2.2-working/bin/studio.sh &'
+#alias android-studio-2.2='~/tool/android-studio-2.2/bin/studio.sh &'
+alias android-studio-3.0='~/tool/android-studio-3.0.1/bin/studio.sh &'
+alias android-studio-new='~/tool/android-studio-3.1.x/bin/studio.sh &'
 alias argouml='~/tool/argouml-0.34/argouml.sh &'
 alias argouml2='~/tool/argouml-0.34/argouml2.sh &'
+
+alias geolocation='curl -d @geolocation.json -H "Content-Type: application/json" -i "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDfqwfzYStSel_0JZdXT8uGUzfA5tIHISs"'
+alias pconf.demo='adb shell imutil pconf ro.pconf.kidslink.url https://demo.kidslink.co.kr/1.0'
+alias pconf.filip='adb shell imutil pconf ro.pconf.kidslink.url https://joon-api.myfilip.com:443/1.0'
+alias pconf.show='adb shell imutil pconf'
+
+#`which s3fs` com.crazyupinc.share /home/khlee/s3/khlee -o allow_other -o use_cache=/tmp -o endpoint=ap-northeast-2
 
 echo "    ~/.envsetup.$OS/devsetup.sh sourced!!!"

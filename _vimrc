@@ -430,7 +430,10 @@ nmap ,t :call CscopeText()<CR>
 
 Bundle 'a.vim'
 " Ctrl+s는 소스파일과 헤더파일 전환
-map <F10> <ESC>:A<CR>
+"map <F10> <ESC>:A<CR>
+" 2018.02.19 - Google Geolocation from wifi to location
+map <F9> <ESC>:%s/\(.*\)	\(.*\)	.*/{"macAddress":"\1","signalStrength":\2,"signalToNoiseRatio":0},/g<CR>
+map <F10> <ESC>G$xo]}<ESC>ggO{"considerIp":"false","wifiAccessPoints":[<ESC>:nohl<CR>ggVG=:w<CR>
 
 "map <C-I> <ESC>0i//<ESC>j:w<CR>
 "map <C-N> <ESC>k0xx:w<CR>

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# project config
+VERSION_FILE="./Router/app/build.gradle"
+PROJECT_NAME="uLink_android"
+
+# platform config for android
+VERSION_HEAD="^.*versionName \""
+VERSION_TAIL="\".*$"
+BUILDNO_HEAD="^.*versionCode "
+BUILDNO_TAIL=" .*$"
+VERSION_KEYWORD="versionName"
+BUILDNO_KEYWORD="versionCode"

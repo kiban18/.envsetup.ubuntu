@@ -137,4 +137,11 @@ func_jobpop() {
 alias job-='func_jobpop'
 alias jobclear='rm -rf $JOBLIST_FILE; touch $JOBLIST_FILE'
 
+
+export THEME=$HOME/.bash/themes/agnoster-bash/agnoster.bash
+if [[ -f $THEME ]]; then
+    export DEFAULT_USER=`whoami`
+    source $THEME
+fi
+
 echo "    ~/.envsetup.$OS/envsetup.sh sourced!!!"
