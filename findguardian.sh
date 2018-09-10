@@ -9,9 +9,9 @@ if [[ "$GUARDIAN_PHONE" == "" ]]; then
 fi
 
 if [[ "$OPTION" == "-v" ]]; then
-grep -nrIi $GUARDIAN_PHONE . | sort | grep --color $GUARDIAN_PHONE
-grep -nrIi $GUARDIAN_PHONE . | sort | grep --color $GUARDIAN_PHONE | wc -l
+    grep -nrIi "$GUARDIAN_PHONE" . | sort | grep --color "$GUARDIAN_PHONE"
+    grep -nrIi "$GUARDIAN_PHONE" . | sort | grep --color "$GUARDIAN_PHONE" | wc -l
 else
-grep -nrIi $GUARDIAN_PHONE . | grep Users | sort | grep --color $GUARDIAN_PHONE
-grep -nrIi $GUARDIAN_PHONE . | grep Users | sort | grep --color $GUARDIAN_PHONE | wc -l
+    grep -nrIi "$GUARDIAN_PHONE" . | grep Users | sort | grep --color "$GUARDIAN_PHONE"
+    grep -nrIi "$GUARDIAN_PHONE" . | grep Users | sort | grep --color "$GUARDIAN_PHONE" | wc -l
 fi

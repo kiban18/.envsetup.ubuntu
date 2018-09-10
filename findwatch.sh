@@ -10,9 +10,9 @@ if [[ "$WATCH_IMEI_PHONE" == "" ]]; then
 fi
 
 if [[ "$OPTION" == "-v" ]]; then
-grep -nrIi $WATCH_IMEI_PHONE . | sort | grep --color $WATCH_IMEI_PHONE
-grep -nrIi $WATCH_IMEI_PHONE . | sort | grep --color $WATCH_IMEI_PHONE | wc -l
+    grep -nrIi "$WATCH_IMEI_PHONE" . | sort | grep --color "$WATCH_IMEI_PHONE"
+    grep -nrIi "$WATCH_IMEI_PHONE" . | sort | grep --color "$WATCH_IMEI_PHONE" | wc -l
 else
-grep -nrIi $WATCH_IMEI_PHONE . | grep Devices | sort | grep --color $WATCH_IMEI_PHONE
-grep -nrIi $WATCH_IMEI_PHONE . | grep Devices | sort | grep --color $WATCH_IMEI_PHONE | wc -l
+    grep -nrIi "$WATCH_IMEI_PHONE" . | grep Devices | sort | grep --color "$WATCH_IMEI_PHONE"
+    grep -nrIi "$WATCH_IMEI_PHONE" . | grep Devices | sort | grep --color "$WATCH_IMEI_PHONE" | wc -l
 fi
