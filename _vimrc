@@ -188,17 +188,31 @@ map <F3> zo
 "map <F5> :Tlist<CR>
 "map <F6> :NERDTreeToggle<CR>
 "map <F7> :SrcExplToggle<CR>
-map <F5> <ESC>:%s/,/,<C-K><C-K><C-M>/g<CR>
-map <F6> <ESC>:%s/{/<C-K><C-K><C-M>{<C-K><C-K><C-M>/g<CR>
-map <F7> <ESC>:%s/}/<C-K><C-K><C-M>}/g<CR>
-map <F8> <ESC>ggVG=<CR>:w<CR>
+
+"map <F5> <ESC>:%s/,/,<C-K><C-K><C-M>/g<CR>
+"map <F6> <ESC>:%s/{/<C-K><C-K><C-M>{<C-K><C-K><C-M>/g<CR>
+"map <F7> <ESC>:%s/}/<C-K><C-K><C-M>}/g<CR>
+
+map <F5> <ESC>:g!/\<HISTORY\>/d<CR><ESC>:%s/^.*\[HISTORY\]/[HISTORY]/g<CR><ESC>gg/.*\(INSOLE\\|CHIP\).*<CR>gg<ESC>:w<CR>
+map <F6> <ESC>oHISTORY<ESC>:w<CR>
+"map <F5> <ESC>:g!/\<REALTIME\>/d<CR><ESC>:%s/^.*\[REALTIME\]/[REALTIME]/g<CR><ESC>gg/.*\(INSOLE\\|CHIP\).*<CR>gg<ESC>:w<CR>
+"map <F6> <ESC>oREALTIME<ESC>:w<CR>
+"map <F5> <ESC>:g!/SENSOR_STATE/d<CR><ESC>:%s/^.*\[SENSOR_STATE\]/[SENSOR_STATE]/g<CR><ESC>gg/.*\(INSOLE\\|CHIP\).*<CR>gg<ESC>:w<CR>
+"map <F6> <ESC>oSENSOR_STATE<ESC>:w<CR>
+"map <F7> <ESC>gg/.*\(INSOLE\\|CHIP\).*<CR>gg
+
+"map <F8> <ESC>ggVG=<CR>:w<CR>
+map <F8> <ESC>:%s/\(^.*">\)\(.*\)\(<\/string>\)/\2/g<CR>
+
+" Format JSON data
+map <C-F6> :%!python -m json.tool<CR>
 
 "Open and close all the three plugins on the same time
 "map <F8> :TrinityToggleAll<CR>
 "Open and close the taglist.vim separately
 map <C-F5> :TrinityToggleTagList<CR>
 "Open and close the NERD_Tree.vim separately
-map <C-F6> :TrinityToggleNERDTree<CR>
+"map <C-F6> :TrinityToggleNERDTree<CR>
 "Open and close the srcexpl.vim separately
 map <C-F7> :TrinityToggleSourceExplorer<CR>
 "Close all windows
@@ -432,8 +446,12 @@ Bundle 'a.vim'
 " Ctrl+s는 소스파일과 헤더파일 전환
 "map <F10> <ESC>:A<CR>
 " 2018.02.19 - Google Geolocation from wifi to location
-map <F9> <ESC>:%s/\(.*\)	\(.*\)	.*/{"macAddress":"\1","signalStrength":\2,"signalToNoiseRatio":0},/g<CR>
-map <F10> <ESC>G$xo]}<ESC>ggO{"considerIp":"false","wifiAccessPoints":[<ESC>:nohl<CR>ggVG=:w<CR>
+"map <F9> <ESC>:%s/\(.*\)	\(.*\)	.*/{"macAddress":"\1","signalStrength":\2,"signalToNoiseRatio":0},/g<CR>
+"map <F10> <ESC>G$xo]}<ESC>ggO{"considerIp":"false","wifiAccessPoints":[<ESC>:nohl<CR>ggVG=:w<CR>
+
+" 2019.05.28 - db.cvinfo.co.kr 에서 전장~윤거(후) foramtting
+map <F9> <ESC>:%s/^.*  *//g<CR>ggJJJJJJJJ
+map <F10> <ESC>:s/ /	/g<CR><ESC>:w<CR><F12>
 
 "map <C-I> <ESC>0i//<ESC>j:w<CR>
 "map <C-N> <ESC>k0xx:w<CR>

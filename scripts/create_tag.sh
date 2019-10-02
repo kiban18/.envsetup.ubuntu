@@ -5,6 +5,10 @@ echo $REALPATH
 TARGET_DIR=`dirname ${REALPATH}`
 echo $TARGET_DIR
 source ${TARGET_DIR}/project.sh.include
+if [[ $? != 0 ]]; then
+    echo "NG: No project.sh.include file"
+    exit 1
+fi
 
 VERSION=`cat "$VERSION_FILE" | tr "\n" " " | sed "s/$VERSION_HEAD//" | sed "s/$VERSION_TAIL//"`
 echo "VERSION: $VERSION"

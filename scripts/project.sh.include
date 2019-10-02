@@ -3,6 +3,7 @@
 # project config - android sample
 VERSION_FILE="./XXXX/app/build.gradle"
 PROJECT_NAME="XXXX_android"
+PACKAGE_NAME="com.crazyupinc.app.test"
 
 # project config - ios sample
 VERSION_FILE="./YYYY/Info.plist"

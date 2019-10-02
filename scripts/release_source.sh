@@ -5,6 +5,10 @@ echo $REALPATH
 TARGET_DIR=`dirname ${REALPATH}`
 echo $TARGET_DIR
 source ${TARGET_DIR}/project.sh.include
+if [[ $? != 0 ]]; then
+    echo "NG: No project.sh.include file"
+    exit 1
+fi
 
 BRANCH_NAME=`git symbolic-ref --short HEAD`
 echo "BRANCH_NAME: $BRANCH_NAME"
@@ -25,7 +29,13 @@ read ANSWER
 if [[ "${ANSWER}" == "y" ]]; then
     git tag -a ${TAG_NAME} -m "${TAG_NAME} Release" && git push --tags
     mkdir -p ${RELEASE_DIR}
-    git archive ${BRANCH_NAME} --prefix=`basename ${PWD}`/ | gzip > ${RELEASE_DIR}/`git describe ${BRANCH_NAME}`.tar.gz
+
+    # tar.gz
+    #git archive ${BRANCH_NAME} --prefix=`basename ${PWD}`/ | gzip > ${RELEASE_DIR}/`git describe ${BRANCH_NAME}`.tar.gz
+
+    # zip
+    git archive --format=zip ${BRANCH_NAME} --prefix=`basename ${PWD}`/ -o ${RELEASE_DIR}/`git describe ${BRANCH_NAME}`.zip
+
     exit 0
 fi
 

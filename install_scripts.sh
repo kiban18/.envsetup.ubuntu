@@ -16,6 +16,7 @@ for file in "${files[@]}"
 do
     echo "#!/bin/bash" > $SCRIPTS/$file
     echo "source \$envsetup/$SCRIPTS/\`basename \$0\`" >> $SCRIPTS/$file
+    chmod +x $SCRIPTS/$file
     echo "    refresh $SCRIPTS/$file"
 done
 

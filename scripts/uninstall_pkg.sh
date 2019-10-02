@@ -10,6 +10,8 @@ if [[ $? != 0 ]]; then
     exit 1
 fi
 
-vim "$VERSION_FILE" +/"$VERSION_KEYWORD\|$BUILDNO_KEYWORD"
+echo "PACKAGE_NAME: $PACKAGE_NAME"
+adb shell pm uninstall -k --user 0 ${PACKAGE_NAME}
+echo "$?"
 
 exit 0

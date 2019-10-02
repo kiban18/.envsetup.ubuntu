@@ -154,5 +154,7 @@ PS1="${GREEN}\w${END}${GIT_BR_TAG}${BLUE}$ ${END}"
 
 PATH=~/bin:$PATH
 PATH=$PATH:~/work/secureos/build
+PATH=$PATH:/usr/lib/dart/bin
+PATH=$PATH:/home/khlee/tool/flutter/bin
 
 echo "    ~/.envsetup.$OS/pathsetup.sh sourced!!!"
