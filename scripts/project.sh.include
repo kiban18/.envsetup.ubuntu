@@ -9,6 +9,10 @@ PACKAGE_NAME="com.crazyupinc.app.test"
 VERSION_FILE="./YYYY/Info.plist"
 PROJECT_NAME="YYYY_ios"
 
+# project config - flutter sample
+VERSION_FILE="./ZZZZ/pubspec.yaml"
+PROJECT_NAME="ZZZZ_flutter"
+
 # platform config for android
 VERSION_HEAD="^.*versionName \""
 VERSION_TAIL="\".*$"
@@ -24,3 +28,11 @@ BUILDNO_HEAD="^.*CFBundleVersion[^0-9][^0-9]*"
 BUILDNO_TAIL="<.*$"
 VERSION_KEYWORD="CFBundleShortVersionString"
 BUILDNO_KEYWORD="CFBundleVersion"
+
+# platform config for flutter
+VERSION_HEAD="^.*version:  *"
+VERSION_TAIL="+.*$"
+BUILDNO_HEAD="^.*+"
+BUILDNO_TAIL="  *environment:.*$"
+VERSION_KEYWORD="version: "
+BUILDNO_KEYWORD="version: "
