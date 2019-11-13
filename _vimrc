@@ -181,8 +181,10 @@ let NERDTreeWinPos='right'
 
 map <Insert> :r! sed -n ,p
 map <ESC><ESC><ESC> :q!<CR>
-map <F2> v]}zf
-map <F3> zo
+"map <F2> v]}zf
+"map <F3> zo
+map <F2> <ESC>:%s/\({\)\(.*\)\("createdAt.*\)\(}\)/\1\3,\2\4/g<CR><ESC>:sort<CR><ESC>
+map <F3> <ESC>:g/mDate.":0,/d<CR><ESC>
 
 "map <F5> :Tlist<CR><C-W><C-W>
 "map <F5> :Tlist<CR>

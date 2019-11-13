@@ -17,6 +17,12 @@ if [[ $VERSION == "" ]]; then
     exit 1
 fi
 
+BUILDNO=`cat "$VERSION_FILE" | tr "\n" " " | sed "s/$BUILDNO_HEAD//" | sed "s/$BUILDNO_TAIL//"`
+echo "BUILDNO: $BUILDNO"
+if [[ $BUILDNO == "" ]]; then
+    echo "NG: BUILDNO is empty"
+    exit 1
+fi
 BRANCH=`git symbolic-ref --short HEAD`
 echo "BRANCH: $BRANCH"
 if [[ $BRANCH == "" ]]; then
@@ -26,16 +32,16 @@ fi
 
 echo ""
 echo "Below command will be used to tag:"
-echo "    git tag -a \"$BRANCH-$VERSION\" -m \"$BRANCH-$VERSION Release\" && git push --tags"
+echo "    git tag -a \"$BRANCH-$VERSION-$BUILDNO\" -m \"$BRANCH-$VERSION-$BUILDNO Release\" && git push --tags"
 echo ""
-echo "Really want to add \"$BRANCH-$VERSION\" tag on \"$BRANCH\" branch? [y/N]"
+echo "Really want to add \"$BRANCH-$VERSION-$BUILDNO\" tag on \"$BRANCH\" branch? [y/N]"
 read ANSWER
 
 if [[ "$ANSWER" == "y" ]]; then
-    git tag -a "$BRANCH-$VERSION" -m "$BRANCH-$VERSION Release" && git push --tags
+    git tag -a "$BRANCH-$VERSION-$BUILDNO" -m "$BRANCH-$VERSION-$BUILDNO Release" && git push --tags
     exit 0
 fi
 
-echo "\"$BRANCH-$VERSION\" tag is not created on \"$BRANCH\" branch."
+echo "\"$BRANCH-$VERSION-$BUILDNO\" tag is not created on \"$BRANCH\" branch."
 
 exit 0
