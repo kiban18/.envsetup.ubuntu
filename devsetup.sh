@@ -457,6 +457,8 @@ alias pconf.show='adb shell imutil pconf'
 
 alias aosp='cd ~/work/opensource/aosp/'
 
+alias cdinsole='cd ~/work/4ten/dw2/android/insole-android/'
+
 #`which s3fs` com.crazyupinc.share /home/khlee/s3/khlee -o allow_other -o use_cache=/tmp -o endpoint=ap-northeast-2
 
 echo "    ~/.envsetup.$OS/devsetup.sh sourced!!!"
