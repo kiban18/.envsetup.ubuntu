@@ -451,9 +451,13 @@ Bundle 'a.vim'
 "map <F9> <ESC>:%s/\(.*\)	\(.*\)	.*/{"macAddress":"\1","signalStrength":\2,"signalToNoiseRatio":0},/g<CR>
 "map <F10> <ESC>G$xo]}<ESC>ggO{"considerIp":"false","wifiAccessPoints":[<ESC>:nohl<CR>ggVG=:w<CR>
 
+" 2020.03.15 - 인강 목록
+map <F9> <ESC>Jj
+map <F10> <ESC>:%s/^\d\d*/&./g<CR>
+
 " 2019.05.28 - db.cvinfo.co.kr 에서 전장~윤거(후) foramtting
-map <F9> <ESC>:%s/^.*  *//g<CR>ggJJJJJJJJ
-map <F10> <ESC>:s/ /	/g<CR><ESC>:w<CR><F12>
+"map <F9> <ESC>:%s/^.*  *//g<CR>ggJJJJJJJJ
+"map <F10> <ESC>:s/ /	/g<CR><ESC>:w<CR><F12>
 
 "map <C-I> <ESC>0i//<ESC>j:w<CR>
 "map <C-N> <ESC>k0xx:w<CR>

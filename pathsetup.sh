@@ -156,5 +156,6 @@ PATH=~/bin:$PATH
 PATH=$PATH:~/work/secureos/build
 PATH=$PATH:/usr/lib/dart/bin
 PATH=$PATH:/home/khlee/tool/flutter/bin
+PATH=$PATH:/home/khlee/tool/android-ndk-r15c
 
 echo "    ~/.envsetup.$OS/pathsetup.sh sourced!!!"

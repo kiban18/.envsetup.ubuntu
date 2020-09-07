@@ -144,4 +144,5 @@ if [[ -f $THEME ]]; then
     source $THEME
 fi
 
+alias gitignore-android="curl https://www.toptal.com/developers/gitignore/api/androidstudio,android,java,kotlin > .gitignore"
 echo "    ~/.envsetup.$OS/envsetup.sh sourced!!!"
