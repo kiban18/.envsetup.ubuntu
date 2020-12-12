@@ -449,6 +449,8 @@ alias android-studio-4.0='~/tool/android-studio-4.0/bin/studio.sh &'
 alias android-studio-ilink='android-studio-new'
 alias android-studio-kidsphone='android-studio-3.0'
 
+alias android-studio-latest='~/tool/android-studio-4.0/bin/studio.sh &'
+
 #alias postman6='~/tool/Postman-v6/app/Postman &'
 alias postman7='~/tool/Postman-v7/app/Postman &'
 
@@ -464,5 +466,7 @@ alias aosp='cd ~/work/opensource/aosp/'
 alias cdinsole='cd ~/work/4ten/dw2/android/insole-android/'
 
 #`which s3fs` com.crazyupinc.share /home/khlee/s3/khlee -o allow_other -o use_cache=/tmp -o endpoint=ap-northeast-2
+
+alias repeat_git_pull='~/.envsetup.ubuntu/scripts/repeat_git_pull.sh 10'
 
 echo "    ~/.envsetup.$OS/devsetup.sh sourced!!!"
