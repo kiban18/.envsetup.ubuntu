@@ -10,7 +10,7 @@ fi
 
 if [[ ${STOP} == "yes" ]]; then
     echo "check your local changes"
-    git status
+    git st
     exit
 fi
 
@@ -31,6 +31,7 @@ echo "COMMIT_HASH_CRAZYUP: ${COMMIT_HASH_CRAZYUP}"
 if [[ ${COMMIT_HASH_CRAZYUP} == ${COMMIT_HASH_MCIRCLE} ]]; then
     echo ""
     echo "no difference between CRAZYUP and MCIRCLE"
+    git lds
 else
     git tree
 fi
