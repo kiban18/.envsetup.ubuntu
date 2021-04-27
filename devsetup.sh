@@ -8,8 +8,8 @@
 export WORK_MOUNTED=~/work
 #export WORK_MOUNTED=$HOME_MOUNTED/work2
 
-#export PATH=/home/khlee/tool/swift-4.1.2-RELEASE-ubuntu16.04/usr/bin:"${PATH}"
-export PATH=/home/khlee/tool/swiftenv/bin:"${PATH}"
+#export PATH=/home/khlee/work/tool/swift-4.1.2-RELEASE-ubuntu16.04/usr/bin:"${PATH}"
+export PATH=/home/khlee/work/tool/swiftenv/bin:"${PATH}"
 
 case $OSTYPE in
 	darwin*) OS=macosx;;
@@ -18,7 +18,7 @@ esac
 
 ENVSETUP=~/.envsetup.$OS
 
-export TOOL_MOUNTED=$WORK_MOUNTED/tool
+export TOOL_MOUNTED=$WORK_MOUNTED/work/tool
 export SOURCEDIR=$WORK_MOUNTED/source/android
 
 export AOSPDIR=$SOURCEDIR/aosp
@@ -60,16 +60,16 @@ export GTV_REINSTALL_SH=$ENVSETUP/gtv_reinstall.sh
 export DO_ALL_AT_ONCE_SH=$ENVSETUP/do_all_at_once.sh
 
 #export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
-#export JAVA_HOME=~/tool/jdk1.6.0_45
-export JAVA_HOME=~/tool/jdk1.8.0_92
+#export JAVA_HOME=~/work/tool/jdk1.6.0_45
+export JAVA_HOME=~/work/tool/jdk1.8.0_92
 export ANDROID_JAVA_HOME=$JAVA_HOME
 #export WORKSPACE=$TOOL_MOUNTED/eclipse/workspace
 export ADT_BUNDLE=$TOOL_MOUNTED/adt-bundle-linux
 export WORKSPACE=$ADT_BUNDLE/workspace
-export ANDROID_SWT=~/tool/adt-bundle-linux-x86_64-20140702/sdk/tools/lib/x86_64
-#export ANDROID_SWT=~/tool/adt-bundle-linux-x86_64-20140321/sdk/tools/lib/x86_64
+export ANDROID_SWT=~/work/tool/adt-bundle-linux-x86_64-20140702/sdk/tools/lib/x86_64
+#export ANDROID_SWT=~/work/tool/adt-bundle-linux-x86_64-20140321/sdk/tools/lib/x86_64
 export USE_CCACHE=1
-export CCACHE_DIR=~/tool/ccache
+export CCACHE_DIR=~/work/tool/ccache
 #export GDB=$GOOGLETVDIR/gitcorp_2/prebuilt/linux-x86_64/toolchain/arm-unknown-linux-gnueabi-4.5.3-glibc/bin/arm-unknown-linux-gnueabi-gdb
 export GDB=$GOOGLETVDIR/gitv4.0/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-gdb
 
@@ -197,10 +197,10 @@ alias makeotawithlog='$MAKEOTAWITHLOG_SH'
 alias gtv_reinstall='$GTV_REINSTALL_SH'
 alias do_all_at_once='$DO_ALL_AT_ONCE_SH'
 
-export kernel=${WORK_MOUNTED}/tool/adt-bundle-linux/sdk/system-images/android-17/armeabi-v7a/kernel-qemu
+export kernel=${WORK_MOUNTED}/work/tool/adt-bundle-linux/sdk/system-images/android-17/armeabi-v7a/kernel-qemu
 alias emulator.avd='emulator -kernel $kernel -system $OUT/system.img -datadir $OUT/userdata.img -ramdisk $OUT/ramdisk.img'
-export system_images=/home/kihwanl/tool/adt-bundle-linux/sdk/system-images/android-16/armeabi-v7a
-export system_images_org=/home/kihwanl/tool/adt-bundle-linux/sdk/system-images/android-16.org/armeabi-v7a
+export system_images=/home/kihwanl/work/tool/adt-bundle-linux/sdk/system-images/android-16/armeabi-v7a
+export system_images_org=/home/kihwanl/work/tool/adt-bundle-linux/sdk/system-images/android-16.org/armeabi-v7a
 alias cp.emulator='cp -ar $OUT/*.img $system_images'
 alias rb.emulator='cp -ar $system_images_org/*.img $system_images'
 alias cp.userdata='cp -ar $system_images_org/userdata.img $OUT'
@@ -285,7 +285,7 @@ alias cdlib='   cd ~/work/secureos/TEE/lib'
 alias cdusr='   cd ~/work/secureos/TEE/usr'
 alias cdwork='  cd ~/work'
 alias cddoc='   cd ~/doc'
-alias cdtool='  cd ~/tool'
+alias cdtool='  cd ~/work/tool'
 alias cdrt='    cd ~/ref/trustonic/SVN/Products'
 
 
@@ -439,23 +439,22 @@ alias elf.info.symbol='arm-none-linux-gnueabi-nm -l -S --size-sort'
 alias ssh.vdi='ssh root@192.168.1.149'
 
 alias genignore='basename $PWD >> .gitignore'
-#alias android-studio-working='~/tool/android-studio-2.2-working/bin/studio.sh &'
-#alias android-studio-2.2='~/tool/android-studio-2.2/bin/studio.sh &'
-alias android-studio-3.0='~/tool/android-studio-3.0.1/bin/studio.sh &'
-alias android-studio-3.2='~/tool/android-studio-3.2.0/bin/studio.sh &'
-alias android-studio-3.4='~/tool/android-studio-3.4/bin/studio.sh &'
-alias android-studio-3.5='~/tool/android-studio-3.5/bin/studio.sh &'
-alias android-studio-4.0='~/tool/android-studio-4.0/bin/studio.sh &'
+#alias android-studio-working='~/work/tool/android-studio-2.2-working/bin/studio.sh &'
+#alias android-studio-2.2='~/work/tool/android-studio-2.2/bin/studio.sh &'
+alias android-studio-3.0='~/work/tool/android-studio-3.0.1/bin/studio.sh &'
+alias android-studio-3.2='~/work/tool/android-studio-3.2.0/bin/studio.sh &'
+alias android-studio-3.4='~/work/tool/android-studio-3.4/bin/studio.sh &'
+alias android-studio-3.5='~/work/tool/android-studio-3.5/bin/studio.sh &'
+alias android-studio-4.0='~/work/tool/android-studio-4.0/bin/studio.sh &'
 alias android-studio-ilink='android-studio-new'
 alias android-studio-kidsphone='android-studio-3.0'
 
-alias android-studio-latest='~/tool/android-studio-4.0/bin/studio.sh &'
+alias android-studio-latest='~/work/tool/android-studio-4.0/bin/studio.sh &'
 
-#alias postman6='~/tool/Postman-v6/app/Postman &'
-alias postman7='~/tool/Postman-v7/app/Postman &'
+alias postman-latest='~/work/tool/Postman/app/Postman &'
 
-alias argouml='~/tool/argouml-0.34/argouml.sh &'
-alias argouml2='~/tool/argouml-0.34/argouml2.sh &'
+alias argouml='~/work/tool/argouml-0.34/argouml.sh &'
+alias argouml2='~/work/tool/argouml-0.34/argouml2.sh &'
 
 alias pconf.demo='adb shell imutil pconf ro.pconf.kidslink.url https://demo.kidslink.co.kr/1.0'
 alias pconf.filip='adb shell imutil pconf ro.pconf.kidslink.url https://joon-api.myfilip.com:443/1.0'

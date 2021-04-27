@@ -3,26 +3,26 @@
 # remove google3 JDK /usr/local/buildtools/java/jdk/bin from PATH on gLucid
 PATH=${PATH/\/usr\/local\/buildtools\/java\/jdk\/bin:/}
 
-PATH=$PATH:$envsetup
-PATH=$PATH:$envsetup:$envsetup/gtv
 PATH=/usr/local/bin:$PATH
+PATH=$PATH:$envsetup
+PATH=$PATH:$envsetup/scripts
 PATH=$PATH:/home/k/download/global/global
 PATH=$PATH:/home/k/download/global/gtags
 PATH=/works/studies/rtos/S5PC100/SRC/Linux/GCC/4.3.1-eabi-armv6/usr/bin:$PATH
 LD_LIBRARY_PATH=/works/studies/rtos/S5PC100/SRC/Linux/GCC/4.3.1-eabi-armv6/gmp/lib:/works/studies/rtos/S5PC100/SRC/Linux/GCC/4.3.1-eabi-armv6/mpfr/lib
 export PATH LD_LIBRARY_PATH
 
-pmd_bin=~/tool/pmd-bin-4.2.6/bin
+pmd_bin=~/work/tool/pmd-bin-4.2.6/bin
 if [[ "$pmd_bin" != "" ]]; then
     PATH=$pmd_bin:$PATH
 fi
 
-nsiqcppstyle_bin=~/tool/nsiqcppstyle_server_0.2.2.12
+nsiqcppstyle_bin=~/work/tool/nsiqcppstyle_server_0.2.2.12
 if [[ "$nsiqcppstyle_bin" != "" ]]; then
     PATH=$nsiqcppstyle_bin:$PATH
 fi
 
-nsiqcollector_bin=~/tool/nsiqcollector
+nsiqcollector_bin=~/work/tool/nsiqcollector
 if [[ "$nsiqcollector_bin" != "" ]]; then
     PATH=$nsiqcollector_bin:$PATH
 fi
@@ -37,62 +37,58 @@ if [[ "$t32_bin" != "" ]]; then
     PATH=$t32_bin:$PATH
 fi
 
-jdk8_bin=~/tool/jdk1.8.0_92/bin
+jdk8_bin=~/work/tool/jdk1.8.0_92/bin
 if [[ "$jdk8_bin" != "" ]]; then
     PATH=$jdk8_bin:$PATH
 fi
 
-#jdk_bin=~/tool/jdk1.6.0_45/bin
+#jdk_bin=~/work/tool/jdk1.6.0_45/bin
 #if [[ "$jdk_bin" != "" ]]; then
 #    PATH=$jdk_bin:$PATH
 #fi
 
-android_studio=~/tool/android-studio/bin
+android_studio=~/work/tool/android-studio/bin
 if [[ "$android_studio" != "" ]]; then
     PATH=$android_studio:$PATH
 fi
 
-android_bin=~/tool/android/bin
+android_bin=~/work/tool/android/bin
 if [[ "$android_bin" != "" ]]; then
     PATH=$android_bin:$PATH
 fi
 
 # adb, fastboot
-android_sdk_platform_tools=~/tool/adt-bundle-linux-x86_64-20140702/sdk/platform-tools
-if [[ "$android_sdk_platform_tools" != "" ]]; then
-    PATH=$android_sdk_platform_tools:$PATH
-fi
-android_sdk2_platform_tools=~/tool/adt-bundle-linux-x86_64-20140321/sdk/platform-tools
-if [[ "$android_sdk2_platform_tools" != "" ]]; then
-    PATH=$android_sdk2_platform_tools:$PATH
+android_platform_tools=~/work/tool/platform-tools
+if [[ "$android_platform_tools" != "" ]]; then
+    PATH=$android_platform_tools:$PATH
 fi
 
 # android
-android_sdk_tools=~/tool/adt-bundle-linux-x86_64-20140702/sdk/tools
+android_sdk_tools=~/work/tool/adt-bundle-linux-x86_64-20140702/sdk/tools
 if [[ "$android_sdk_tools" != "" ]]; then
     PATH=$android_sdk_tools:$PATH
 fi
-android_sdk2_tools=~/tool/adt-bundle-linux-x86_64-20140321/sdk/tools
+android_sdk2_tools=~/work/tool/adt-bundle-linux-x86_64-20140321/sdk/tools
 if [[ "$android_sdk2_tools" != "" ]]; then
     PATH=$android_sdk2_tools:$PATH
 fi
 
 # zipalign
-android_sdk_build_tools=~/tool/adt-bundle-linux-x86_64-20140702/sdk/build-tools/android-4.4W
+android_sdk_build_tools=~/work/tool/adt-bundle-linux-x86_64-20140702/sdk/build-tools/android-4.4W
 if [[ "$android_sdk_build_tools" != "" ]]; then
     PATH=$android_sdk_build_tools:$PATH
 fi
-android_sdk2_build_tools=~/tool/adt-bundle-linux-x86_64-20140321/sdk/build-tools/19.1.0
+android_sdk2_build_tools=~/work/tool/adt-bundle-linux-x86_64-20140321/sdk/build-tools/19.1.0
 if [[ "$android_sdk2_build_tools" != "" ]]; then
     PATH=$android_sdk2_build_tools:$PATH
 fi
 
-eclipse_bin=~/tool/adt-bundle-linux-x86_64-20140702/eclipse
+eclipse_bin=~/work/tool/adt-bundle-linux-x86_64-20140702/eclipse
 if [[ "$eclipse_bin" != "" ]]; then
     PATH=$PATH:$eclipse_bin
 fi
 
-argouml_path=~/tool/argouml-0.34
+argouml_path=~/work/tool/argouml-0.34
 if [[ "$argouml_path" != "" ]]; then
     PATH=$PATH:$argouml_path
 fi
@@ -102,7 +98,7 @@ if [[ "$ecos_path" != "" ]]; then
     PATH=$PATH:$ecos_path
 fi
 
-arm_eabi_path=~/tool/gcc/linux-x86/arm/arm-eabi-4.6/bin
+arm_eabi_path=~/work/tool/gcc/linux-x86/arm/arm-eabi-4.6/bin
 if [[ "$arm_eabi_path" != "" ]]; then
     PATH=$PATH:$arm_eabi_path
 fi
@@ -112,16 +108,16 @@ if [[ "$achro_gcc_path" != "" ]]; then
     PATH=$PATH:$achro_gcc_path
 fi
 
-arm_2009q3_path=~/tool/arm-2009q3/bin
+arm_2009q3_path=~/work/tool/arm-2009q3/bin
 if [[ "$arm_2009q3_path" != "" ]]; then
     PATH=$PATH:$arm_2009q3_path
 fi
 
-android_ndk_path=~/tool/android-ndk-r10
+android_ndk_path=~/work/tool/android-ndk-r10
 if [[ "$android_ndk_path" != "" ]]; then
     PATH=$PATH:$android_ndk_path
 fi
-android_ndk9_path=~/tool/android-ndk-r9d
+android_ndk9_path=~/work/tool/android-ndk-r9d
 if [[ "$android_ndk9_path" != "" ]]; then
     PATH=$PATH:$android_ndk9_path
 fi

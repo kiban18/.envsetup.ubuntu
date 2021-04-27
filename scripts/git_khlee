@@ -1,0 +1,6 @@
+#!/bin/bash
+
+git config --local user.name khlee
+git config --local user.email khlee@crazyupinc.com
+
+git config --list | grep user

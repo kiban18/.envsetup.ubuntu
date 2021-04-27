@@ -1,0 +1,6 @@
+#!/bin/bash
+
+git config --local user.name sungjin-hong
+git config --local user.email sjhong@crazyupinc.com
+
+git config --list | grep user
