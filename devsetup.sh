@@ -61,7 +61,7 @@ export DO_ALL_AT_ONCE_SH=$ENVSETUP/do_all_at_once.sh
 
 #export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 #export JAVA_HOME=~/work/tool/jdk1.6.0_45
-export JAVA_HOME=~/work/tool/jdk1.8.0_92
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/bin/java
 export ANDROID_JAVA_HOME=$JAVA_HOME
 #export WORKSPACE=$TOOL_MOUNTED/eclipse/workspace
 export ADT_BUNDLE=$TOOL_MOUNTED/adt-bundle-linux
@@ -467,5 +467,14 @@ alias cdinsole='cd ~/work/4ten/dw2/android/insole-android/'
 #`which s3fs` com.crazyupinc.share /home/khlee/s3/khlee -o allow_other -o use_cache=/tmp -o endpoint=ap-northeast-2
 
 alias repeat_git_pull='~/.envsetup.ubuntu/scripts/repeat_git_pull.sh 10'
+
+# for mediaizent
+alias ssh-callbell='echo pw: qqqq1234; ssh -p 2222 ubuntu@125.143.160.151'
+
+# for markt-clova-ext
+alias c='/work/source/markt/clova/markt-clova-cdms-curl/check.sh'
+alias s='/work/source/markt/clova/markt-clova-cdms-curl/status.sh'
+alias p='/work/source/markt/clova/markt-clova-cdms-curl/package.sh'
+alias cdkapp='adb shell cdkapp-som-test'
 
 echo "    ~/.envsetup.$OS/devsetup.sh sourced!!!"

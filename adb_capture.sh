@@ -20,4 +20,4 @@ adb $DEVICE_OPTION pull ${DEVICE_TEMP} ${LOCAL_OUTPUT}
 adb $DEVICE_OPTION shell rm ${DEVICE_TEMP}
 echo "Image captured to ${LOCAL_OUTPUT}"
 
-eog ${LOCAL_OUTPUT} &
+#eog ${LOCAL_OUTPUT} &

@@ -1,6 +1,9 @@
-:highlight LineNr term=NONE cterm=NONE ctermfg=LightGray ctermbg=DarkGray gui=NONE guifg=LightGray guibg=DarkGray
+":highlight LineNr term=NONE cterm=NONE ctermfg=LightGray ctermbg=DarkGray gui=NONE guifg=LightGray guibg=DarkGray
+":highlight LineNr term=NONE cterm=NONE ctermfg=LightGray ctermbg=DarkGray gui=NONE guifg=LightGray guibg=Black
 ":highlight LineNr term=bold cterm=NONE ctermfg=LightGray ctermbg=DarkGray gui=NONE guifg=LightGray guibg=DarkGray
-:highlight Normal term=NONE cterm=NONE ctermfg=LightGray ctermbg=DarkGray gui=NONE guifg=LightGray guibg=DarkGray
+"
+":highlight Normal term=NONE cterm=NONE ctermfg=LightGray ctermbg=DarkGray gui=NONE guifg=LightGray guibg=DarkGray
+":highlight Normal term=NONE cterm=NONE ctermfg=LightGray ctermbg=DarkGray gui=NONE guifg=LightGray guibg=Black
 ":highlight Normal term=bold cterm=NONE ctermfg=LightGray ctermbg=DarkGray gui=NONE guifg=LightGray guibg=DarkGray
 
 
@@ -509,30 +512,30 @@ cmap <S-Insert>   <C-R>+
 " Visual mode without the +virtualedit feature.  They are pasted as if they
 " were characterwise instead.  Add to that some tricks to leave the cursor in
 " the right position, also for "gi".
-if has("virtualedit")
-    let paste#paste_cmd = {'n': ":call paste#Paste()<CR>"}
-    let paste#paste_cmd['v'] = '"-c<Esc>' . paste#paste_cmd['n']
-    let paste#paste_cmd['i'] = 'x<BS><Esc>' . paste#paste_cmd['n'] . 'gi'
-
-    func! paste#Paste()
-        let ove = &ve
-        set ve=all
-        normal! `^
-        if @+ != ''
-            normal! "+gP
-        endif
-        let c = col(".")
-        normal! i
-        if col(".") < c " compensate for i<ESC> moving the cursor left
-            normal! l
-        endif
-        let &ve = ove
-    endfunc
-else
-    let paste#paste_cmd = {'n': "\"=@+.'xy'<CR>gPFx\"_2x"}
-    let paste#paste_cmd['v'] = '"-c<Esc>gix<Esc>' . paste#paste_cmd['n'] . '"_x'
-    let paste#paste_cmd['i'] = 'x<Esc>' . paste#paste_cmd['n'] . '"_s'
-endi
+" if has("virtualedit")
+"    let paste#paste_cmd = {'n': ":call paste#Paste()<CR>"}
+"    let paste#paste_cmd['v'] = '"-c<Esc>' . paste#paste_cmd['n']
+"    let paste#paste_cmd['i'] = 'x<BS><Esc>' . paste#paste_cmd['n'] . 'gi'
+"
+"    func! paste#Paste()
+"        let ove = &ve
+"        set ve=all
+"        normal! `^
+"        if @+ != ''
+"            normal! "+gP
+"        endif
+"        let c = col(".")
+"        normal! i
+"        if col(".") < c " compensate for i<ESC> moving the cursor left
+"            normal! l
+"        endif
+"        let &ve = ove
+"    endfunc
+"else
+"    let paste#paste_cmd = {'n': "\"=@+.'xy'<CR>gPFx\"_2x"}
+"    let paste#paste_cmd['v'] = '"-c<Esc>gix<Esc>' . paste#paste_cmd['n'] . '"_x'
+"    let paste#paste_cmd['i'] = 'x<Esc>' . paste#paste_cmd['n'] . '"_s'
+"endi
 
 fu! Num2Bin(var)
     let num=printf("%u", a:var)
@@ -1170,3 +1173,19 @@ let g:ycm_warning_symbol = '>'
 "    map <silent> <buffer> <CR> :call GitLog(GetHash())<CR>
 "    map <silent> <buffer> q :close<CR>
 "endfu
+
+map ,1 <ESC>gg :se nowrap<CR> :%s/ \\//g<CR> :g/-H/d<CR> :g/-compressed/d<CR> gg
+map ,2 <ESC>gg :g/\<fonts\>/d<CR>
+map ,3 <ESC>gg :g/\<css\>/d<CR>
+map ,4 <ESC>gg :g/\<js\>/d<CR>
+map ,5 <ESC>gg :g/\<png\>/d<CR>
+map ,6 <ESC>gg :g/\<gif\>/d<CR>
+map ,7 <ESC>gg :g/\<jpg\>/d<CR>
+map ,8 <ESC>gg :g/\<svg\>/d<CR>
+map ,9 <ESC>gg :g/\<json\>/d<CR>
+map ,0 <ESC>gg :g/\<manifest\>/d<CR>
+map ,q <ESC>gg :g/\<iframe_api\>/d<CR>
+map ,w <ESC>gg :g/\<media.file\>/d<CR>
+map ,e <ESC>gg :g/\<favicon\>/d<CR>
+map ,r <ESC>gg :g/\<p.h.main\>/d<CR>
+map  - <ESC>Jj

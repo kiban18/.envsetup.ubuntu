@@ -17,7 +17,9 @@ echo "VERSION: $VERSION"
 TAG_NAME=${PROJECT_NAME}_${BRANCH_NAME}_${VERSION}
 echo "TAG_NAME: $TAG_NAME"
 
-RELEASE_DIR=../../release
+#RELEASE_DIR=../../release
+RELEASE_DIR=../release
+echo "RELEASE_DIR: $TARGET_DIR/$RELEASE_DIR"
 
 echo ""
 echo "Below command will be used to tag:"
