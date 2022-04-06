@@ -61,7 +61,7 @@ export DO_ALL_AT_ONCE_SH=$ENVSETUP/do_all_at_once.sh
 
 #export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 #export JAVA_HOME=~/work/tool/jdk1.6.0_45
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/bin/java
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 export ANDROID_JAVA_HOME=$JAVA_HOME
 #export WORKSPACE=$TOOL_MOUNTED/eclipse/workspace
 export ADT_BUNDLE=$TOOL_MOUNTED/adt-bundle-linux

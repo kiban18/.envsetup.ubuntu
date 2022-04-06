@@ -127,6 +127,11 @@ if [[ "$openssl_path " != "" ]]; then
     PATH=$PATH:$openssl_path
 fi
 
+android_sdk_path=/work/Android/Sdk/tools/bin
+if [[ "$android_sdk_path" != "" ]]; then
+    PATH=$PATH:$android_sdk_path
+fi
+
 
 WHITE="\[\e[1;37m\]"
 GREEN="\[\e[0;32m\]"

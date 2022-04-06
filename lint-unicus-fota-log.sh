@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DATE=`date +%Y%m%d_%H%M%S`
+DATE=`date +%Y%m%d_%H%M`
 LINT_LOG=lint-unicus-fota-${DATE}.log
 
 time (lint-unicus-fota.sh | tee ${LINT_LOG})
