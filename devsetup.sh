@@ -477,4 +477,8 @@ alias s='/work/source/markt/clova/markt-clova-cdms-curl/status.sh'
 alias p='/work/source/markt/clova/markt-clova-cdms-curl/package.sh'
 alias cdkapp='adb shell cdkapp-som-test'
 
+export ANDROID_SDK_ROOT=/work/Android/Sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+
 echo "    ~/.envsetup.$OS/devsetup.sh sourced!!!"
