@@ -477,6 +477,20 @@ alias s='/work/source/markt/clova/markt-clova-cdms-curl/status.sh'
 alias p='/work/source/markt/clova/markt-clova-cdms-curl/package.sh'
 alias cdkapp='adb shell cdkapp-som-test'
 
+alias cdtktk='cd /work/source/theenm/tikitaka/theenm-tikitaka'
+
+alias cdunicus='cd /work/source/marklink/unicus/marklink-unicus'
+alias cdunicusmon='cd /work/source/marklink/unicus/marklink-unicus-android'
+alias cdunicusprov='cd /work/source/marklink/unicus/marklink-unicus-prov-android'
+
+alias cdclova='cd /work/source/markt/clova/markt-be'
+alias cdclovaapp='cd /work/source/markt/clova/markt-clova-android'
+
+alias cdias='cd /work/source/4ten/ias/4ten-ias'
+alias cdiasapp='cd /work/source/4ten/ias/4ten-ias-app-ext'
+
+alias cdnms='cd /work/source/dayou/nms/dayou-nms'
+
 export ANDROID_SDK_ROOT=/work/Android/Sdk
 export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
 export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
