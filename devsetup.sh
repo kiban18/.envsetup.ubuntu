@@ -480,8 +480,8 @@ alias cdkapp='adb shell cdkapp-som-test'
 alias cdtktk='cd /work/source/theenm/tikitaka/theenm-tikitaka'
 
 alias cdunicus='cd /work/source/marklink/unicus/marklink-unicus'
-alias cdunicusmon='cd /work/source/marklink/unicus/marklink-unicus-android'
-alias cdunicusprov='cd /work/source/marklink/unicus/marklink-unicus-prov-android'
+alias cdmon='cd /work/source/marklink/unicus/marklink-unicus-android'
+alias cdprov='cd /work/source/marklink/unicus/marklink-unicus-prov-android'
 
 alias cdclova='cd /work/source/markt/clova/markt-be'
 alias cdclovaapp='cd /work/source/markt/clova/markt-clova-android'
@@ -494,5 +494,7 @@ alias cdnms='cd /work/source/dayou/nms/dayou-nms'
 export ANDROID_SDK_ROOT=/work/Android/Sdk
 export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
 export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+
+alias buildiasapp='/home/khlee/work/source/4ten/ias/run_daily_all.sh'
 
 echo "    ~/.envsetup.$OS/devsetup.sh sourced!!!"
