@@ -497,7 +497,7 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 
 alias buildiasapp='/home/khlee/work/source/4ten/ias/run_daily_all.sh'
 
-alias medidemodatabase='server-mcasttv-change-to-database.sh'
-alias medidemostandalone='server-mcasttv-change-to-standalone.sh'
+alias medidemodatabase='server-mcasttv-change-to-database.sh; server-log-mcasttv.sh'
+alias medidemostandalone='server-mcasttv-change-to-standalone.sh; server-log-mcasttv.sh'
 
 echo "    ~/.envsetup.$OS/devsetup.sh sourced!!!"
