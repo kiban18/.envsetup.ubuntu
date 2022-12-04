@@ -500,4 +500,8 @@ alias buildiasapp='/home/khlee/work/source/4ten/ias/run_daily_all.sh'
 alias medidemodatabase='server-mcasttv-change-to-database.sh; server-log-mcasttv.sh'
 alias medidemostandalone='server-mcasttv-change-to-standalone.sh; server-log-mcasttv.sh'
 
+alias dockerstopall='docker stop $(docker ps -a -q)'
+alias dockerrmall='docker rm $(docker ps -a -q)'
+alias dockerrmiall='docker rmi $(docker images -q)'
+
 echo "    ~/.envsetup.$OS/devsetup.sh sourced!!!"

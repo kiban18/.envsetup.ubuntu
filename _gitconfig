@@ -37,3 +37,5 @@
 [user]
 	name = khlee
 	email = khlee@crazyupinc.com
+[pull]
+	rebase = false

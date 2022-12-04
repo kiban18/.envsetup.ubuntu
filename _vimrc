@@ -186,8 +186,16 @@ map <Insert> :r! sed -n ,p
 map <ESC><ESC><ESC> :q!<CR>
 "map <F2> v]}zf
 "map <F3> zo
-map <F2> <ESC>:%s/\({\)\(.*\)\("createdAt.*\)\(}\)/\1\3,\2\4/g<CR><ESC>:sort<CR><ESC>
-map <F3> <ESC>:g/mDate.":0,/d<CR><ESC>
+"map <F2> <ESC>:%s/\({\)\(.*\)\("createdAt.*\)\(}\)/\1\3,\2\4/g<CR><ESC>:sort<CR><ESC>
+"map <F3> <ESC>:g/mDate.":0,/d<CR><ESC>
+
+"========== quebon ==========
+map <F2> <ESC>:g!/class="title"/d<CR><ESC>
+map <F3> <ESC>:%s/^.*<div class="..*">//g<CR>:%s/<\/div>//g<CR><ESC>
+map <F4> <ESC>:w<CR><F12>
+"map <F4> <ESC>:%s/$/	/g<CR><ESC>gg
+"map <F5> <ESC>JJj<ESC>
+
 
 "map <F5> :Tlist<CR><C-W><C-W>
 "map <F5> :Tlist<CR>
@@ -198,8 +206,8 @@ map <F3> <ESC>:g/mDate.":0,/d<CR><ESC>
 "map <F6> <ESC>:%s/{/<C-K><C-K><C-M>{<C-K><C-K><C-M>/g<CR>
 "map <F7> <ESC>:%s/}/<C-K><C-K><C-M>}/g<CR>
 
-map <F5> <ESC>:g!/\<HISTORY\>/d<CR><ESC>:%s/^.*\[HISTORY\]/[HISTORY]/g<CR><ESC>gg/.*\(INSOLE\\|CHIP\).*<CR>gg<ESC>:w<CR>
-map <F6> <ESC>oHISTORY<ESC>:w<CR>
+"map <F5> <ESC>:g!/\<HISTORY\>/d<CR><ESC>:%s/^.*\[HISTORY\]/[HISTORY]/g<CR><ESC>gg/.*\(INSOLE\\|CHIP\).*<CR>gg<ESC>:w<CR>
+"map <F6> <ESC>oHISTORY<ESC>:w<CR>
 "map <F5> <ESC>:g!/\<REALTIME\>/d<CR><ESC>:%s/^.*\[REALTIME\]/[REALTIME]/g<CR><ESC>gg/.*\(INSOLE\\|CHIP\).*<CR>gg<ESC>:w<CR>
 "map <F6> <ESC>oREALTIME<ESC>:w<CR>
 "map <F5> <ESC>:g!/SENSOR_STATE/d<CR><ESC>:%s/^.*\[SENSOR_STATE\]/[SENSOR_STATE]/g<CR><ESC>gg/.*\(INSOLE\\|CHIP\).*<CR>gg<ESC>:w<CR>
