@@ -495,6 +495,9 @@ export ANDROID_SDK_ROOT=/work/Android/Sdk
 export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
 export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 
+# for YOLO v5
+export PATH=$PATH:/home/khlee/.local/bin
+
 alias buildiasapp='/home/khlee/work/source/4ten/ias/run_daily_all.sh'
 
 alias medidemodatabase='server-mcasttv-change-to-database.sh; server-log-mcasttv.sh'
