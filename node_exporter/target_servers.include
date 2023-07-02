@@ -1,0 +1,76 @@
+TARGET_SERVERS=(
+#### crazy-nodes #####################################
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:crazy-cougar-db" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:crazy-ias-server" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:crazy-mclova" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:crazy-mjv-dev" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:crazy-mjv-pre" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:crazy-nia-server" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:crazy-nms-server" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:crazy-onm-server" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:crazy-unicus" # aws
+
+#### clients-nodes #####################################
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:geo-mjv-server" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:geo-mjv-db" # aws
+
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:ias-ias-server" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:ias-ias-db" # aws
+
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:markt-mclova-server" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:markt-mclova-db" # aws
+
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:medi-mediv2-mchat" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:medi-mediv3" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:medi-mchat-db" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:medi-mcasttv" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:medi-mcast-db" # aws
+
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:ubi-onm-server" # aws, autoscaling
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:ubi-onm-db" # aws
+
+#### dayou-nodes #####################################
+# dayou-nms: 50/81/82
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:dayou-nms-server" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:dayou-nms-db" # aws
+
+# dayou-nia-aws: 50/81/82
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:dayou-nia-server" # aws
+# dayou-nia-idc: 30/61/62
+    "CPU_CRITERIA=30,MEM_CRITERIA=61,HDD_CRITERIA=62:dayou-idc-nia-server1" # on-prem, HA
+    "CPU_CRITERIA=30,MEM_CRITERIA=61,HDD_CRITERIA=62:dayou-idc-nia-server2" # on-prem, HA
+    "CPU_CRITERIA=30,MEM_CRITERIA=61,HDD_CRITERIA=62:dayou-idc-nia-db1" # on-prem, HA
+    "CPU_CRITERIA=30,MEM_CRITERIA=61,HDD_CRITERIA=62:dayou-idc-nia-db2" # on-prem, HA
+    "CPU_CRITERIA=30,MEM_CRITERIA=61,HDD_CRITERIA=62:dayou-idc-nia-db3" # on-prem, HA
+
+#### infomark-nodes #####################################
+# info-ifota: 50/81/82
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:info-ifota-api-server" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:info-ifota-statistics" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:info-ifota-arbitordb" # aws, HA
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:info-ifota-primarydb" # aws, HA
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:info-ifota-secondarydb" # aws, HA
+
+# info-onm: 50/81/82
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:info-onm-server" # aws, autoscaling
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:info-onm-db" # aws
+
+#### lsn-nodes #####################################
+# lsn-psfoot2: 50/81/82
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:lsn-psfoot-db" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:lsn-psfoot2-dev-server" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:lsn-psfoot2-dev-db" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:lsn-psfoot2-server" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:lsn-psfoot2-db" # aws
+# lsn-dw2: 50/81/82
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:lsn-api-server" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:lsn-db-arbiter" # aws, HA
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:lsn-db-primary" # aws, HA
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:lsn-db-secondary" # aws, HA
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:lsn-dw2-dbg" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:lsn-dw2-logger" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:lsn-oauth-server" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:lsn-odb-arbiter" # aws, HA
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:lsn-odb-primary" # aws, HA
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:lsn-odb-secondary" # aws, HA
+)

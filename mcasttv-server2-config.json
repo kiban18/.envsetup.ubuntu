@@ -1,0 +1,23 @@
+{
+    "apiServer": {
+        "qr": "medi.crazyupinc.com",
+        "ip": "15.165.6.65"
+    },
+    "dbOptions": {
+        "port": 27017,
+        "url": "mongodb://mcasttv.primary.db:27017/mcasttv",
+        "database": "mcasttv"
+    },
+    "ext_servers": {
+        "portingServer": {
+            "uri": "http://221.145.28.207:8088/MedicalKit",
+            "uri-jahyang": "http://221.145.28.207:8081/MedicalKit"
+        }
+    },
+    "nurseAccount": {
+        "userId": "medieye",
+        "passwd": "Medi123!@#"
+    },
+    "patient_standalone": "Y",
+    "command": "wrb_conf_set"
+}

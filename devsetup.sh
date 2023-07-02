@@ -448,7 +448,7 @@ alias android-studio-3.5='~/work/tool/android-studio-3.5/bin/studio.sh &'
 alias android-studio-4.0='~/work/tool/android-studio-4.0/bin/studio.sh &'
 alias android-studio-ilink='android-studio-new'
 alias android-studio-kidsphone='android-studio-3.0'
-
+alias android-studio-hedgehog='/work/tool/android-studio-hedgehog-2023.1.1.4-linux/android-studio/bin/studio.sh &'
 alias android-studio-latest='~/work/tool/android-studio-4.0/bin/studio.sh &'
 
 alias postman-latest='~/work/tool/Postman/app/Postman &'
@@ -490,6 +490,15 @@ alias cdias='cd /work/source/4ten/ias/4ten-ias'
 alias cdiasapp='cd /work/source/4ten/ias/4ten-ias-app-ext'
 
 alias cdnms='cd /work/source/dayou/nms/dayou-nms'
+
+alias cdcrawler='cd /work/source/crazyup/staff/crawler'
+alias wishket='/home/khlee/work/source/crazyup/staff/crawler/run_projects_all.sh'
+alias viunwanted_project_urls='vim /work/source/crazyup/staff/crawler/unwanted_project_urls.txt'
+
+alias vitarget_servewrs='vim /home/khlee/.envsetup.ubuntu/node_exporter/target_servers.include'
+alias healthchecker='/home/khlee/.envsetup.ubuntu/node_exporter/healthchecker.sh'
+
+alias jupyter_notebook='jupyter notebook'
 
 export ANDROID_SDK_ROOT=/work/Android/Sdk
 export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
