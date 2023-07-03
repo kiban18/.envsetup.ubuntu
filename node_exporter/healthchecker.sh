@@ -104,6 +104,8 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
     if (( cpu_comparison == 1 )); then
         console_message="$console_message\n\e[31m[C-NG] ===========>\e[0m $cpu_lines"
         email_message="$email_message\n[C-NG] ===========> $cpu_lines"
+        email_message="$email_message\n  • 조치사항1: TODO; top -o CPU"
+        email_message="$email_message\n  • 조치사항2: TODO"
     else
         console_message="$console_message\n\e[32m[C-OK]\e[0m $cpu_lines"
         email_message="$email_message\n[C-OK] $cpu_lines"
@@ -113,6 +115,8 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
     if (( mem_comparison == 1 )); then
         console_message="$console_message\n\e[31m[M-NG] ===========>\e[0m $mem_lines"
         email_message="$email_message\n[M-NG] ===========> $mem_lines"
+        email_message="$email_message\n  • 조치사항1: TODO; top -o MEM"
+        email_message="$email_message\n  • 조치사항2: TODO"
     else
         console_message="$console_message\n\e[32m[M-OK]\e[0m $mem_lines"
         email_message="$email_message\n[M-OK] $mem_lines"
