@@ -16,7 +16,7 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
         IFS="=" read -r -a CRITERION <<<"$item"
         key=${CRITERION[0]}
         value=${CRITERION[1]}
-        declare "$key=$value"
+        declare $key=$(expr "$value" + 0) # "01"을 "1"과 같은 형태로 변환
     done
 
     ### Node Exporter의 출력을 저장, 실패시 메일 발송
@@ -42,8 +42,8 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
     cpu_usage_percentage_temp=$(echo "scale=2; 100 * $cpu_load1 / $cpu_count" | bc -l)
     cpu_usage_percentage=$(printf "%.0f" "$cpu_usage_percentage_temp")
     cpu_message=(
-        "CPU $cpu_usage_percentage% for $server_name"
-        "\n  • 현재 CPU: $cpu_usage_percentage% (초과기준: $CPU_CRITERIA%)"
+        "$server_name 의 CPU 지표"
+        "\n  • CPU $cpu_usage_percentage% of $CPU_CRITERIA%(초과기준)"
     )
     cpu_lines=""
     for line in "${cpu_message[@]}"; do
@@ -64,9 +64,9 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
     mem_usage_percentage_temp=$(echo "scale=2; ($mem_used_gb / $mem_total_gb) * 100" | bc -l)
     mem_usage_percentage=$(printf "%.0f" "$mem_usage_percentage_temp")
     mem_message=(
-        "MEM $mem_usage_percentage% for $server_name"
-        "\n  • 현재 MEM: $mem_usage_percentage% (초과기준: $MEM_CRITERIA%)"
-        "\n  • 현재 MEM / 전체 MEM: $(printf "%.1f" "${mem_used_gb}")GB / $(printf "%.1f" "${mem_total_gb}")GB"
+        "$server_name 의 메모리 지표"
+        "\n  • MEM $mem_usage_percentage% of $MEM_CRITERIA%(초과기준)"
+        "\n  • 현재/전체: $(printf "%.1f" "${mem_used_gb}")GB / $(printf "%.1f" "${mem_total_gb}")GB"
     )
     mem_lines=""
     for line in "${mem_message[@]}"; do
@@ -87,9 +87,9 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
     hdd_usage_percentage_temp=$(echo "scale=2; ($hdd_used_gb / $hdd_total_gb) * 100" | bc -l)
     hdd_usage_percentage=$(printf "%.0f" "$hdd_usage_percentage_temp")
     hdd_message=(
-        "HDD $hdd_usage_percentage% for $server_name"
-        "\n  • 현재 HDD: $hdd_usage_percentage% (초과기준:$HDD_CRITERIA%)"
-        "\n  • 현재 HDD / 전체 HDD: $(printf "%.1f" "${hdd_used_gb}")GB / $(printf "%.1f" "${hdd_total_gb}")GB"
+        "$server_name 의 저장공간 지표"
+        "\n  • HDD $hdd_usage_percentage% of $HDD_CRITERIA%(초과기준)"
+        "\n  • 현재/전체: $(printf "%.1f" "${hdd_used_gb}")GB / $(printf "%.1f" "${hdd_total_gb}")GB"
     )
     hdd_lines=""
     for line in "${hdd_message[@]}"; do
@@ -102,30 +102,31 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
 
     cpu_comparison=$(echo "$cpu_usage_percentage >= $CPU_CRITERIA" | bc)
     if (( cpu_comparison == 1 )); then
-        console_message="$console_message\n\e[31m[C초과]\e[0m  $cpu_lines"
-        email_message="$email_message\n[C초과] ===========> $cpu_lines"
+        console_message="$console_message\n\e[31m[C-NG] ===========>\e[0m $cpu_lines"
+        email_message="$email_message\n[C-NG] ===========> $cpu_lines"
     else
-        console_message="$console_message\n\e[32m[C정상]\e[0m  $cpu_lines"
-        email_message="$email_message\n[C정상] $cpu_lines"
+        console_message="$console_message\n\e[32m[C-OK]\e[0m $cpu_lines"
+        email_message="$email_message\n[C-OK] $cpu_lines"
     fi
 
     mem_comparison=$(echo "$mem_usage_percentage >= $MEM_CRITERIA" | bc)
     if (( mem_comparison == 1 )); then
-        console_message="$console_message\n\e[31m[M초과]\e[0m  $mem_lines"
-        email_message="$email_message\n[M초과] ===========> $mem_lines"
+        console_message="$console_message\n\e[31m[M-NG] ===========>\e[0m $mem_lines"
+        email_message="$email_message\n[M-NG] ===========> $mem_lines"
     else
-        console_message="$console_message\n\e[32m[M정상]\e[0m  $mem_lines"
-        email_message="$email_message\n[M정상] $mem_lines"
+        console_message="$console_message\n\e[32m[M-OK]\e[0m $mem_lines"
+        email_message="$email_message\n[M-OK] $mem_lines"
     fi
 
     hdd_comparison=$(echo "$hdd_usage_percentage >= $HDD_CRITERIA" | bc)
     if (( hdd_comparison == 1 )); then
-        console_message="$console_message\n\e[31m[H초과]\e[0m  $hdd_lines"
-        email_message="$email_message\n[H초과] ===========> $hdd_lines"
+        console_message="$console_message\n\e[31m[H-NG] ===========>\e[0m $hdd_lines"
+        email_message="$email_message\n[H-NG] ===========> $hdd_lines"
         email_message="$email_message\n  • 조치사항1: sudo apt autoremove --purge -y; sudo apt clean; df -h"
+        email_message="$email_message\n  • 조치사항2: TODO; df -h"
     else
-        console_message="$console_message\n\e[32m[H정상]\e[0m  $hdd_lines"
-        email_message="$email_message\n[H정상] $hdd_lines"
+        console_message="$console_message\n\e[32m[H-OK]\e[0m $hdd_lines"
+        email_message="$email_message\n[H-OK] $hdd_lines"
     fi
 
     #############################################################################################
