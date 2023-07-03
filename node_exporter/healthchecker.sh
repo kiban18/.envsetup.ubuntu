@@ -39,7 +39,8 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
     cpu_count=`echo "$node_exporter_output" | grep "^node_cpu_seconds_total" | grep "system" | wc -l`
     #node_load1 0
     cpu_load1=`echo "$node_exporter_output" | grep "^node_load1 " | awk '{print $2}'`
-    cpu_usage_percentage=$(echo "scale=0; 100 * $cpu_load1 / $cpu_count" | bc -l)
+    cpu_usage_percentage_temp=$(echo "scale=2; 100 * $cpu_load1 / $cpu_count" | bc -l)
+    cpu_usage_percentage=$(printf "%.0f" "$cpu_usage_percentage_temp")
     cpu_message=(
         "CPU $cpu_usage_percentage% for $server_name"
         "\n  • 현재 CPU: $cpu_usage_percentage% (초과기준: $CPU_CRITERIA%)"
@@ -60,7 +61,8 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
     mem_avail_gb=$(echo "scale=2; $mem_avail_bytes / 1024 / 1024 / 1024" | bc -l)
     ### 사용률 계산 (소수 두자리까지 출력)
     mem_used_gb=$(echo "scale=2; $mem_total_gb - $mem_avail_gb" | bc -l)
-    mem_usage_percentage=$(echo "scale=0; ($mem_used_gb / $mem_total_gb) * 100" | bc -l)
+    mem_usage_percentage_temp=$(echo "scale=2; ($mem_used_gb / $mem_total_gb) * 100" | bc -l)
+    mem_usage_percentage=$(printf "%.0f" "$mem_usage_percentage_temp")
     mem_message=(
         "MEM $mem_usage_percentage% for $server_name"
         "\n  • 현재 MEM: $mem_usage_percentage% (초과기준: $MEM_CRITERIA%)"
@@ -82,7 +84,8 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
     hdd_free_gb=$(echo "scale=2; $hdd_free_bytes / 1024 / 1024 / 1024" | bc -l)
     ### 사용량 계산 (소수 두자리까지 출력)
     hdd_used_gb=$(echo "scale=2; $hdd_total_gb - $hdd_free_gb" | bc -l)
-    hdd_usage_percentage=$(echo "scale=0; ($hdd_used_gb / $hdd_total_gb) * 100" | bc -l)
+    hdd_usage_percentage_temp=$(echo "scale=2; ($hdd_used_gb / $hdd_total_gb) * 100" | bc -l)
+    hdd_usage_percentage=$(printf "%.0f" "$hdd_usage_percentage_temp")
     hdd_message=(
         "HDD $hdd_usage_percentage% for $server_name"
         "\n  • 현재 HDD: $hdd_usage_percentage% (초과기준:$HDD_CRITERIA%)"
