@@ -495,7 +495,7 @@ alias cdcrawler='cd /work/source/crazyup/staff/crawler'
 alias wishket='/home/khlee/work/source/crazyup/staff/crawler/run_projects_all.sh'
 alias viunwanted_project_urls='vim /work/source/crazyup/staff/crawler/unwanted_project_urls.txt'
 
-alias vitarget_servewrs='vim /home/khlee/.envsetup.ubuntu/node_exporter/target_servers.include'
+alias vitarget_servers='vim /home/khlee/.envsetup.ubuntu/node_exporter/target_servers.include'
 alias vihealthchecker='vim /home/khlee/.envsetup.ubuntu/node_exporter/healthchecker.sh'
 alias healthchecker='/home/khlee/.envsetup.ubuntu/node_exporter/healthchecker.sh'
 

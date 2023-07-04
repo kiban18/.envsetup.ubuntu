@@ -110,9 +110,12 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
     cpu_comparison=$(echo "$cpu_usage_percentage >= $CPU_CRITERIA" | bc)
     if (( cpu_comparison == 1 )); then
         console_message="$console_message\n\e[31m[C-경고] ===========>\e[0m $cpu_lines"
-        email_message="$email_message\n[C-경고] ===========> $cpu_lines"
-        email_message="$email_message\n  •••••••••• 조치사항1: TODO; top -o CPU"
-        email_message="$email_message\n  •••••••••• 조치사항2: TODO"
+        html_lines=$cpu_lines
+        html_lines="[C-경고] ===========> $html_lines"
+        html_lines="$html_lines\n  •••••••••• 조치사항 제안1: TODO; top -o CPU"
+        html_lines="$html_lines\n  •••••••••• 조치사항 제안2: TODO"
+        html_lines="<font color=red>\n$html_lines\n</font>"
+        email_message="$email_message\n$html_lines"
     else
         console_message="$console_message\n\e[32m[C-정상]\e[0m $cpu_lines"
         email_message="$email_message\n[C-정상] $cpu_lines"
@@ -121,9 +124,12 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
     mem_comparison=$(echo "$mem_usage_percentage >= $MEM_CRITERIA" | bc)
     if (( mem_comparison == 1 )); then
         console_message="$console_message\n\e[31m[M-경고] ===========>\e[0m $mem_lines"
-        email_message="$email_message\n[M-경고] ===========> $mem_lines"
-        email_message="$email_message\n  •••••••••• 조치사항1: TODO; top -o MEM"
-        email_message="$email_message\n  •••••••••• 조치사항2: TODO"
+        html_lines=$mem_lines
+        html_lines="[M-경고] ===========> $html_lines"
+        html_lines="$html_lines\n  •••••••••• 조치사항 제안1: TODO; top -o MEM"
+        html_lines="$html_lines\n  •••••••••• 조치사항 제안2: TODO"
+        html_lines="<font color=red>\n$html_lines\n</font>"
+        email_message="$email_message\n$html_lines"
     else
         console_message="$console_message\n\e[32m[M-정상]\e[0m $mem_lines"
         email_message="$email_message\n[M-정상] $mem_lines"
@@ -131,17 +137,21 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
 
     hdd_comparison=$(echo "$hdd_usage_percentage >= $HDD_CRITERIA" | bc)
     if (( hdd_comparison == 1 )); then
-        console_message="$console_message\n\e[31m[H-경고] ===========>\e[0m $hdd_lines"
-        email_message="$email_message\n[H-경고] ===========> $hdd_lines"
-        email_message="$email_message\n  •••••••••• 조치사항1: sudo apt autoremove --purge -y; sudo apt clean; df -h"
-        email_message="$email_message\n  •••••••••• 조치사항2: TODO; df -h"
+        html_lines=$hdd_lines
+        html_lines="[H-경고] ===========> $html_lines"
+        html_lines="$html_lines\n  •••••••••• 조치사항 제안1: sudo apt autoremove --purge -y; sudo apt clean; df -h"
+        html_lines="$html_lines\n  •••••••••• 조치사항 제안2: TODO"
+        html_lines="<font color=red>\n$html_lines\n</font>"
+        email_message="$email_message\n$html_lines"
     else
         console_message="$console_message\n\e[32m[H-정상]\e[0m $hdd_lines"
         email_message="$email_message\n[H-정상] $hdd_lines"
     fi
 
+    email_message=$(echo "$email_message" | sed 's/\\n/<br>/g' | sed 's/  /\&nbsp;\&nbsp;/g')
     #############################################################################################
     echo -e "$console_message"
+    echo "$email_message"
     if ((hdd_comparison == 1)) || ((mem_comparison == 1)) || ((cpu_comparison == 1)); then
         title="[경고] $cpu_usage_percentage/$mem_usage_percentage/$hdd_usage_percentage for $server_name"
         send_email "$title" "$email_message"
