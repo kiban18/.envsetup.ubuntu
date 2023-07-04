@@ -112,9 +112,9 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
 
     cpu_comparison=$(echo "$cpu_usage_percentage >= $CPU_CRITERIA" | bc)
     if (( cpu_comparison == 1 )); then
-        console_message="$console_message\n\e[31m[C-경고] ===========>\e[0m $cpu_lines"
+        console_message="$console_message\n\e[31m[C-경고]\e[0m $cpu_lines"
         html_lines=$cpu_lines
-        html_lines="[C-경고] ===========> $html_lines"
+        html_lines="[C-경고] $html_lines"
         html_lines="$html_lines\n    •• 조치사항 제안1: TODO; top -o %CPU"
         html_lines="$html_lines\n    •• 조치사항 제안2: TODO"
         html_lines="<font color=red>\n$html_lines\n</font>"
@@ -127,9 +127,9 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
 
     mem_comparison=$(echo "$mem_usage_percentage >= $MEM_CRITERIA" | bc)
     if (( mem_comparison == 1 )); then
-        console_message="$console_message\n\e[31m[M-경고] ===========>\e[0m $mem_lines"
+        console_message="$console_message\n\e[31m[M-경고]\e[0m $mem_lines"
         html_lines=$mem_lines
-        html_lines="[M-경고] ===========> $html_lines"
+        html_lines="[M-경고] $html_lines"
         html_lines="$html_lines\n    •• 조치사항 제안1: TODO; top -o %MEM"
         html_lines="$html_lines\n    •• 조치사항 제안2: TODO"
         html_lines="<font color=red>\n$html_lines\n</font>"
@@ -142,8 +142,9 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
 
     hdd_comparison=$(echo "$hdd_usage_percentage >= $HDD_CRITERIA" | bc)
     if (( hdd_comparison == 1 )); then
+        console_message="$console_message\n\e[31m[H-경고]\e[0m $hdd_lines"
         html_lines=$hdd_lines
-        html_lines="[H-경고] ===========> $html_lines"
+        html_lines="[H-경고] $html_lines"
         html_lines="$html_lines\n    •• 조치사항 제안1: sudo apt autoremove --purge -y; sudo apt clean; df -h"
         html_lines="$html_lines\n    •• 조치사항 제안2: sudo journalctl --vacuum-time=7d"
         html_lines="$html_lines\n    •• 조치사항 제안3: sudo tmpreaper . --showdeleted --test -a 7d"
