@@ -32,12 +32,14 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
 
     if [[ $result -ne 0 ]]; then
         echo "$server_name 서버로의 접속에 실패하였습니다. (에러코드: $result)"
-        title="[오류] E:$result for $server_name"
-        message="$server_name 서버로의 접속에 실패하였습니다."
-        message="$message\n  • 접속URL: http://$server_name:9100/metrics"
-        message="$message\n  • CLI명령: curl $server_name:9100/metrics"
-        message="$message\n  • 에러코드: $result"
-        send_email "$title" "$message"
+        email_title="[접속오류] E:$result for $server_name"
+        email_message="$server_name 서버로의 접속에 실패하였습니다."
+        email_message="$email_message\n  • 접속URL: http://$server_name:9100/metrics"
+        email_message="$email_message\n  • CLI명령: curl $server_name:9100/metrics"
+        email_message="$email_message\n  • 에러코드: $result"
+        email_message="<font color=red>\n$email_message\n</font>"
+        email_message=$(echo "$email_message" | sed 's/\\n/<br>/g' | sed 's/  /\&nbsp;\&nbsp;/g')
+        send_email "$email_title" "$email_message"
         continue
     fi
 
@@ -106,16 +108,18 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
     #############################################################################################
     console_message=""
     email_message=""
+    email_prefix=""
 
     cpu_comparison=$(echo "$cpu_usage_percentage >= $CPU_CRITERIA" | bc)
     if (( cpu_comparison == 1 )); then
         console_message="$console_message\n\e[31m[C-경고] ===========>\e[0m $cpu_lines"
         html_lines=$cpu_lines
         html_lines="[C-경고] ===========> $html_lines"
-        html_lines="$html_lines\n  •••••••••• 조치사항 제안1: TODO; top -o CPU"
-        html_lines="$html_lines\n  •••••••••• 조치사항 제안2: TODO"
+        html_lines="$html_lines\n    •• 조치사항 제안1: TODO; top -o %CPU"
+        html_lines="$html_lines\n    •• 조치사항 제안2: TODO"
         html_lines="<font color=red>\n$html_lines\n</font>"
         email_message="$email_message\n$html_lines"
+        email_prefix="[CPU-경고] $email_prefix"
     else
         console_message="$console_message\n\e[32m[C-정상]\e[0m $cpu_lines"
         email_message="$email_message\n[C-정상] $cpu_lines"
@@ -126,10 +130,11 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
         console_message="$console_message\n\e[31m[M-경고] ===========>\e[0m $mem_lines"
         html_lines=$mem_lines
         html_lines="[M-경고] ===========> $html_lines"
-        html_lines="$html_lines\n  •••••••••• 조치사항 제안1: TODO; top -o MEM"
-        html_lines="$html_lines\n  •••••••••• 조치사항 제안2: TODO"
+        html_lines="$html_lines\n    •• 조치사항 제안1: TODO; top -o %MEM"
+        html_lines="$html_lines\n    •• 조치사항 제안2: TODO"
         html_lines="<font color=red>\n$html_lines\n</font>"
         email_message="$email_message\n$html_lines"
+        email_prefix="[메모리-경고] $email_prefix"
     else
         console_message="$console_message\n\e[32m[M-정상]\e[0m $mem_lines"
         email_message="$email_message\n[M-정상] $mem_lines"
@@ -139,22 +144,30 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
     if (( hdd_comparison == 1 )); then
         html_lines=$hdd_lines
         html_lines="[H-경고] ===========> $html_lines"
-        html_lines="$html_lines\n  •••••••••• 조치사항 제안1: sudo apt autoremove --purge -y; sudo apt clean; df -h"
-        html_lines="$html_lines\n  •••••••••• 조치사항 제안2: TODO"
+        html_lines="$html_lines\n    •• 조치사항 제안1: sudo apt autoremove --purge -y; sudo apt clean; df -h"
+        html_lines="$html_lines\n    •• 조치사항 제안2: sudo journalctl --vacuum-time=7d"
+        html_lines="$html_lines\n    •• 조치사항 제안3: sudo tmpreaper . --showdeleted --test -a 7d"
+        html_lines="$html_lines\n    •• 조치사항 제안4: sudo du . -ch --max-depth=1 | sort -h"
+        html_lines="$html_lines\n    •• 조치사항 제안4-1: sudo du / -ch --max-depth=1 | sort -h"
+        html_lines="$html_lines\n    •• 조치사항 제안4-2: sudo du /var -ch --max-depth=1 | sort -h"
+        html_lines="$html_lines\n    •• 조치사항 제안4-3: sudo du /usr -ch --max-depth=1 | sort -h"
+        html_lines="$html_lines\n    •• 조치사항 참조1: https://crazyup.monday.com/boards/2598569650/pulses/4468217373"
+        html_lines="$html_lines\n    •• 조치사항 참조2: https://docs.google.com/document/d/1y1KzKRkCl41b7cHTADjO1A0p1ocipNayQoNUmbuD1AA"
         html_lines="<font color=red>\n$html_lines\n</font>"
         email_message="$email_message\n$html_lines"
+        email_prefix="[저장공간-경고] $email_prefix"
     else
         console_message="$console_message\n\e[32m[H-정상]\e[0m $hdd_lines"
         email_message="$email_message\n[H-정상] $hdd_lines"
     fi
 
     email_message=$(echo "$email_message" | sed 's/\\n/<br>/g' | sed 's/  /\&nbsp;\&nbsp;/g')
+    email_title="$email_prefix $cpu_usage_percentage/$mem_usage_percentage/$hdd_usage_percentage for $server_name"
     #############################################################################################
     echo -e "$console_message"
-    echo "$email_message"
+#    echo "$email_message"
     if ((hdd_comparison == 1)) || ((mem_comparison == 1)) || ((cpu_comparison == 1)); then
-        title="[경고] $cpu_usage_percentage/$mem_usage_percentage/$hdd_usage_percentage for $server_name"
-        send_email "$title" "$email_message"
+        send_email "$email_title" "$email_message"
     fi
 done
 echo
