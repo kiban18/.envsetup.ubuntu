@@ -1,5 +1,7 @@
 #!/bin/bash
 
+FILTER=$1
+
 ### functions
 # send_email $title $message
 source /home/khlee/.env
@@ -11,6 +13,11 @@ source /home/khlee/.envsetup.ubuntu/node_exporter/target_servers.include
 for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
     IFS=":" read -r CRITERIA server_name <<<"$TARGET_SERVER"
     IFS="," read -r -a CRITERIA_ARRAY <<<"$CRITERIA"
+
+    # FILTER가 있을 경우 FILTER와 일치하면 실행
+    if [[ -n "$FILTER" && "$server_name" != *"$FILTER"* ]]; then
+        continue
+    fi
 
     for item in "${CRITERIA_ARRAY[@]}"; do
         IFS="=" read -r -a CRITERION <<<"$item"
@@ -102,35 +109,35 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
 
     cpu_comparison=$(echo "$cpu_usage_percentage >= $CPU_CRITERIA" | bc)
     if (( cpu_comparison == 1 )); then
-        console_message="$console_message\n\e[31m[C-NG] ===========>\e[0m $cpu_lines"
-        email_message="$email_message\n[C-NG] ===========> $cpu_lines"
-        email_message="$email_message\n  • 조치사항1: TODO; top -o CPU"
-        email_message="$email_message\n  • 조치사항2: TODO"
+        console_message="$console_message\n\e[31m[C-경고] ===========>\e[0m $cpu_lines"
+        email_message="$email_message\n[C-경고] ===========> $cpu_lines"
+        email_message="$email_message\n  •••••••••• 조치사항1: TODO; top -o CPU"
+        email_message="$email_message\n  •••••••••• 조치사항2: TODO"
     else
-        console_message="$console_message\n\e[32m[C-OK]\e[0m $cpu_lines"
-        email_message="$email_message\n[C-OK] $cpu_lines"
+        console_message="$console_message\n\e[32m[C-정상]\e[0m $cpu_lines"
+        email_message="$email_message\n[C-정상] $cpu_lines"
     fi
 
     mem_comparison=$(echo "$mem_usage_percentage >= $MEM_CRITERIA" | bc)
     if (( mem_comparison == 1 )); then
-        console_message="$console_message\n\e[31m[M-NG] ===========>\e[0m $mem_lines"
-        email_message="$email_message\n[M-NG] ===========> $mem_lines"
-        email_message="$email_message\n  • 조치사항1: TODO; top -o MEM"
-        email_message="$email_message\n  • 조치사항2: TODO"
+        console_message="$console_message\n\e[31m[M-경고] ===========>\e[0m $mem_lines"
+        email_message="$email_message\n[M-경고] ===========> $mem_lines"
+        email_message="$email_message\n  •••••••••• 조치사항1: TODO; top -o MEM"
+        email_message="$email_message\n  •••••••••• 조치사항2: TODO"
     else
-        console_message="$console_message\n\e[32m[M-OK]\e[0m $mem_lines"
-        email_message="$email_message\n[M-OK] $mem_lines"
+        console_message="$console_message\n\e[32m[M-정상]\e[0m $mem_lines"
+        email_message="$email_message\n[M-정상] $mem_lines"
     fi
 
     hdd_comparison=$(echo "$hdd_usage_percentage >= $HDD_CRITERIA" | bc)
     if (( hdd_comparison == 1 )); then
-        console_message="$console_message\n\e[31m[H-NG] ===========>\e[0m $hdd_lines"
-        email_message="$email_message\n[H-NG] ===========> $hdd_lines"
-        email_message="$email_message\n  • 조치사항1: sudo apt autoremove --purge -y; sudo apt clean; df -h"
-        email_message="$email_message\n  • 조치사항2: TODO; df -h"
+        console_message="$console_message\n\e[31m[H-경고] ===========>\e[0m $hdd_lines"
+        email_message="$email_message\n[H-경고] ===========> $hdd_lines"
+        email_message="$email_message\n  •••••••••• 조치사항1: sudo apt autoremove --purge -y; sudo apt clean; df -h"
+        email_message="$email_message\n  •••••••••• 조치사항2: TODO; df -h"
     else
-        console_message="$console_message\n\e[32m[H-OK]\e[0m $hdd_lines"
-        email_message="$email_message\n[H-OK] $hdd_lines"
+        console_message="$console_message\n\e[32m[H-정상]\e[0m $hdd_lines"
+        email_message="$email_message\n[H-정상] $hdd_lines"
     fi
 
     #############################################################################################

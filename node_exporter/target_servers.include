@@ -44,6 +44,26 @@ TARGET_SERVERS=(
     "CPU_CRITERIA=30,MEM_CRITERIA=61,HDD_CRITERIA=62:dayou-idc-nia-db3" # on-prem, HA
 
 #### infomark-nodes #####################################
+# info-kids: 50/81/82
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:info-kids-back-pcbeta-db-arbiter" # aws
+#    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:info-kids-pcbeta-db-arbiter" # aws #TODO #Permission denied (publickey).
+#    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:info-kids-pcbeta-db-primary" # aws #TODO #Permission denied (publickey).
+#    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:info-kids-pcbeta-db-secondary" # aws #TODO #Permission denied (publickey).
+#    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:info-kids-pcbeta-server-auto" # aws #TODO #Permission denied (publickey).
+#    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:info-kids-pepcall-db-arbiter" # aws #TODO #Permission denied (publickey).
+#    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:info-kids-pepcall-db-primary" # aws #TODO #Permission denied (publickey).
+#    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:info-kids-pepcall-db-secondary" # aws #TODO #Permission denied (publickey).
+#    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:info-kids-pepcall-server-auto" # aws #TODO #Permission denied (publickey).
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:info-kids-pepcall-fota2-server" # aws
+#    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:info-kids-pepcall-logger" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:info-kids-pepcall-skill" # aws #설치완료
+#    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:info-kids-pepcall-wp-backend" # aws #TODO #Permission denied (publickey).
+#    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:info-kids-tcpepcall-server" # aws #TODO #Permission denied (publickey).
+#    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:info-kids-tcpepcall-db-arbiter" # aws #TODO #설치실패
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:info-kids-tcpepcall-db-primary" # aws
+    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:info-kids-tcpepcall-db-secondary" # aws
+#    "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:info-kids-tcpepcall-web-server" # aws #TODO #설치실패
+
 # info-ifota: 50/81/82
     "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:info-ifota-api-server" # aws
     "CPU_CRITERIA=50,MEM_CRITERIA=81,HDD_CRITERIA=82:info-ifota-statistics" # aws
