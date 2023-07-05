@@ -23,7 +23,8 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
         IFS="=" read -r -a CRITERION <<<"$item"
         key=${CRITERION[0]}
         value=${CRITERION[1]}
-        declare $key=$(expr "$value" + 0) # "01"을 "1"과 같은 형태로 변환
+        #declare $key=$(expr "$value" + 0) # "01"을 "1"과 같은 형태로 변환
+        declare $key=$value
     done
 
     ### Node Exporter의 출력을 저장, 실패시 메일 발송
@@ -46,9 +47,9 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
     ### Node Exporter의 출력에서 CPU 부하량 확인
     #node_cpu_seconds_total{cpu="7",mode="system"} 684.61
     cpu_count=`echo "$node_exporter_output" | grep "^node_cpu_seconds_total" | grep "system" | wc -l`
-    #node_load1 0
-    cpu_load1=`echo "$node_exporter_output" | grep "^node_load1 " | awk '{print $2}'`
-    cpu_usage_percentage_temp=$(echo "scale=2; 100 * $cpu_load1 / $cpu_count" | bc -l)
+    #node_load5 0
+    cpu_load5=`echo "$node_exporter_output" | grep "^node_load5 " | awk '{print $2}'`
+    cpu_usage_percentage_temp=$(echo "scale=2; 100 * $cpu_load5 / $cpu_count" | bc -l)
     cpu_usage_percentage=$(printf "%.0f" "$cpu_usage_percentage_temp")
     cpu_message=(
         "$server_name 의 CPU 지표"
@@ -115,8 +116,7 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
         console_message="$console_message\n\e[31m[C-경고]\e[0m $cpu_lines"
         html_lines=$cpu_lines
         html_lines="[C-경고] $html_lines"
-        html_lines="$html_lines\n    •• 조치사항 제안1: TODO; top -o %CPU"
-        html_lines="$html_lines\n    •• 조치사항 제안2: TODO"
+        html_lines="$html_lines\n    •• 조치사항 제안1: top -o %CPU"
         html_lines="<font color=red>\n$html_lines\n</font>"
         email_message="$email_message\n$html_lines"
         email_prefix="[CPU-경고] $email_prefix"
@@ -130,8 +130,7 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
         console_message="$console_message\n\e[31m[M-경고]\e[0m $mem_lines"
         html_lines=$mem_lines
         html_lines="[M-경고] $html_lines"
-        html_lines="$html_lines\n    •• 조치사항 제안1: TODO; top -o %MEM"
-        html_lines="$html_lines\n    •• 조치사항 제안2: TODO"
+        html_lines="$html_lines\n    •• 조치사항 제안1: top -o %MEM"
         html_lines="<font color=red>\n$html_lines\n</font>"
         email_message="$email_message\n$html_lines"
         email_prefix="[메모리-경고] $email_prefix"
