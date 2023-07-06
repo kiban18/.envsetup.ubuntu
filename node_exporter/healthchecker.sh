@@ -49,8 +49,10 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
     cpu_count=`echo "$node_exporter_output" | grep "^node_cpu_seconds_total" | grep "system" | wc -l`
     #node_load5 0
     cpu_load5=`echo "$node_exporter_output" | grep "^node_load5 " | awk '{print $2}'`
-    cpu_usage_percentage_temp=$(echo "scale=2; 100 * $cpu_load5 / $cpu_count" | bc -l)
-    cpu_usage_percentage=$(printf "%.0f" "$cpu_usage_percentage_temp")
+    ### 부하량 계산 (소수점 없이)
+    cpu_usage_percentage=$(echo "scale=2; 100 * $cpu_load5 / $cpu_count" | bc -l)
+    cpu_usage_percentage=$(printf "%.0f" "$cpu_usage_percentage")
+    CPU_CRITERIA=$(printf "%.0f" "$CPU_CRITERIA")
     cpu_message=(
         "$server_name 의 CPU 지표"
         "\n  • CPU $cpu_usage_percentage% of $CPU_CRITERIA%(초과기준)"
@@ -69,10 +71,11 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
     mem_avail_bytes_e=`echo "$node_exporter_output" | grep "^node_memory_MemAvailable_bytes" | awk '{print $2}'`
     mem_avail_bytes=`printf "%0.0f" $mem_avail_bytes_e`
     mem_avail_gb=$(echo "scale=2; $mem_avail_bytes / 1024 / 1024 / 1024" | bc -l)
-    ### 사용률 계산 (소수 두자리까지 출력)
+    ### 사용률 계산 (소수점 없이)
     mem_used_gb=$(echo "scale=2; $mem_total_gb - $mem_avail_gb" | bc -l)
-    mem_usage_percentage_temp=$(echo "scale=2; ($mem_used_gb / $mem_total_gb) * 100" | bc -l)
-    mem_usage_percentage=$(printf "%.0f" "$mem_usage_percentage_temp")
+    mem_usage_percentage=$(echo "scale=2; ($mem_used_gb / $mem_total_gb) * 100" | bc -l)
+    mem_usage_percentage=$(printf "%.0f" "$mem_usage_percentage")
+    MEM_CRITERIA=$(printf "%.0f" "$MEM_CRITERIA")
     mem_message=(
         "$server_name 의 메모리 지표"
         "\n  • MEM $mem_usage_percentage% of $MEM_CRITERIA%(초과기준)"
@@ -92,10 +95,11 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
     hdd_free_bytes_e=`echo "$node_exporter_output" | grep "^node_filesystem_free_bytes" | grep "mountpoint=\"/\"" | awk '{print $2}'`
     hdd_free_bytes=`printf "%.0f" $hdd_free_bytes_e`
     hdd_free_gb=$(echo "scale=2; $hdd_free_bytes / 1024 / 1024 / 1024" | bc -l)
-    ### 사용량 계산 (소수 두자리까지 출력)
+    ### 사용량 계산 (소수점 없이)
     hdd_used_gb=$(echo "scale=2; $hdd_total_gb - $hdd_free_gb" | bc -l)
-    hdd_usage_percentage_temp=$(echo "scale=2; ($hdd_used_gb / $hdd_total_gb) * 100" | bc -l)
-    hdd_usage_percentage=$(printf "%.0f" "$hdd_usage_percentage_temp")
+    hdd_usage_percentage=$(echo "scale=2; ($hdd_used_gb / $hdd_total_gb) * 100" | bc -l)
+    hdd_usage_percentage=$(printf "%.0f" "$hdd_usage_percentage")
+    HDD_CRITERIA=$(printf "%.0f" "$HDD_CRITERIA")
     hdd_message=(
         "$server_name 의 저장공간 지표"
         "\n  • HDD $hdd_usage_percentage% of $HDD_CRITERIA%(초과기준)"

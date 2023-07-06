@@ -1,96 +1,96 @@
 TARGET_SERVERS=(
 #### crazy-nodes #####################################
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:crazy-cougar-db" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:crazy-ias-server" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:crazy-mclova" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:crazy-mjv-dev" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:crazy-mjv-pre" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:crazy-nia-server" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:crazy-nms-server" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:crazy-onm-server" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:crazy-unicus" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:crazy-cougar-db" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:crazy-ias-server" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:crazy-mclova" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:crazy-mjv-dev" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:crazy-mjv-pre" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:crazy-nia-server" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:crazy-nms-server" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:crazy-onm-server" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:crazy-unicus" # aws
 
 #### clients-nodes #####################################
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:geo-mjv-server" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:geo-mjv-db" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:geo-mjv-server" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:geo-mjv-db" # aws
 
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:ias-ias-server" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:ias-ias-db" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:ias-ias-server" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:ias-ias-db" # aws
 
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:markt-mclova-server" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:markt-mclova-db" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:markt-mclova-server" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:markt-mclova-db" # aws
 
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:medi-mediv2-mchat" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:medi-mediv3" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:medi-mchat-db" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:medi-mcasttv" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:medi-mcast-db" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:medi-mediv2-mchat" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:medi-mediv3" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:medi-mchat-db" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:medi-mcasttv" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:medi-mcast-db" # aws
 
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:ubi-onm-server" # aws, autoscaling
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:ubi-onm-db" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:ubi-onm-server" # aws, autoscaling
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:ubi-onm-db" # aws
 
 #### dayou-nodes #####################################
-# dayou-nms: 70.1/80.2/70.3
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:dayou-nms-server" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:dayou-nms-db" # aws
+# dayou-nms: 70.1/80.2/90.3
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:dayou-nms-server" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:dayou-nms-db" # aws
 
-# dayou-nia-aws: 70.1/80.2/70.3
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:dayou-nia-server" # aws
-# dayou-nia-idc: 70.1/80.2/70.3
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:dayou-idc-nia-server1" # on-prem, HA
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:dayou-idc-nia-server2" # on-prem, HA
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:dayou-idc-nia-db1" # on-prem, HA
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:dayou-idc-nia-db2" # on-prem, HA
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:dayou-idc-nia-db3" # on-prem, HA
+# dayou-nia-aws: 70.1/80.2/90.3
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:dayou-nia-server" # aws
+# dayou-nia-idc: 70.1/80.2/90.3
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:dayou-idc-nia-server1" # on-prem, HA
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:dayou-idc-nia-server2" # on-prem, HA
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:dayou-idc-nia-db1" # on-prem, HA
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:dayou-idc-nia-db2" # on-prem, HA
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:dayou-idc-nia-db3" # on-prem, HA
 
 #### infomark-nodes #####################################
-# info-kids: 70.1/80.2/70.3
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:info-kids-back-pcbeta-db-arbiter" # aws
-#    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:info-kids-pcbeta-db-arbiter" # aws #TODO #Permission denied (publickey).
-#    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:info-kids-pcbeta-db-primary" # aws #TODO #Permission denied (publickey).
-#    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:info-kids-pcbeta-db-secondary" # aws #TODO #Permission denied (publickey).
-#    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:info-kids-pcbeta-server-auto" # aws #TODO #Permission denied (publickey).
-#    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:info-kids-pepcall-db-arbiter" # aws #TODO #Permission denied (publickey).
-#    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:info-kids-pepcall-db-primary" # aws #TODO #Permission denied (publickey).
-#    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:info-kids-pepcall-db-secondary" # aws #TODO #Permission denied (publickey).
-#    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:info-kids-pepcall-server-auto" # aws #TODO #Permission denied (publickey).
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:info-kids-pepcall-fota2-server" # aws
-#    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:info-kids-pepcall-logger" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:info-kids-pepcall-skill" # aws #설치완료
-#    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:info-kids-pepcall-wp-backend" # aws #TODO #Permission denied (publickey).
-#    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:info-kids-tcpepcall-server" # aws #TODO #Permission denied (publickey).
-#    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:info-kids-tcpepcall-db-arbiter" # aws #TODO #설치실패
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:info-kids-tcpepcall-db-primary" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:info-kids-tcpepcall-db-secondary" # aws
-#    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:info-kids-tcpepcall-web-server" # aws #TODO #설치실패
+# info-kids: 70.1/80.2/90.3
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:info-kids-back-pcbeta-db-arbiter" # aws
+#    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:info-kids-pcbeta-db-arbiter" # aws #TODO #Permission denied (publickey).
+#    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:info-kids-pcbeta-db-primary" # aws #TODO #Permission denied (publickey).
+#    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:info-kids-pcbeta-db-secondary" # aws #TODO #Permission denied (publickey).
+#    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:info-kids-pcbeta-server-auto" # aws #TODO #Permission denied (publickey).
+#    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:info-kids-pepcall-db-arbiter" # aws #TODO #Permission denied (publickey).
+#    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:info-kids-pepcall-db-primary" # aws #TODO #Permission denied (publickey).
+#    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:info-kids-pepcall-db-secondary" # aws #TODO #Permission denied (publickey).
+#    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:info-kids-pepcall-server-auto" # aws #TODO #Permission denied (publickey).
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:info-kids-pepcall-fota2-server" # aws
+#    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:info-kids-pepcall-logger" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:info-kids-pepcall-skill" # aws #설치완료
+#    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:info-kids-pepcall-wp-backend" # aws #TODO #Permission denied (publickey).
+#    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:info-kids-tcpepcall-server" # aws #TODO #Permission denied (publickey).
+#    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:info-kids-tcpepcall-db-arbiter" # aws #TODO #설치실패
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:info-kids-tcpepcall-db-primary" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:info-kids-tcpepcall-db-secondary" # aws
+#    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:info-kids-tcpepcall-web-server" # aws #TODO #설치실패
 
-# info-ifota: 70.1/80.2/70.3
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:info-ifota-api-server" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:info-ifota-statistics" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:info-ifota-arbitordb" # aws, HA
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:info-ifota-primarydb" # aws, HA
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:info-ifota-secondarydb" # aws, HA
+# info-ifota: 70.1/80.2/90.3
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:info-ifota-api-server" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:info-ifota-statistics" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:info-ifota-arbitordb" # aws, HA
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:info-ifota-primarydb" # aws, HA
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:info-ifota-secondarydb" # aws, HA
 
-# info-onm: 70.1/80.2/70.3
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:info-onm-server" # aws, autoscaling
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:info-onm-db" # aws
+# info-onm: 70.1/80.2/90.3
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:info-onm-server" # aws, autoscaling
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:info-onm-db" # aws
 
 #### lsn-nodes #####################################
-# lsn-psfoot2: 70.1/80.2/70.3
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:lsn-psfoot-db" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:lsn-psfoot2-dev-server" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:lsn-psfoot2-dev-db" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:lsn-psfoot2-server" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:lsn-psfoot2-db" # aws
-# lsn-dw2: 70.1/80.2/70.3
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:lsn-api-server" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:lsn-db-arbiter" # aws, HA
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:lsn-db-primary" # aws, HA
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:lsn-db-secondary" # aws, HA
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:lsn-dw2-dbg" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:lsn-dw2-logger" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:lsn-oauth-server" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:lsn-odb-arbiter" # aws, HA
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:lsn-odb-primary" # aws, HA
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=70.3:lsn-odb-secondary" # aws, HA
+# lsn-psfoot2: 70.1/80.2/90.3
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:lsn-psfoot-db" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:lsn-psfoot2-dev-server" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:lsn-psfoot2-dev-db" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:lsn-psfoot2-server" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:lsn-psfoot2-db" # aws
+# lsn-dw2: 70.1/80.2/90.3
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:lsn-api-server" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:lsn-db-arbiter" # aws, HA
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:lsn-db-primary" # aws, HA
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:lsn-db-secondary" # aws, HA
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:lsn-dw2-dbg" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:lsn-dw2-logger" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:lsn-oauth-server" # aws
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:lsn-odb-arbiter" # aws, HA
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:lsn-odb-primary" # aws, HA
+    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:lsn-odb-secondary" # aws, HA
 )
