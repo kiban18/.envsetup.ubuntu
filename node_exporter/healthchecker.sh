@@ -113,7 +113,7 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
     #############################################################################################
     console_message=""
     email_message=""
-    email_prefix=""
+    email_title_prefix=""
 
     cpu_comparison=$(echo "$cpu_usage_percentage >= $CPU_CRITERIA" | bc)
     if (( cpu_comparison == 1 )); then
@@ -123,7 +123,7 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
         html_lines="$html_lines\n    •• 조치사항 제안1: top -o %CPU"
         html_lines="<font color=red>\n$html_lines\n</font>"
         email_message="$email_message\n$html_lines"
-        email_prefix="[CPU-경고] $email_prefix"
+        email_title_prefix="$email_title_prefix CPU-$cpu_usage_percentage%"
     else
         console_message="$console_message\n\e[32m[C-정상]\e[0m $cpu_lines"
         email_message="$email_message\n[C-정상] $cpu_lines"
@@ -137,7 +137,7 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
         html_lines="$html_lines\n    •• 조치사항 제안1: top -o %MEM"
         html_lines="<font color=red>\n$html_lines\n</font>"
         email_message="$email_message\n$html_lines"
-        email_prefix="[메모리-경고] $email_prefix"
+        email_title_prefix="$email_title_prefix MEM-$mem_usage_percentage%"
     else
         console_message="$console_message\n\e[32m[M-정상]\e[0m $mem_lines"
         email_message="$email_message\n[M-정상] $mem_lines"
@@ -159,18 +159,18 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
         html_lines="$html_lines\n    •• 조치사항 참조2: https://docs.google.com/document/d/1y1KzKRkCl41b7cHTADjO1A0p1ocipNayQoNUmbuD1AA"
         html_lines="<font color=red>\n$html_lines\n</font>"
         email_message="$email_message\n$html_lines"
-        email_prefix="[저장공간-경고] $email_prefix"
+        email_title_prefix="$email_title_prefix HDD-$hdd_usage_percentage%"
     else
         console_message="$console_message\n\e[32m[H-정상]\e[0m $hdd_lines"
         email_message="$email_message\n[H-정상] $hdd_lines"
     fi
 
     email_message=$(echo "$email_message" | sed 's/\\n/<br>/g' | sed 's/  /\&nbsp;\&nbsp;/g')
-    email_title="$email_prefix $cpu_usage_percentage/$mem_usage_percentage/$hdd_usage_percentage for $server_name"
     #############################################################################################
     echo -e "$console_message"
 #    echo "$email_message"
     if ((hdd_comparison == 1)) || ((mem_comparison == 1)) || ((cpu_comparison == 1)); then
+        email_title="[경고] $email_title_prefix for $server_name"
         send_email "$email_title" "$email_message"
     fi
 done
