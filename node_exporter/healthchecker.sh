@@ -117,13 +117,14 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
 
     cpu_comparison=$(echo "$cpu_usage_percentage >= $CPU_CRITERIA" | bc)
     if (( cpu_comparison == 1 )); then
+        cpu_usage_too_high=$(echo "$cpu_usage_percentage >= 90" | bc) # TODO 90% is TOO HIGH
         console_message="$console_message\n\e[31m[C-경고]\e[0m $cpu_lines"
         html_lines=$cpu_lines
         html_lines="[C-경고] $html_lines"
         html_lines="$html_lines\n    •• 조치사항 제안1: top -o %CPU"
         html_lines="<font color=red>\n$html_lines\n</font>"
         email_message="$email_message\n$html_lines"
-        email_title_prefix="$email_title_prefix CPU-$cpu_usage_percentage%"
+        email_title_prefix="$email_title_prefix $cpu_usage_percentage% for CPU"
     else
         console_message="$console_message\n\e[32m[C-정상]\e[0m $cpu_lines"
         email_message="$email_message\n[C-정상] $cpu_lines"
@@ -131,13 +132,14 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
 
     mem_comparison=$(echo "$mem_usage_percentage >= $MEM_CRITERIA" | bc)
     if (( mem_comparison == 1 )); then
+        mem_usage_too_high=$(echo "$mem_usage_percentage >= 90" | bc) # TODO 90% is TOO HIGH
         console_message="$console_message\n\e[31m[M-경고]\e[0m $mem_lines"
         html_lines=$mem_lines
         html_lines="[M-경고] $html_lines"
         html_lines="$html_lines\n    •• 조치사항 제안1: top -o %MEM"
         html_lines="<font color=red>\n$html_lines\n</font>"
         email_message="$email_message\n$html_lines"
-        email_title_prefix="$email_title_prefix MEM-$mem_usage_percentage%"
+        email_title_prefix="$email_title_prefix $mem_usage_percentage% for MEM"
     else
         console_message="$console_message\n\e[32m[M-정상]\e[0m $mem_lines"
         email_message="$email_message\n[M-정상] $mem_lines"
@@ -145,6 +147,7 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
 
     hdd_comparison=$(echo "$hdd_usage_percentage >= $HDD_CRITERIA" | bc)
     if (( hdd_comparison == 1 )); then
+        hdd_usage_too_high=$(echo "$hdd_usage_percentage >= 95" | bc) # TODO 95% is TOO HIGH
         console_message="$console_message\n\e[31m[H-경고]\e[0m $hdd_lines"
         html_lines=$hdd_lines
         html_lines="[H-경고] $html_lines"
@@ -159,7 +162,7 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
         html_lines="$html_lines\n    •• 조치사항 참조2: https://docs.google.com/document/d/1y1KzKRkCl41b7cHTADjO1A0p1ocipNayQoNUmbuD1AA"
         html_lines="<font color=red>\n$html_lines\n</font>"
         email_message="$email_message\n$html_lines"
-        email_title_prefix="$email_title_prefix HDD-$hdd_usage_percentage%"
+        email_title_prefix="$email_title_prefix $hdd_usage_percentage% for HDD"
     else
         console_message="$console_message\n\e[32m[H-정상]\e[0m $hdd_lines"
         email_message="$email_message\n[H-정상] $hdd_lines"
@@ -169,8 +172,12 @@ for TARGET_SERVER in "${TARGET_SERVERS[@]}"; do
     #############################################################################################
     echo -e "$console_message"
 #    echo "$email_message"
-    if ((hdd_comparison == 1)) || ((mem_comparison == 1)) || ((cpu_comparison == 1)); then
-        email_title="[경고] $email_title_prefix for $server_name"
+    if (( hdd_comparison == 1 )) || (( mem_comparison == 1 )) || (( cpu_comparison == 1 )); then
+        if (( hdd_usage_too_high == 1 )) || (( mem_usage_too_high == 1 )) || (( cpu_usage_too_high == 1 )); then
+            email_title="[위험] $email_title_prefix for $server_name"
+        else
+            email_title="[경고] $email_title_prefix for $server_name"
+        fi
         send_email "$email_title" "$email_message"
     fi
 done

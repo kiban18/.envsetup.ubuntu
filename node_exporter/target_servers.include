@@ -2,7 +2,7 @@ TARGET_SERVERS=(
 #### crazy-nodes #####################################
     "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:crazy-cougar-db" # aws
     "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:crazy-ias-server" # aws
-    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:crazy-mclova" # aws
+#    "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:crazy-mclova" # aws
     "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:crazy-mjv-dev" # aws
     "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:crazy-nia-server" # aws
     "CPU_CRITERIA=70.1,MEM_CRITERIA=80.2,HDD_CRITERIA=90.3:crazy-nms-server" # aws
